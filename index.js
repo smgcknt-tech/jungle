@@ -9,6 +9,8 @@ import TopRouter from './routes/TopRouter.js'
 const app = express();
 dotenv.config();
 app.use(cors());
+app.use(express.static('public'));
+
 //router ※corsの下に配置--------------------------------------------------
 app.use('/',TopRouter)
 //------------------------------------------------------------------------
