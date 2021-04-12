@@ -4,7 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="css/style.css" type="text/css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
     <title>Jungle</title>
   </head>
   <body>
@@ -15,12 +18,15 @@
       </header>
       <main>
         <div class="raw center">
+          <% products.map((product) =>{ %>
           <div class="card">
-            <a href="#">
-              <img class="image-body" src="/images/p1.jpg"  />
+            <a href="/product/<%=product._id%>">
+              <img class="image-body" src="<%=product.image%>" />
             </a>
             <div class="card-body">
-              <a href="#"><h2>HOGEHOGE-shirts</h2></a>
+              <a href="/product/<%=product._id%>">
+                <h2><%=product.name%></h2>
+              </a>
               <div class="rating">
                 <span>
                   <i class="fa fa-star"></i>
@@ -37,114 +43,11 @@
                 <span>
                   <i class="fa fa-star"></i>
                 </span>
-                <div class="price">￥1000yen</div>
+                <div class="price">￥<%=product.price%></div>
               </div>
             </div>
           </div>
-          <div class="card">
-            <a href="#">
-              <img class="image-body" src="/images/p1.jpg"  />
-            </a>
-            <div class="card-body">
-              <a href="#"><h2>HOGEHOGE-shirts</h2></a>
-              <div class="rating">
-                <span>
-                  <i class="fa fa-star"></i>
-                </span>
-                <span>
-                  <i class="fa fa-star"></i>
-                </span>
-                <span>
-                  <i class="fa fa-star"></i>
-                </span>
-                <span>
-                  <i class="fa fa-star"></i>
-                </span>
-                <span>
-                  <i class="fa fa-star"></i>
-                </span>
-                <div class="price">￥1000yen</div>
-              </div>
-            </div>
-          </div>
-          <div class="card">
-            <a href="#">
-              <img class="image-body" src="/images/p1.jpg"  />
-            </a>
-            <div class="card-body">
-              <a href="#"><h2>HOGEHOGE-shirts</h2></a>
-              <div class="rating">
-                <span>
-                  <i class="fa fa-star"></i>
-                </span>
-                <span>
-                  <i class="fa fa-star"></i>
-                </span>
-                <span>
-                  <i class="fa fa-star"></i>
-                </span>
-                <span>
-                  <i class="fa fa-star"></i>
-                </span>
-                <span>
-                  <i class="fa fa-star"></i>
-                </span>
-                <div class="price">￥1000yen</div>
-              </div>
-            </div>
-          </div>
-          <div class="card">
-            <a href="#">
-              <img class="image-body" src="/images/p1.jpg"  />
-            </a>
-            <div class="card-body">
-              <a href="#"><h2>HOGEHOGE-shirts</h2></a>
-              <div class="rating">
-                <span>
-                  <i class="fa fa-star"></i>
-                </span>
-                <span>
-                  <i class="fa fa-star"></i>
-                </span>
-                <span>
-                  <i class="fa fa-star"></i>
-                </span>
-                <span>
-                  <i class="fa fa-star"></i>
-                </span>
-                <span>
-                  <i class="fa fa-star"></i>
-                </span>
-                <div class="price">￥1000yen</div>
-              </div>
-            </div>
-          </div>
-          <div class="card">
-            <a href="#">
-              <img class="image-body" src="/images/p1.jpg"  />
-            </a>
-            <div class="card-body">
-              <a href="#"><h2>HOGEHOGE-shirts</h2></a>
-              <div class="rating">
-                <span>
-                  <i class="fa fa-star"></i>
-                </span>
-                <span>
-                  <i class="fa fa-star"></i>
-                </span>
-                <span>
-                  <i class="fa fa-star"></i>
-                </span>
-                <span>
-                  <i class="fa fa-star"></i>
-                </span>
-                <span>
-                  <i class="fa fa-star"></i>
-                </span>
-                <div class="price">￥1000yen</div>
-              </div>
-            </div>
-          </div>
+          <% }) %>
         </div>
       </main>
       <footer class="raw center">ALL right reserved</footer>
