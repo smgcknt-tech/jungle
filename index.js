@@ -2,15 +2,18 @@ import express from 'express';
 import mongoose from 'mongoose';
 import cors from 'cors';
 import dotenv from 'dotenv';
-import path from 'path';
+import ejs from 'ejs';
 //controllersからimportするroutes処理--------------------------------------
 import TopRouter from './routes/TopRouter.js'
 //------------------------------------------------------------------------
 const app = express();
-const __dirname = path.dirname(new URL(import.meta.url).pathname);
+
 dotenv.config();
 app.use(cors());
-app.use('/jquery', express.static(__dirname + '/node_modules/jquery/dist/'));
+app.use(express.urlencoded({extended: false}));
+app.use(express.static('./public/'));
+app.use("/images", express.static('./public/images/'))
+
 
 
 
