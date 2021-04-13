@@ -12,12 +12,9 @@
   </head>
   <body>
     <div class="grid-container">
-      <header class="raw">
-        <di><a href="#" class="logo">Jungle</a></di>
-        <div><a href="">カートリスト</a><a href="#">sign in</a></div>
-      </header>
+      <%-include('./partial/header');%>
       <main>
-        <div class="raw center">
+        <div class="row center">
           <% products.map((product) =>{ %>
           <div class="card">
             <a href="/product/<%=product._id%>">
@@ -27,31 +24,14 @@
               <a href="/product/<%=product._id%>">
                 <h2><%=product.name%></h2>
               </a>
-              <div class="rating">
-                <span>
-                  <i class="<%=product.rating >= 1 ? "fa fa-star" :product.rating >= 0.5 ? "fa fa-star-half-alt" : "fa fa-star-o" %>"></i>
-                </span>     
-                <span>
-                  <i class="<%=product.rating >= 2 ? "fa fa-star" :product.rating >= 1.5 ? "fa fa-star-half-alt" : "fa fa-star-o" %>"></i>
-                </span>
-                <span>
-                  <i class="<%=product.rating >= 3 ? "fa fa-star" :product.rating >= 2.5 ? "fa fa-star-half-alt" : "fa fa-star-o" %>"></i>
-                </span>
-                <span>
-                  <i class="<%=product.rating >= 4 ? "fa fa-star" :product.rating >= 3.5 ? "fa fa-star-half-alt" : "fa fa-star-o" %>"></i>
-                </span>
-                <span>
-                  <i class="<%=product.rating >= 5 ? "fa fa-star" :product.rating >= 4.5 ? "fa fa-star-half-alt" : "fa fa-star-o" %>"></i>
-                </span>
-                <span><%=product.numReviews + ' reviews'%> </span>
-              </div>
+              <%-include('./partial/rating.ejs',{rating:product.rating, numReviews:product.numReviews});%>
               <div class="price">￥<%=product.price%></div>
             </div>
           </div>
           <% }) %>
         </div>
       </main>
-      <footer class="raw center">ALL right reserved</footer>
+      <%-include('./partial/footer');%>
     </div>
     <script
       src="//code.jquery.com/jquery-3.6.0.min.js"
