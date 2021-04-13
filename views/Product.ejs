@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/style.css" type="text/css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+    <title>Product</title>
+  </head>
+  <body>
+    <div class="row">
+      <div class="col-2">
+        <img class="large" src="<%=product.image%>" alt="<%=product.name%>" />
+      </div>
+      <div class="col-1">
+        <ul>
+          <li>
+            <h1><%=product.name%></h1>
+          </li>
+          <div class="rating">
+            <span>
+              <i class="<%=product.rating >= 1 ? "fa fa-star" :product.rating >= 0.5 ? "fa fa-star-half-alt" : "fa fa-star-o" %>"></i>
+            </span>     
+            <span>
+              <i class="<%=product.rating >= 2 ? "fa fa-star" :product.rating >= 1.5 ? "fa fa-star-half-alt" : "fa fa-star-o" %>"></i>
+            </span>
+            <span>
+              <i class="<%=product.rating >= 3 ? "fa fa-star" :product.rating >= 2.5 ? "fa fa-star-half-alt" : "fa fa-star-o" %>"></i>
+            </span>
+            <span>
+              <i class="<%=product.rating >= 4 ? "fa fa-star" :product.rating >= 3.5 ? "fa fa-star-half-alt" : "fa fa-star-o" %>"></i>
+            </span>
+            <span>
+              <i class="<%=product.rating >= 5 ? "fa fa-star" :product.rating >= 4.5 ? "fa fa-star-half-alt" : "fa fa-star-o" %>"></i>
+            </span>
+            <span><%=product.numReviews + ' reviews'%> </span>
+          </div>
+          <li>price:￥<%=product.price%></li>
+          <li><p><%=product.description%></p></li>
+        </ul>
+      </div>
+      <div class="col-1">
+          <div class="card card-body">
+              <ul>
+                  <li>
+                      <div class="row">
+                      <div>Price</div>
+                      <div class="price">￥<%=product.price%></div>
+                      </div>
+                  </li>
+                  <li>
+                      <div class="row">
+                          <div>
+                              status
+                          </div>
+                          <div>
+                              <% if (product.countInStock > 0 ) { %>
+                              <span class="success"> in Stock </span>
+                              <% } else { %>
+                              <span class="error"> Unavailable </span>
+                              <% } %>
+                          </div>
+                      </div>
+                  </li>
+                  <li>
+                      <button class="primary block">Add to cart</button>
+                  </li>
+              </ul>
+          </div>
+
+      </div>
+    </div>
+    
+  </body>
+</html>

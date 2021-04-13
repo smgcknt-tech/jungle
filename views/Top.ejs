@@ -29,22 +29,23 @@
               </a>
               <div class="rating">
                 <span>
-                  <i class="fa fa-star"></i>
+                  <i class="<%=product.rating >= 1 ? "fa fa-star" :product.rating >= 0.5 ? "fa fa-star-half-alt" : "fa fa-star-o" %>"></i>
+                </span>     
+                <span>
+                  <i class="<%=product.rating >= 2 ? "fa fa-star" :product.rating >= 1.5 ? "fa fa-star-half-alt" : "fa fa-star-o" %>"></i>
                 </span>
                 <span>
-                  <i class="fa fa-star"></i>
+                  <i class="<%=product.rating >= 3 ? "fa fa-star" :product.rating >= 2.5 ? "fa fa-star-half-alt" : "fa fa-star-o" %>"></i>
                 </span>
                 <span>
-                  <i class="fa fa-star"></i>
+                  <i class="<%=product.rating >= 4 ? "fa fa-star" :product.rating >= 3.5 ? "fa fa-star-half-alt" : "fa fa-star-o" %>"></i>
                 </span>
                 <span>
-                  <i class="fa fa-star"></i>
+                  <i class="<%=product.rating >= 5 ? "fa fa-star" :product.rating >= 4.5 ? "fa fa-star-half-alt" : "fa fa-star-o" %>"></i>
                 </span>
-                <span>
-                  <i class="fa fa-star"></i>
-                </span>
-                <div class="price">￥<%=product.price%></div>
+                <span><%=product.numReviews + ' reviews'%> </span>
               </div>
+              <div class="price">￥<%=product.price%></div>
             </div>
           </div>
           <% }) %>

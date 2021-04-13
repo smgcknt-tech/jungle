@@ -85,6 +85,11 @@ img.image-body {
   margin: 0.1rem;
 }
 
+.rating span:last-child {
+  color:#404040;
+}
+
+
 /*top-layout*/
 .grid-container {
   display: grid;

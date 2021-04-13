@@ -1,4 +1,3 @@
-import listInputs from "../models/ProductData.js";
 import data from "../models/data.js";
 
 export const getTop = (req, res) => {
