@@ -3,6 +3,7 @@ import mongoose from 'mongoose';
 import cors from 'cors';
 import dotenv from 'dotenv';
 
+
 //controllersからimportするroutes処理--------------------------------------
 import TopRouter from './routes/TopRouter.js';
 import router from './routes/ProductRouter.js';
@@ -15,6 +16,7 @@ app.use(cors());
 app.use(express.urlencoded({extended: false}));
 app.use(express.static('./public'));
 app.use("/images", express.static('./public/images/'))
+
 
 
 //router ※corsの下に配置--------------------------------------------------
