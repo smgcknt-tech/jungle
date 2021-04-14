@@ -23,6 +23,10 @@ app.use("/images", express.static('./public/images/'))
 app.use('/', TopRouter)
 app.use('/product', router)
 
+app.get('/cart/:id',(req,res)=>{
+  res.render('cart.ejs');
+})
+
 
 //------------------------------------------------------------------------
 

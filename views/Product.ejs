@@ -61,13 +61,25 @@
               <div>数量</div>
             </div>
 
-           <select id="cartNum"> 
+
+            <script>
+            function clicker(){
+              value = document.getElementById("cartNum").value
+              let selectedNum = value
+              let link = document.getElementById('cartUrl');
+              link.href = "/cart/" + value
+              console.log(link.href);
+
+            }
+            </script>
+
+           <select id="cartNum" onchange="clicker()">
               <% for(let num = 1; num <= product.countInStock; num ++) { %>
               <option value="<%= num %>" ><%= num %></option>
               <% } %>
             </select>
             <li>
-              <a href="/cart/<%=product._id%>"><button class="primary block"　>カートに追加</button></a>
+              <a id='cartUrl' href="/cart"><button class="primary block"　>カートに追加</button></a>
             </li>
           </ul>
         </div>
