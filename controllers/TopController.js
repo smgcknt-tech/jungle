@@ -1,9 +1,19 @@
 import data from "../models/data.js";
+import cartItem from "../models/cartItem.js";
 
 export const getTop = (req, res) => {
-  try {
-    res.render(`Top.ejs`,{products:data.products});
-  } catch (error) {
-    res.status(404).json({ message: error.message });
-  }
+
+  cartItem.find({}, (err, docs)=> {
+    let cartData = {
+        title: 'MongoDB cartItems' ,
+        content: docs
+    };
+    res.render("Top.ejs", {
+      data: {
+        products: data.products,
+        cartData: cartData,
+      },
+    });
+  });
+
 };

@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="css/style.css" type="text/css" />
+    <link rel="stylesheet" href="/css/style.css" type="text/css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
@@ -12,10 +12,10 @@
   </head>
   <body>
     <div class="grid-container">
-      <%-include('./partial/header');%>
+      <%-include('./partial/header',{cartData:data.cartData});%>
       <main>
         <div class="row center">
-          <% products.map((product) =>{ %>
+          <% data.products.map((product) =>{ %>
           <div class="card">
             <a href="/product/<%=product._id%>">
               <img class="image-body" src="<%=product.image%>" />

@@ -12,27 +12,27 @@
   </head>
 
   <body>
-    <% if(!product) { %>
+    <% if(!data.product) { %>
     <div>該当商品なし</div>
-    <%} else {%> <%-include('./partial/header');%>
+    <%} else {%> <%-include('./partial/header',{cartData:data.cartData});%>
     <a href="/">戻る</a>
     <div class="row top">
       <div class="col-2">
-        <img class="large" src="<%=product.image%>" alt="<%=product.name%>" />
+        <img class="large" src="<%=data.product.image%>" alt="<%=data.product.name%>" />
       </div>
       <div class="col-1">
         <ul>
           <li>
-            <h1><%=product.name%></h1>
+            <h1><%=data.product.name%></h1>
           </li>
           <li>
-            <%-include('./partial/rating.ejs',{rating:product.rating,
-            numReviews:product.numReviews});%>
+            <%-include('./partial/rating.ejs',{rating:data.product.rating,
+            numReviews:data.product.numReviews});%>
           </li>
-          <li>price:￥<%=product.price%></li>
+          <li>price:￥<%=data.product.price%></li>
           <li>
             商品詳細
-            <p><%=product.description%></p>
+            <p><%=data.product.description%></p>
           </li>
         </ul>
       </div>
@@ -42,14 +42,14 @@
             <li>
               <div class="row">
                 <div>Price</div>
-                <div class="price">￥<%=product.price%></div>
+                <div class="price">￥<%=data.product.price%></div>
               </div>
             </li>
             <li>
               <div class="row">
                 <div>status</div>
                 <div>
-                  <% if (product.countInStock> 0 ) { %>
+                  <% if (data.product.countInStock> 0 ) { %>
                   <span class="success"> 在庫あり </span>
                   <% } else { %>
                   <span class="error"> 在庫なし </span>
@@ -64,22 +64,21 @@
 
             <script>
             function clicker(){
-              value = document.getElementById("cartNum").value
-              let selectedNum = value
-              let link = document.getElementById('cartUrl');
-              link.href = "/cart/" + value
-              console.log(link.href);
-
+              qty = document.getElementById("cartNum").value;
+              let cartFormLink = document.getElementById('cartFormUrl');
+              cartFormLink.action = cartFormLink.action + "?qty=" + qty;
             }
             </script>
 
            <select id="cartNum" onchange="clicker()">
-              <% for(let num = 1; num <= product.countInStock; num ++) { %>
+              <% for(let num = 1; num <= data.product.countInStock; num ++) { %>
               <option value="<%= num %>" ><%= num %></option>
               <% } %>
             </select>
             <li>
-              <a id='cartUrl' href="/cart"><button class="primary block"　>カートに追加</button></a>
+              <form id="cartFormUrl" action="/addCartItem/<%=data.product._id%>" method="POST">
+              <button class="primary block"　>カートに追加</button>
+              </form> 
             </li>
           </ul>
         </div>

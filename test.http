@@ -1,0 +1,9 @@
+POST http://127.0.0.1:3000/cart/3/?qty=3
+Content-Type: application/json
+
+{
+    "productId":"3",
+    "name":"Lacoste Free Shirt",
+    "price":2200,
+    "qty":"3",
+}
