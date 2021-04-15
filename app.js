@@ -21,6 +21,13 @@ app.use(express.static("./public"));
 app.use("/images", express.static("./public/images/"));
 
 
+app.use(async(req,res,next)=>{
+  const cart = await cartItem.find({})
+  .then(result => res.locals.cart = result)
+  .catch(err => console.log(err))
+  next();
+});
+
 //router ※corsの下に配置--------------------------------------------------
 app.use("/", TopRouter);
 app.use("/product", router);

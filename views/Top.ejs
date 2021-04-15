@@ -15,6 +15,7 @@
       <%-include('./partial/header',{cartData:data.cartData});%>
       <main>
         <div class="row center">
+          <div><%=locals.cart%> </div>
           <% data.products.map((product) =>{ %>
           <div class="card">
             <a href="/product/<%=product._id%>">
