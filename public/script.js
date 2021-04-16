@@ -1,9 +1,8 @@
 $(function(){
   $('#cartNum').click(function(){        
-      let qty = $('#cartNum').val();
-      let cartAction = $('#cartForm').attr('action');
-      cartFormUrl = cartAction + "?qty=" + qty;
-      $('#cartForm').attr('action',cartFormUrl);
+    let num = $('#cartNum option:selected').text();
+    let formUrl = $('#cartForm').attr('action');
+    $('#cartForm').attr('action',formUrl + 'qty=' + num);
   });
 
 });
