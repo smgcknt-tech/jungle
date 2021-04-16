@@ -8,7 +8,7 @@
     </li>
     <li>
       <div class="row">
-        <div>status</div>
+        <div>在庫状況</div>
         <div>
           <% if (product.countInStock> 0 ) { %>
           <span class="success"> 在庫あり </span>
@@ -22,23 +22,15 @@
       <div>数量</div>
     </div>
 
-    <script>
-      function clicker() {
-        qty = document.getElementById("cartNum").value;
-        let cartFormLink = document.getElementById("cartFormUrl");
-        cartFormLink.action = cartFormLink.action + "?qty=" + qty;
-      }
-    </script>
-
-    <select id="cartNum" onchange="clicker()">
-      <% for(let num = 1; num <= product.countInStock; num ++) { %>
+    <select id="cartNum">
+      <% for(let num = 0; num <= product.countInStock; num ++) { %>
       <option value="<%= num %>"><%= num %></option>
       <% } %>
     </select>
     <li>
       <form
-        id="cartFormUrl"
-        action="/addCartItem/<%=product._id%>"
+        id="cartForm"
+        action="/Cart/<%=product._id%>"
         method="POST"
       >
         <button class="primary block" 　>カートに追加</button>

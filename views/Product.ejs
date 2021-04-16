@@ -14,22 +14,24 @@
   <body>
     <% if(!product) { %>
     <div>該当商品なし</div>
-    <%} else {%> 
-      <%-include('./partial/header');%>
-    <a href="/">戻る</a>
+    <%} else {%> <%-include('./partials/header');%>
     <div class="row top">
       <div class="col-2">
         <img class="large" src="<%=product.image%>" alt="<%=product.name%>" />
       </div>
       <div class="col-1">
-        <%-include('./partial/productDetail',{product:product});%>
+        <%-include('./partials/productDetail',{product:product});%>
       </div>
       <div class="col-1">
-        <%-include('./partial/cartCard',{product:product});%>
+        <%-include('./partials/cartCard',{product:product});%>
       </div>
     </div>
-    <%-include('./partial/footer');%> 
-    <%-include('./partial/JqueryTag');%>
-    <%}%>
+    <%-include('./partials/footer');%> <%}%>
+    <script
+      src="//code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+      crossorigin="anonymous"
+    ></script>
+    <script src="/script.js"></script>
   </body>
 </html>

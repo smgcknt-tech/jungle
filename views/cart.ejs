@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="ja">
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/css/style.css" type="text/css" />
@@ -9,11 +9,11 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
     />
     <title>カート</title>
-</head>
-<body>
-  <div><h1>cart screen</h1>
-  <p>add to cart : id:<%=data.id%> 数量:<%=data.qty%></p>
-  </div>
-  <%-include('./partial/JqueryTag');%>  
-</body>
+  </head>
+  <body>
+    <div>
+      <h1>cart screen</h1>
+      <p>add to cart : id:<%=data.id%> 数量:<%=data.qty%></p>
+    </div>
+  </body>
 </html>
