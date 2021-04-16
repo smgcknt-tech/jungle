@@ -10,35 +10,17 @@
     />
     <title>Jungle</title>
   </head>
+
   <body>
     <div class="grid-container">
-      <%-include('./partial/header',{cartData:data.cartData});%>
+      <%-include('./partial/header');%>
       <main>
         <div class="row center">
-          <div><%=locals.cart%> </div>
-          <% data.products.map((product) =>{ %>
-          <div class="card">
-            <a href="/product/<%=product._id%>">
-              <img class="image-body" src="<%=product.image%>" />
-            </a>
-            <div class="card-body">
-              <a href="/product/<%=product._id%>">
-                <h2><%=product.name%></h2>
-              </a>
-              <%-include('./partial/rating.ejs',{rating:product.rating, numReviews:product.numReviews});%>
-              <div class="price">￥<%=product.price%></div>
-            </div>
-          </div>
-          <% }) %>
+          <%-include('./partial/productCard',{products:products});%>
         </div>
       </main>
       <%-include('./partial/footer');%>
     </div>
-    <script
-      src="//code.jquery.com/jquery-3.6.0.min.js"
-      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
-      crossorigin="anonymous"
-    ></script>
-    <script src="script.js"></script>
+    <%-include('./partial/JqueryTag');%>
   </body>
 </html>

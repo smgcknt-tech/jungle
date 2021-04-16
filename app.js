@@ -23,7 +23,7 @@ app.use("/images", express.static("./public/images/"));
 
 app.use(async(req,res,next)=>{
   const cart = await cartItem.find({})
-  .then(result => res.locals.cart = result)
+  .then(result => res.locals.cartItem = result)
   .catch(err => console.log(err))
   next();
 });

@@ -1,0 +1,14 @@
+<ul>
+  <li>
+    <h1><%=product.name%></h1>
+  </li>
+  <li>
+    <%-include('./rating.ejs',{ rating:product.rating,
+    numReviews:product.numReviews });%>
+  </li>
+  <li>price:￥<%=product.price%></li>
+  <li>
+    商品詳細
+    <p><%=product.description%></p>
+  </li>
+</ul>

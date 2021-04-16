@@ -8,82 +8,28 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
     />
-    <title>Product</title>
+    <title>商品詳細</title>
   </head>
 
   <body>
-    <% if(!data.product) { %>
+    <% if(!product) { %>
     <div>該当商品なし</div>
-    <%} else {%> <%-include('./partial/header',{cartData:data.cartData});%>
+    <%} else {%> 
+      <%-include('./partial/header');%>
     <a href="/">戻る</a>
     <div class="row top">
       <div class="col-2">
-        <img class="large" src="<%=data.product.image%>" alt="<%=data.product.name%>" />
+        <img class="large" src="<%=product.image%>" alt="<%=product.name%>" />
       </div>
       <div class="col-1">
-        <ul>
-          <li>
-            <h1><%=data.product.name%></h1>
-          </li>
-          <li>
-            <%-include('./partial/rating.ejs',{rating:data.product.rating,
-            numReviews:data.product.numReviews});%>
-          </li>
-          <li>price:￥<%=data.product.price%></li>
-          <li>
-            商品詳細
-            <p><%=data.product.description%></p>
-          </li>
-        </ul>
+        <%-include('./partial/productDetail',{product:product});%>
       </div>
       <div class="col-1">
-        <div class="card card-body">
-          <ul>
-            <li>
-              <div class="row">
-                <div>Price</div>
-                <div class="price">￥<%=data.product.price%></div>
-              </div>
-            </li>
-            <li>
-              <div class="row">
-                <div>status</div>
-                <div>
-                  <% if (data.product.countInStock> 0 ) { %>
-                  <span class="success"> 在庫あり </span>
-                  <% } else { %>
-                  <span class="error"> 在庫なし </span>
-                  <% } %>
-                </div>
-              </div>
-            </li>
-            <div class="row">
-              <div>数量</div>
-            </div>
-
-
-            <script>
-            function clicker(){
-              qty = document.getElementById("cartNum").value;
-              let cartFormLink = document.getElementById('cartFormUrl');
-              cartFormLink.action = cartFormLink.action + "?qty=" + qty;
-            }
-            </script>
-
-           <select id="cartNum" onchange="clicker()">
-              <% for(let num = 1; num <= data.product.countInStock; num ++) { %>
-              <option value="<%= num %>" ><%= num %></option>
-              <% } %>
-            </select>
-            <li>
-              <form id="cartFormUrl" action="/addCartItem/<%=data.product._id%>" method="POST">
-              <button class="primary block"　>カートに追加</button>
-              </form> 
-            </li>
-          </ul>
-        </div>
+        <%-include('./partial/cartCard',{product:product});%>
       </div>
     </div>
-    <%-include('./partial/footer');%> <%}%>
+    <%-include('./partial/footer');%> 
+    <%-include('./partial/JqueryTag');%>
+    <%}%>
   </body>
 </html>

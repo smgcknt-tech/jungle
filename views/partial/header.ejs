@@ -2,8 +2,8 @@
   <di><a href="#" class="logo">Jungle</a></di>
   <div><a href="/cart">
     カートリスト 
-    <%if (cartData.content.length > 0) {%>
-        <span class="badge"><%=cartData.content.length%></span>
+    <%if (locals.cartItem.length > 0) {%>
+        <span class="badge"><%=locals.cartItem.length%></span>
     <%}%>
   </a> <a href="#">sign in</a></div>
 </header>
