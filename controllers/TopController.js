@@ -1,5 +1,9 @@
-import data from "../models/data.js";
+const data =require ("../models/schema/data.js");
 
-export const getTop = (req, res) => {
-    res.render("Top.ejs", {products:data.products});
-};
+const TopController ={
+    getTop:(req, res) => {
+        res.render("Top.ejs", { products: data.products });
+    }
+}
+
+module.exports =  TopController;

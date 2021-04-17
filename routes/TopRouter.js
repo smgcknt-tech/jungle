@@ -1,6 +1,6 @@
-import express from "express";
-import { getTop } from "../controllers/TopController.js";
+const express =require ("express");
+const TopController =require ("../controllers/TopController.js");
 const router = express.Router();
-router.get("/", getTop);
+router.get("/", TopController.getTop);
 
-export default router
+module.exports =  router

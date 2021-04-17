@@ -1,8 +1,6 @@
-import express from "express";
-import { addCartItem } from "../controllers/AddedCartController.js";
-import { getCart } from '../controllers/CartController.js';
+const express = require ("express");
+const CartController = require ('../controllers/CartController.js');
 const router = express.Router();
-router.get('/',getCart,);
-router.post('/:id',addCartItem,);
-
-export default router
+router.get('/', CartController.getCart);
+router.post('/:id', CartController.addCartItem);
+module.exports = router
