@@ -1,7 +1,7 @@
 
 const data = require ("../models/schema/data.js");
 const cartItem =require ("../models/schema/cartItem.js");
-
+const Products =require("../models/Products.js")
 module.exports ={
   getCart: (req, res) =>{
     res.render("Cart.ejs", {
@@ -30,3 +30,7 @@ module.exports ={
     });
   }
 }
+
+process.on('unhandledRejection', (reason, p) => {
+  console.log('Unhandled Rejection at: Promise', p, 'reason:', reason);
+})
