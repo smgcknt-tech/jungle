@@ -1,32 +1,37 @@
 <!DOCTYPE html>
 <html lang="ja">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/css/style.css" type="text/css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
-    />
-    <title>商品詳細</title>
-  </head>
 
-  <body>
-    <% if(!product) { %>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="/css/style.css" type="text/css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+  <title>商品詳細</title>
+</head>
+
+<body>
+  <% if(!product) { %>
     <div>該当商品なし</div>
-    <%} else {%> <%-include('../partials/header');%>
-    <div class="row top">
-      <div class="col-2">
-        <img class="large" src="<%=product.image%>" alt="<%=product.name%>" />
+  <%} else {%>
+    <div class="grid-container">
+      <%-include('../partials/Header');%>
+        <main>
+          <div class="row top">
+            <div class="col-1">
+              <img class="large" src="<%=product.image%>" alt="<%=product.name%>" />
+            </div>
+            <div class="col-2">
+              <%-include('../partials/ProductDetail',{product:product});%>
+            </div>
+            <div class="col-3">
+              <%-include('../partials/CartCard',{product:product});%>
+            </div>
+          </div>
+        </main>
+        <%-include('../partials/Footer');%>
       </div>
-      <div class="col-1">
-        <%-include('../partials/productDetail',{product:product});%>
-      </div>
-      <div class="col-1">
-        <%-include('../partials/cartCard',{product:product});%>
-      </div>
-    </div>
-    <%-include('../partials/footer');%> <%}%>
-    <%-include('../partials/jquery');%>
-  </body>
+  <%}%>
+      <%-include('../partials/Jquery');%>
+</body>
+
 </html>

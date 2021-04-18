@@ -1,7 +1,7 @@
 
 
-const data = require ("./schema/data.js");
-const cartItem =require ("./schema/cartItem.js");
+const data = require ("./schemas/Data.js");
+const cartItem = require ("./schemas/CartItem.js");
 
 
 module.exports ={

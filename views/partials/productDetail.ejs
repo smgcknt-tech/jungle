@@ -3,7 +3,7 @@
     <h1><%=product.name%></h1>
   </li>
   <li>
-    <%-include('./rating.ejs',{ rating:product.rating,
+    <%-include('./Rating.ejs',{ rating:product.rating,
     numReviews:product.numReviews });%>
   </li>
   <li>price:￥<%=product.price%></li>

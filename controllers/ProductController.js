@@ -1,4 +1,4 @@
-const data =require ("../models/schema/data.js");
+const data =require ("../models/schemas/Data.js");
 
 const ProductController ={
   getProduct: (req, res) => {

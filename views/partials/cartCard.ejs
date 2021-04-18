@@ -2,7 +2,7 @@
   <ul>
     <li>
       <div class="row">
-        <div>Price</div>
+        <div>価格</div>
         <div class="price">￥<%=product.price%></div>
       </div>
     </li>
@@ -23,8 +23,9 @@
     </div>
 
     <select id="cartNum">
-      <% for(let num = 0; num <= product.countInStock; num ++) { %>
-      <option class="option" value="<%= num %>"><%= num %></option>
+      <option value="0">-</option>
+      <% for(let num = 1; num <= product.countInStock; num ++) { %>
+      <option value="<%= num %>"><%= num %></option>
       <% } %>
     </select>
     <li>

@@ -1,20 +1,56 @@
 <!DOCTYPE html>
 <html lang="ja">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/css/style.css" type="text/css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
-    />
-    <title>カート</title>
-  </head>
-  <body>
-    <div>
-      <h1>cart screen</h1>
-      <p>add to cart : id:<%=data.id%> 数量:<%=data.qty%></p>
-    </div>
-  <%-include('../partials/jquery');%>
-  </body>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="/css/style.css" type="text/css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+  <title>カート</title>
+</head>
+
+<body>
+  <div class="grid-container">
+    <%-include('../partials/Header');%>
+      <main>
+        <div　class="row top">
+          <div class=col-2>
+            <div class="cart-wrapper">
+              <h1>カート画面</h1>
+              <ul>
+                <%locals.cartItem.map((item)=>{%>
+                  <li key="<%=item.productId%>"></li>
+                  <div class="row">
+                    <div class="min-30">
+                      <a href="/product/<%=item.productId%>">
+                        <p>
+                          <%=item.name%>
+                        </p>
+                      </a>
+                    </div>
+                    <select name="" id="">
+                      <option value="">
+                        <%=item.qty%>
+                      </option>
+                    </select>
+                    <div>
+                      <%=item.qty%>
+                    </div>
+                    <div>
+                      <%=item.price%>
+                    </div>
+                    <button　type="button">削除</button>
+                  </div>
+                  <%})%>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </main>
+      <%-include('../partials/Footer');%>
+
+  </div>
+  <%-include('../partials/Jquery');%>
+</body>
+
 </html>
