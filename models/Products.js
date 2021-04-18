@@ -14,6 +14,8 @@ module.exports ={
             });
         },
         saveCartItem:(product,qty)=>{
+            //既存のカートアイテムが存在するかチェック
+            //if
             const addedItem = new cartItem({
                 productId: product._id,
                 name: product.name,
@@ -21,6 +23,8 @@ module.exports ={
                 qty: qty,
             });
             addedItem.save();
+            //else
+            //既存のdocのqtyプロパティにqtyを加算
         },
     }
 

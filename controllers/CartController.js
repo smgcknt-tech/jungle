@@ -3,10 +3,7 @@ const cartItem =require ("../models/schemas/CartItem.js");
 const Products = require("../models/Products.js");
 module.exports ={
   getCart: (req, res) =>{
-    res.render("Cart.ejs", {
-      product:'',
-      qty:'',
-    });
+    res.render("Cart.ejs");
   },
   addCartItem: async (req, res) =>{
     const addedItemId = req.params.id;
@@ -14,10 +11,7 @@ module.exports ={
     if(qty > 0) {
       const product = await Products.cart.getCartItem(addedItemId);
       await Products.cart.saveCartItem(product,qty);
-      res.render("Cart.ejs", {
-        product:product,
-        qty:qty
-      });
+      res.render("Cart.ejs");
     } else {
       res.redirect('/product/'+ addedItemId )
     }
