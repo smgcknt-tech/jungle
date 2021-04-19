@@ -1,20 +1,26 @@
 
 const cartItem =require ("../models/schemas/CartItem.js");
 const Products = require("../models/Products.js");
+const { products } = require("../models/schemas/Data.js");
 module.exports ={
   getCart: (req, res) =>{
     res.render("Cart.ejs");
   },
   addCartItem: async (req, res) =>{
-    const addedItemId = req.params.id;
+    const ItemId = req.params.id;
     const qty = req.query.qty;
     if(qty > 0) {
-      const product = await Products.cart.getCartItem(addedItemId);
-      await Products.cart.saveCartItem(product,qty);
-      res.render("Cart.ejs");
+      const product = await Products.cart.getCartItem(ItemId);
+      await Products.cart.createItem(product,qty);
+      res.redirect("/cart");
     } else {
-      res.redirect('/product/'+ addedItemId )
+      res.redirect('/product/'+ ItemId )
     }
+  },
+  deleteCartItem: async(req,res)=>{
+    const ItemId = req.params.id;
+    await Products.cart.deleteItem(ItemId);
+    res.redirect("/cart");
   }
 }
 

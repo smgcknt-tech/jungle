@@ -125,7 +125,7 @@ a.logo {
   background-color: #fd3434;
   color: #fff;
   border-radius: 50%;
-  padding: 0.3rem;
+  padding: 0.2rem 0.6rem ;
   font-size: 1.3rem;
   margin-left: 0.2rem
 }
@@ -176,8 +176,11 @@ img.large {
 
 /*cart*/
 .cart-wrapper {
-  width:80%;
-  padding:1rem;
+  width:70%;
+  padding:0.5rem 3rem;
+  margin-top:2rem;
+  background-color: #f8f8f8;
+  border-radius: 1rem;
 }
 
 

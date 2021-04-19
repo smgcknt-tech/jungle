@@ -4,8 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="/css/style.css" type="text/css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+  <%-include('../partials/Stylesheet');%>
   <title>カート</title>
 </head>
 
@@ -16,7 +15,7 @@
         <div　class="row top">
           <div class=col-2>
             <div class="cart-wrapper">
-              <h1>カート画面</h1>
+              <h1>カート一覧</h1>
               <ul>
                 <%locals.cartItem.map((item)=>{%>
                   <li key="<%=item.productId%>"></li>
@@ -39,7 +38,12 @@
                     <div>
                       <%=item.price%>
                     </div>
-                    <button　type="button">削除</button>
+                    <form
+                      action="cart/delete/<%=item.productId%>"
+                      method="POST"
+                    >
+                    <button>削除</button>
+                    </form>
                   </div>
                   <%})%>
               </ul>
