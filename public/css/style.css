@@ -175,13 +175,18 @@ img.large {
 }
 
 /*cart*/
-.cart-wrapper {
-  width:70%;
+.cart-index {
+  width:50%;
   padding:0.5rem 3rem;
   margin-top:2rem;
   background-color: #f8f8f8;
   border-radius: 1rem;
 }
+.cart-subtotal {
+  width:20%;
+
+}
+
 
 
 /*top-layout*/

@@ -12,41 +12,56 @@
   <div class="grid-container">
     <%-include('../partials/Header');%>
       <main>
-        <div　class="row top">
-          <div class=col-2>
-            <div class="cart-wrapper">
+        <div　class="row">
+          <div class="col-1">
+            <div class="cart-index">
               <h1>カート一覧</h1>
               <ul>
                 <%locals.cartItem.map((item)=>{%>
-                  <li key="<%=item.productId%>"></li>
-                  <div class="row">
-                    <div class="min-30">
-                      <a href="/product/<%=item.productId%>">
-                        <p>
-                          <%=item.name%>
-                        </p>
-                      </a>
+                  <li id="eachCart" key="<%=item.productId%>">
+                    <div class="row">
+                      <div class="min-30">
+                        <a href="/product/<%=item.productId%>">
+                          <p>
+                            <%=item.name%>
+                          </p>
+                        </a>
+                      </div>
+                      <select class="item_qty"><option value="<%=item.qty%>"><%=item.qty%></option></select>
+                      <div>
+                        <%=item.price%>
+                      </div>
+                      <form
+                        action="cart/delete/<%=item.productId%>"
+                        method="POST"
+                      >
+                      <button>削除</button>
+                      </form>
                     </div>
-                    <select name="" id="">
-                      <option value="">
-                        <%=item.qty%>
-                      </option>
-                    </select>
-                    <div>
-                      <%=item.qty%>
-                    </div>
-                    <div>
-                      <%=item.price%>
-                    </div>
-                    <form
-                      action="cart/delete/<%=item.productId%>"
-                      method="POST"
-                    >
-                    <button>削除</button>
-                    </form>
-                  </div>
+                  </li>
                   <%})%>
               </ul>
+            </div>
+          </div>
+          <div class="col-1">
+            <div class="cart-subtotal">
+              <div class="card card-body">
+                <ul>
+                  <li>
+                    <h2 id="sum_price">
+                      合計:○○円
+                    </h2>
+                    <h2 id="sum_qty">
+                      合計:○○点
+                    </h2>
+                  </li>
+                  <li>
+                    <button>
+                      Proceed to Checkout
+                    </button>
+                  </li>
+                </ul>
+              </div>
             </div>
           </div>
         </div>
