@@ -5,7 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <%-include('../partials/Stylesheet');%>
-  <title>カート</title>
+    <title>カート</title>
 </head>
 
 <body>
@@ -18,7 +18,7 @@
               <h1>カート一覧</h1>
               <ul>
                 <%locals.cartItem.map((item)=>{%>
-                  <li id="eachCart" key="<%=item.productId%>">
+                  <li class="eachCart" key="<%=item.productId%>">
                     <div class="row">
                       <div class="min-30">
                         <a href="/product/<%=item.productId%>">
@@ -27,15 +27,12 @@
                           </p>
                         </a>
                       </div>
-                      <select class="item_qty"><option value="<%=item.qty%>"><%=item.qty%></option></select>
+                      <select class="eachSelect"><option value="<%=item.qty%>"><%=item.qty%></option></select>
                       <div>
                         <%=item.price%>
                       </div>
-                      <form
-                        action="cart/delete/<%=item.productId%>"
-                        method="POST"
-                      >
-                      <button>削除</button>
+                      <form action="cart/delete/<%=item.productId%>" method="POST">
+                        <button>削除</button>
                       </form>
                     </div>
                   </li>

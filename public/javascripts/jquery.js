@@ -9,12 +9,11 @@ $(function () {
 
 
   let sumItem = 0;
-    $(".item_qty").each(() => {
-      let val = Number($('.item_qty').val());
-      sumItem += val
+    $(".eachSelect option").each((i,val) => {
+      let a = Number($(val).val());
+      sumItem += a
     });
   $("#sum_qty").text("合計：" + sumItem + "点");
-  
+
 
 });
-
