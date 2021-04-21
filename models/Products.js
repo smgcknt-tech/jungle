@@ -17,6 +17,7 @@ module.exports = {
           name: product.name,
           price: product.price,
           qty: qty,
+          countInStock:product.countInStock,
         });
       } else {
         cartItem.findOneAndUpdate(

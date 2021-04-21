@@ -1,61 +1,59 @@
 <!DOCTYPE html>
 <html lang="ja">
-
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <%-include('../partials/Stylesheet');%>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <%-include('../partials/Stylesheet');%>
     <title>カート</title>
-</head>
+  </head>
 
-<body>
-  <div class="grid-container">
-    <%-include('../partials/Header');%>
+  <body>
+    <div class="grid-container">
+      <%-include('../partials/Header');%>
       <main>
-        <div　class="row">
-          <div class="col-1">
+        <div class="row">
+          <div class="cart-col-1">
             <div class="cart-index">
               <h1>カート一覧</h1>
               <ul>
                 <%locals.cartItem.map((item)=>{%>
-                  <li class="eachCart" key="<%=item.productId%>">
-                    <div class="row">
-                      <div class="min-30">
-                        <a href="/product/<%=item.productId%>">
-                          <p>
-                            <%=item.name%>
-                          </p>
-                        </a>
-                      </div>
-                      <select class="eachSelect"><option value="<%=item.qty%>"><%=item.qty%></option></select>
-                      <div>
-                        <%=item.price%>
-                      </div>
-                      <form action="cart/delete/<%=item.productId%>" method="POST">
-                        <button>削除</button>
-                      </form>
+                <li class="eachCart" key="<%=item.productId%>">
+                  <div class="row">
+                    <div class="min-30">
+                      <a href="/product/<%=item.productId%>">
+                        <p><%=item.name%></p>
+                      </a>
                     </div>
-                  </li>
-                  <%})%>
+                    <h2>数量</h2>
+                    <select class="eachSelect-1">
+                      <option value="<%=item.qty%>"><%=item.qty%></option>
+                    </select>
+                    <h2>価格</h2>
+                    <div class="eachPrice"><%=item.price%></div>
+                    <h2>小計</h2>
+                    <div class="sumPrice"><%=item.price*item.qty%></div>
+                    <form
+                      action="cart/delete/<%=item.productId%>"
+                      method="POST"
+                    >
+                      <button>削除</button>
+                    </form>
+                  </div>
+                </li>
+                <%})%>
               </ul>
             </div>
           </div>
-          <div class="col-1">
+          <div class="cart-col-2">
             <div class="cart-subtotal">
               <div class="card card-body">
                 <ul>
                   <li>
-                    <h2 id="sum_price">
-                      合計:○○円
-                    </h2>
-                    <h2 id="sum_qty">
-                      合計:○○点
-                    </h2>
+                    <h2 id="sum_price"></h2>
+                    <h2 id="sum_qty"></h2>
                   </li>
                   <li>
-                    <button>
-                      Proceed to Checkout
-                    </button>
+                    <button class="cart-button">Proceed to Checkout</button>
                   </li>
                 </ul>
               </div>
@@ -64,9 +62,7 @@
         </div>
       </main>
       <%-include('../partials/Footer');%>
-
-  </div>
-  <%-include('../partials/Jquery');%>
-</body>
-
+    </div>
+    <%-include('../partials/Jquery');%>
+  </body>
 </html>

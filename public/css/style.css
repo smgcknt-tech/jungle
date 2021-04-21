@@ -161,9 +161,6 @@ img.large {
   padding: 1rem;
 }
 
-.card-body>* {
-  margin-bottom: 0.5rem;
-}
 
 .rating span {
   color: gold;
@@ -176,16 +173,20 @@ img.large {
 
 /*cart*/
 .cart-index {
-  width:50%;
+  width:100%;
   padding:0.5rem 3rem;
-  margin-top:2rem;
   background-color: #f8f8f8;
   border-radius: 1rem;
 }
-.cart-subtotal {
-  width:20%;
 
+.eachCart h2{
+  margin:0 1.5rem;
 }
+
+.cart-button {
+  background-color: #f0c040;
+}
+
 
 
 
