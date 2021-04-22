@@ -96,10 +96,6 @@ h2 {
   flex: 2 3 20rem;
   margin-left:1.5rem;
 }
-.min-30 {
-  min-width:30rem;
-}
-
 
 .col-3 {
   flex: 2 1 20rem;
@@ -158,7 +154,11 @@ img.large {
 }
 
 .card-body {
-  padding: 1rem;
+  padding:0 1rem;
+}
+
+.card-body >* {
+  padding:0.2rem;
 }
 
 
@@ -173,18 +173,36 @@ img.large {
 
 /*cart*/
 .cart-index {
-  width:100%;
-  padding:0.5rem 3rem;
+  margin:1rem;
+  padding:0.5rem 1rem;
   background-color: #f8f8f8;
   border-radius: 1rem;
 }
 
-.eachCart h2{
-  margin:0 1.5rem;
+.dTable{
+  display:table;
+  width: 100%;
+  word-break: break-all;
+  word-wrap: break-all;
+}
+
+.dTable_c{
+  display:table-cell;
+  padding:0 0.5rem;
+}
+
+.cart-delete{
+  background-color: #f0c040;
+  padding:0.2rem 0.5rem;
 }
 
 .cart-button {
   background-color: #f0c040;
+  margin-bottom:1rem
+
+}
+.cart-col-2{
+  min-width:20rem;
 }
 
 

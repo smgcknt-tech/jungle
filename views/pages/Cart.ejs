@@ -18,25 +18,22 @@
               <ul>
                 <%locals.cartItem.map((item)=>{%>
                 <li class="eachCart" key="<%=item.productId%>">
-                  <div class="row">
-                    <div class="min-30">
+                  <div class="row dTable">
+                    <div class="dTable_c">
                       <a href="/product/<%=item.productId%>">
                         <p><%=item.name%></p>
                       </a>
                     </div>
-                    <h2>数量</h2>
-                    <select class="eachSelect-1">
-                      <option value="<%=item.qty%>"><%=item.qty%></option>
-                    </select>
-                    <h2>価格</h2>
-                    <div class="eachPrice"><%=item.price%></div>
-                    <h2>小計</h2>
-                    <div class="sumPrice"><%=item.price*item.qty%></div>
+                    <input class="eachInput dTable_c" type="number" min="1" max="<%=item.countInStock%>" value="<%=item.qty%>">
+
+                    <div class="eachPrice dTable_c"><%=item.price%></div>
+
+                    <div class="sumPrice dTable_c"><%=item.price*item.qty%></div>
                     <form
                       action="cart/delete/<%=item.productId%>"
                       method="POST"
                     >
-                      <button>削除</button>
+                      <button class='cart-delete dTable_c'>削除</button>
                     </form>
                   </div>
                 </li>
@@ -53,7 +50,7 @@
                     <h2 id="sum_qty"></h2>
                   </li>
                   <li>
-                    <button class="cart-button">Proceed to Checkout</button>
+                    <button class="cart-button">支払ボタン</button>
                   </li>
                 </ul>
               </div>
