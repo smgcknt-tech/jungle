@@ -19,21 +19,29 @@
                 <%locals.cartItem.map((item)=>{%>
                 <li class="eachCart" key="<%=item.productId%>">
                   <div class="row dTable">
-                    <div class="dTable_c">
+                    <div class="min-10 dTable_c">
                       <a href="/product/<%=item.productId%>">
                         <p><%=item.name%></p>
                       </a>
                     </div>
-                    <input class="eachInput dTable_c" type="number" min="1" max="<%=item.countInStock%>" value="<%=item.qty%>">
+                    <input
+                      class="eachInput dTable_c"
+                      type="number"
+                      min="1"
+                      max="<%=item.countInStock%>"
+                      value="<%=item.qty%>"
+                    />
 
                     <div class="eachPrice dTable_c"><%=item.price%></div>
 
-                    <div class="sumPrice dTable_c"><%=item.price*item.qty%></div>
+                    <div class="sumPrice dTable_c">
+                    <%=item.price*item.qty%>
+                    </div>
                     <form
                       action="cart/delete/<%=item.productId%>"
                       method="POST"
                     >
-                      <button class='cart-delete dTable_c'>削除</button>
+                      <button class="cart-delete dTable_c">削除</button>
                     </form>
                   </div>
                 </li>

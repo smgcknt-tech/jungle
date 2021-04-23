@@ -23,7 +23,10 @@ app.set('view engines','ejs');
 app.use(cors());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static("public"));
-app.use(MidllewareController.dataPassing);
+app.use([
+  MidllewareController.dataPassing,
+  MidllewareController.errorCatcher,
+]);
 //router ※corsの下に配置---------------------------------------------------
 app.use("/", TopRouter);
 app.use("/product", ProductRouter);
@@ -33,8 +36,10 @@ app.use("/cart",CartRouter);
 const PORT = process.env.PORT || 3000;
 mongoose
   .connect(process.env.CONNECTION_URL, {
+    useCreateIndex: true,
     useNewUrlParser: true,
     useUnifiedTopology: true,
+    useFindAndModify: false,
   })
   .then(() =>
     app.listen(PORT, () =>
@@ -42,5 +47,4 @@ mongoose
     )
   )
   .catch((error) => console.log(`${error} did not connect`));
-mongoose.set("useFindAndModify", false);
 //------------------------------------------------------------------------

@@ -34,7 +34,7 @@ li {
   margin-top: 1rem;
 }
 
-input:hover,
+
 select:hover,
 textarea:hover
 
@@ -108,11 +108,12 @@ h2 {
 header a {
   color: #fff;
   padding: 1rem;
+  font-size: 1.5rem;
 }
 
 a.logo {
   color: #fff;
-  font-size: 3rem;
+  font-size: 2.5rem;
   font-weight: bold;
   display: inline-block;
 }
@@ -141,6 +142,11 @@ img.image-body {
 
 img.large {
   width: 100%;
+}
+/*product*/
+.Product-details {
+  color:white;
+  font-weight:bold;
 }
 
 /*card*/
@@ -180,21 +186,28 @@ img.large {
   border-radius: 1rem;
 }
 
-.dTable{
-  display:table;
-  width: 100%;
-  word-break: break-all;
-  word-wrap: break-all;
+.min-10 {
+  width:10rem;
 }
 
-.eachcart>* {
-  margin:0 1rem;
+.eachInput {
+  width:2.5rem;
 }
+
+.dTable{
+  width: 100%;
+  display:table;
+  border-collapse: separate;
+  border-spacing: 0.2rem 0.2rem;
+  word-break: break-all;
+  word-wrap: break-all;
+  table-layout: fixed;
+}
+
 
 .dTable_c{
   display:table-cell;
-  margin:0.5rem;
-  padding:0 0.5rem;
+  font-weight:bold;
 }
 
 .cart-delete{
@@ -211,8 +224,6 @@ img.large {
 .cart-col-2{
   min-width:20rem;
 }
-
-
 
 
 /*top-layout*/

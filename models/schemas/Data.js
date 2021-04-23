@@ -1,8 +1,24 @@
+const bcrypt = require ("bcryptjs");
+
 const data = {
+  users: [
+    {
+      name: 'smgcknt',
+      email: 'admin@example.com',
+      password: bcrypt.hashSync('0000', 5),
+      isAdmin: true,
+    },
+    {
+      name: 'sampleman1',
+      email: 'user@example.com',
+      password: bcrypt.hashSync('1234', 8),
+      isAdmin: false,
+    },
+  ],
   products: [
     {
       _id: '1',
-      name: 'Nike Slim Shirt',
+      name: 'aaa Shirt',
       category: 'Shirts',
       image: '/images/p1.jpg',
       price: 1200,
@@ -14,7 +30,7 @@ const data = {
     },
     {
       _id: '2',
-      name: 'Adidas Fit Shirt',
+      name: 'bbb Fit Shirt',
       category: 'Shirts',
       image: '/images/p2.jpg',
       price: 1000,
@@ -26,7 +42,7 @@ const data = {
     },
     {
       _id: '3',
-      name: 'Lacoste Free Shirt',
+      name: 'ccc Free Shirt',
       category: 'Shirts',
       image: '/images/p3.jpg',
       price: 2200,
@@ -38,7 +54,7 @@ const data = {
     },
     {
       _id: '4',
-      name: 'Nike Slim Pant',
+      name: 'ddd Slim Pant',
       category: 'Pants',
       image: '/images/p4.jpg',
       price: 780,
@@ -50,7 +66,7 @@ const data = {
     },
     {
       _id: '5',
-      name: 'Puma Slim Pant',
+      name: 'eee Slim Pant',
       category: 'Pants',
       image: '/images/p5.jpg',
       price: 650,
@@ -62,7 +78,7 @@ const data = {
     },
     {
       _id: '6',
-      name: 'Adidas Fit Pant',
+      name: 'fff Fit Pant',
       category: 'Pants',
       image: '/images/p6.jpg',
       price: 1390,

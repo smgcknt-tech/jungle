@@ -7,5 +7,8 @@ module.exports = {
       .then((result) => {res.locals.cartItem = result})
       .catch(err => console.log(err))
     next();
-},
+  },
+  errorCatcher:(err, req, res, next) => {
+    res.status(500).send({ message: err.message });
+  }
 }
