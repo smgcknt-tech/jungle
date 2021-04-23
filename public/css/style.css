@@ -173,6 +173,7 @@ img.large {
 
 /*cart*/
 .cart-index {
+  font-size:1rem;
   margin:1rem;
   padding:0.5rem 1rem;
   background-color: #f8f8f8;
@@ -186,12 +187,18 @@ img.large {
   word-wrap: break-all;
 }
 
+.eachcart>* {
+  margin:0 1rem;
+}
+
 .dTable_c{
   display:table-cell;
+  margin:0.5rem;
   padding:0 0.5rem;
 }
 
 .cart-delete{
+  font-size:1rem;
   background-color: #f0c040;
   padding:0.2rem 0.5rem;
 }
