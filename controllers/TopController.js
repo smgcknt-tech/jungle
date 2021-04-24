@@ -1,8 +1,9 @@
-const data =require ("../models/schemas/Data.js");
+const Product = require("../models/schemas/ProductModel.js");
 
 const TopController ={
-    getTop:(req, res) => {
-        res.render("Top.ejs", { products: data.products });
+    getTop: async(req, res) => {
+        const allProducts = await Product.find({});
+        res.render("Top.ejs", { products: allProducts});
     }
 }
 
