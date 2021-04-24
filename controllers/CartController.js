@@ -1,5 +1,4 @@
 
-const cartItem =require ("../models/schemas/CartItem.js");
 const Products = require("../models/Products.js");
 
 module.exports ={
