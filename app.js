@@ -13,6 +13,7 @@ const MidllewareController =require ("./controllers/MiddlewareController.js");
 const TopRouter =require ("./routes/TopRouter.js");
 const ProductRouter =require ("./routes/ProductRouter.js");
 const CartRouter  =require ("./routes/CartRouter.js");
+const SignInRouter = require("./routes/SignInRouter.js");
 //-----------------------------------------------------------------------
 //setting----------------------------------------------------------------
 const app = express();
@@ -31,6 +32,7 @@ app.use([
 app.use("/", TopRouter);
 app.use("/product", ProductRouter);
 app.use("/cart",CartRouter);
+app.use("/signIn",SignInRouter);
 //-----------------------------------------------------------------------
 //mongoDB接続-------------------------------------------------------------
 const PORT = process.env.PORT || 3000;

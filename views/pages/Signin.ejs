@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <%-include('../partials/Stylesheet');%>
+    <title>サインイン</title>
+  </head>
+
+  <body>
+    <div class="grid-container">
+      <%-include('../partials/Header');%>
+      <main>
+        <div>
+          <form class="form" action="">
+            <div>
+              <h1>サインイン</h1>
+            </div>
+            <div>
+              <label for="email">メールアドレス</label>
+              <input type="email" id="email" placeholder="XXX@YYY.com" />
+            </div>
+              <div>
+                <label for="password">パスワード</label>
+                <input type="password" id="password" placeholder="trustno1" />
+              </div>
+              <div>
+                  <label for="">
+                      <button class="primary" type="submit">サインイン</button>
+                  </label>
+              </div>
+              
+              <div>
+                
+                  新規登録はこちら
+              </div>
+          </form>
+        </div>
+        
+      </main>
+      <%-include('../partials/Footer');%>
+    </div>
+    <%-include('../partials/Jquery');%>
+  </body>
+</html>
