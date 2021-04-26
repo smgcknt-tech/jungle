@@ -1,11 +1,19 @@
-const data = require("./schemas/Data.js");
 const cartItem = require("./schemas/CartItem.js");
+const Product = require("./schemas/ProductModel.js");
 
 module.exports = {
+  top:{
+    getAllProducts:()=>{
+      return new Promise((resolve) => {
+        const product = Product.find({});
+        resolve(product);
+      });
+    }
+  },
   cart: {
     getCartItem: (ItemId) => {
       return new Promise((resolve) => {
-        const product = data.products.find((product) => product._id === ItemId);
+        const product = Product.findById(ItemId);
         resolve(product);
       });
     },

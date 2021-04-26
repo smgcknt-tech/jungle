@@ -1,9 +1,12 @@
-const data =require ("../models/schemas/Data.js");
+const Products = require("../models/Products.js");
 
-const TopController ={
-    getTop:(req, res) => {
-        res.render("Top.ejs", { products: data.products });
+module.exports = {
+    getTop: async (req, res) => {
+    const allProducts = await Products.top.getAllProducts();
+    res.render("Top.ejs", {products:allProducts});
     }
 }
 
-module.exports =  TopController;
+process.on('unhandledRejection', (reason, p) => {
+    console.log('Unhandled Rejection at: Promise', p, 'reason:', reason);
+})

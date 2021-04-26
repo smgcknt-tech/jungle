@@ -1,7 +1,6 @@
 
-const cartItem =require ("../models/schemas/CartItem.js");
 const Products = require("../models/Products.js");
-const { products } = require("../models/schemas/Data.js");
+
 module.exports ={
   getCart: (req, res) =>{
     res.render("Cart.ejs");
