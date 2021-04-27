@@ -11,6 +11,8 @@ const TopRouter = require("./routes/TopRouter.js");
 const ProductRouter = require("./routes/ProductRouter.js");
 const CartRouter = require("./routes/CartRouter.js");
 const SignInRouter = require("./routes/SignInRouter.js");
+const SignOutRouter = require("./routes/SignOutRouter.js");
+const SignUpRouter = require("./routes/SignUpRouter.js");
 //general setting
 const app = express();
 dotenv.config();
@@ -22,7 +24,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(session({ secret: "my_secret_key", resave: false, saveUninitialized: false }));
 app.use(express.static("public"));
 app.use([
-  MidllewareController.dataPassing, 
+  MidllewareController.loginCheck, 
   MidllewareController.errorCatcher
 ]);
 //router ※corsより下に配置
@@ -30,6 +32,8 @@ app.use("/", TopRouter);
 app.use("/product", ProductRouter);
 app.use("/cart", CartRouter);
 app.use("/signIn", SignInRouter);
+app.use("/signOut", SignOutRouter);
+app.use("/signUp", SignUpRouter);
 //mongoDB接続情報
 const PORT = process.env.PORT || 3000;
 mongoose

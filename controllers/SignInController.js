@@ -1,4 +1,3 @@
-const { users } = require("../models/schemas/Data.js");
 const User = require("../models/schemas/UserModels.js");
 
 const SignInController = {
