@@ -1,28 +1,42 @@
+const Product = require("../models/ProductModel");
+const cartItem = require("../models/CartModel");
 
-const Products = require("../models/Products.js");
-
-module.exports ={
-  getCart: (req, res) =>{
+module.exports = {
+  getCart: (req, res) => {
     res.render("Cart.ejs");
   },
-  addCartItem: async (req, res) =>{
+  addCartItem: async (req, res) => {
     const ItemId = req.params.id;
     const qty = req.query.qty;
-    if(qty > 0) {
-      const product = await Products.cart.getCartItem(ItemId);
-      await Products.cart.createItem(product,qty);
+    if (qty > 0) {
+      const product = await Product.findById(ItemId);
+      const doesExit = await cartItem.exists({ productId: product._id });
+      if (!doesExit) {
+        cartItem.create({
+          productId: product._id,
+          name: product.name,
+          price: product.price,
+          qty: qty,
+          countInStock: product.countInStock,
+        });
+      } else {
+        cartItem.findOneAndUpdate(
+          { productId: product._id },
+          { $inc: { qty: qty } }
+        );
+      }
       res.redirect("/cart");
     } else {
-      res.redirect('/product/'+ ItemId )
+      res.redirect("/product/" + ItemId);
     }
   },
-  deleteCartItem: async(req,res)=>{
+  deleteCartItem: async (req, res) => {
     const ItemId = req.params.id;
-    await Products.cart.deleteItem(ItemId);
+    await cartItem.deleteOne({ productId: ItemId });
     res.redirect("/cart");
-  }
-}
+  },
+};
 
-process.on('unhandledRejection', (reason, p) => {
-  console.log('Unhandled Rejection at: Promise', p, 'reason:', reason);
-})
+process.on("unhandledRejection", (reason, p) => {
+  console.log("Unhandled Rejection at: Promise", p, "reason:", reason);
+});

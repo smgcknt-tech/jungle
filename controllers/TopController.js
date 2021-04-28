@@ -1,7 +1,8 @@
-const Products = require("../models/Products.js");
+const Product = require("../models/ProductModel");
+
 module.exports = {
     getTop: async (req, res) => {
-    const allProducts = await Products.top.getAllProducts();
+    const allProducts = await Product.find({});
     res.render("Top.ejs", {products:allProducts});
     }
 }

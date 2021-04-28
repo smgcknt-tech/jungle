@@ -1,4 +1,4 @@
-const User = require("../models/schemas/UserModels.js");
+const User = require("../models/UserModel.js");
 
 const SignInController = {
   getSignIn: (req, res) => {
@@ -14,7 +14,6 @@ const SignInController = {
             req.session.userId = results[0]._id
           res.redirect("/");
         } else {
-          console.log("認証失敗");
           res.redirect("/signIn");
         }
       }
