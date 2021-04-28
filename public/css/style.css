@@ -288,6 +288,10 @@ img.large {
   display:block;
 }
 
+.error-container{
+  color:rgb(247, 20, 20);
+  font-weight:bold;
+}
 
 
 
