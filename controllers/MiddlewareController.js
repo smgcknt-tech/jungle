@@ -8,9 +8,8 @@ module.exports = {
       res.locals.userName = 'ゲスト'
       res.locals.cartItem = ''
     } else　{
-      const cart = await cartItem.find({})
-      .then((result) => {res.locals.cartItem = result})
-      .catch(err => console.log(err))
+      const itemIncart = await cartItem.find({})
+      .then((r) => {res.locals.cartItem = r})
       res.locals.isLoggedIn = true
       res.locals.userName = req.session.userName
     }
