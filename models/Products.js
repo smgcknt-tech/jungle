@@ -18,8 +18,8 @@ module.exports = {
       });
     },
     createItem: async (product, qty) => {
-      const doesExist = await cartItem.exists({ productId: product._id });
-      if (!doesExist) {
+      const doesExit = await cartItem.exists({ productId: product._id });
+      if (!doesExit) {
         cartItem.create({
           productId: product._id,
           name: product.name,
