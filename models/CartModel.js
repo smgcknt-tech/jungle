@@ -6,6 +6,7 @@ const cartItemSchema = mongoose.Schema({
     price: Number,
     qty: Number,
     countInStock: Number,
+    image: String,
 });
 
 const cartItem = mongoose.model("cartItem", cartItemSchema);

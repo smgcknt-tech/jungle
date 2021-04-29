@@ -12,35 +12,30 @@
       <%-include('../partials/Header');%>
       <main>
         <div class="row">
-          <div class="cart-col-1">
+          <div class="col-2">
             <div class="cart-index">
               <h1>カート一覧</h1>
               <ul>
-                <%locals.cartItem.map((item)=>{%>
-                <li class="eachCart" key="<%=item.productId%>">
+                <%locals.cartItem.map((p)=>{%>
+                <li class="eachCart" key="<%=p.productId%>">
                   <div class="row dTable">
                     <div class="min-10 dTable_c">
-                      <a href="/product/<%=item.productId%>">
-                        <p><%=item.name%></p>
-                      </a>
+                      <h3>
+                          <a href="/product/<%=p.productId%>"> <%=p.name%> </a>
+                      </h3>
                     </div>
                     <input
                       class="eachInput dTable_c"
                       type="number"
                       min="1"
-                      max="<%=item.countInStock%>"
-                      value="<%=item.qty%>"
+                      max="<%=p.countInStock%>"
+                      value="<%=p.qty%>"
                     />
 
-                    <div class="eachPrice dTable_c"><%=item.price%></div>
+                    <div class="eachPrice dTable_c"><%=p.price%></div>
 
-                    <div class="sumPrice dTable_c">
-                    <%=item.price*item.qty%>
-                    </div>
-                    <form
-                      action="cart/delete/<%=item.productId%>"
-                      method="POST"
-                    >
+                    <div class="sumPrice dTable_c"><%=p.price*p.qty%></div>
+                    <form action="cart/delete/<%=p.productId%>" method="POST">
                       <button class="cart-delete dTable_c">削除</button>
                     </form>
                   </div>
@@ -49,7 +44,7 @@
               </ul>
             </div>
           </div>
-          <div class="cart-col-2">
+          <div class="col-1">
             <div class="cart-subtotal">
               <div class="card card-body">
                 <ul>
@@ -58,7 +53,11 @@
                     <h2 id="sum_qty"></h2>
                   </li>
                   <li>
-                    <a href="/shipping/2"><button class="cart-button">支払ボタン</button></a>
+                    <form action="/checkOut/2" class="form">
+                      <button class="primary block" type="submit">
+                        支払ボタン
+                      </button>
+                    </form>
                   </li>
                 </ul>
               </div>

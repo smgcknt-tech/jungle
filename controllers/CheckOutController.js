@@ -1,13 +1,11 @@
 module.exports = {
-  getShipping: (req, res) => {
+  getCheckOut: (req, res) => {
     let n = req.params.id;
-    let steps = [ one= "", two= "", three= "", four= "" ];
+    let steps = [ step1= "", step2= "", step3= "", step4= "" ];
     for (let i = 0; i < n; i++) {
       steps[i] = "active";
-      
     }
-    console.log( steps)
-    res.render("Shipping.ejs", { steps: steps });
+    res.render("CheckOut.ejs", { steps: steps });
   },
 };
 

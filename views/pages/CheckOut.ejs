@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <%-include('../partials/Stylesheet');%>
+    <title>発送</title>
+  </head>
+  <body>
+    <div class="grid-container">
+      <%-include('../partials/Header');%>
+      <main>
+        <%-include('../partials/CheckOutSteps',{ steps: steps });%>
+        <%if(steps[1] !=="" && steps[2] ===""){%>
+          <%-include('../partials/Shipping');%>
+        <%} else if(steps[2] !=="" && steps[3] ===""){%>
+          <%-include('../partials/Payment');%> 
+        <%} else if(steps[3] !==""){%>
+          <%-include('../partials/PlaceOrder');%> 
+        <%}%>
+      </main>
+      <%-include('../partials/Footer');%>
+    </div>
+
+    <%-include('../partials/Jquery');%>
+  </body>
+</html>

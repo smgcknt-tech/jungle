@@ -17,12 +17,12 @@
         <main>
           <div class="row top">
             <div class="col-1">
-              <img class="large" src="<%=product.image%>" alt="<%=product.name%>" />
+              <img class="large-img" src="<%=product.image%>" alt="<%=product.name%>" />
             </div>
             <div class="col-2">
               <%-include('../partials/ProductDetail',{product:product});%>
             </div>
-            <div class="col-3">
+            <div class="col-1">
               <%-include('../partials/CartCard',{product:product});%>
             </div>
           </div>

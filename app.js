@@ -13,7 +13,7 @@ const CartRouter = require("./routes/CartRouter.js");
 const SignInRouter = require("./routes/SignInRouter.js");
 const SignOutRouter = require("./routes/SignOutRouter.js");
 const SignUpRouter = require("./routes/SignUpRouter.js");
-const ShippingRouter = require("./routes/ShippingRouter.js");
+const CheckOutRouter = require("./routes/CheckOutRouter.js");
 //general setting
 const app = express();
 dotenv.config();
@@ -35,7 +35,7 @@ app.use("/cart", CartRouter);
 app.use("/signIn", SignInRouter);
 app.use("/signOut", SignOutRouter);
 app.use("/signUp", SignUpRouter);
-app.use("/shipping", ShippingRouter);
+app.use("/checkOut", CheckOutRouter);
 //DB-connection
 const PORT = process.env.PORT || 3000;
 mongoose

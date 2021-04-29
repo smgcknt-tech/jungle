@@ -30,6 +30,7 @@ module.exports = {
         price: product.price,
         qty: qty,
         countInStock: product.countInStock,
+        image:product.image,
       });
     },
     delete:(id)=>{

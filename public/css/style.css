@@ -102,18 +102,10 @@ h2 {
 }
 
 .col-1 {
-  flex: 1 2 30rem;
-  padding:1.5rem
+  flex: 1 1 25rem;
 }
 .col-2 {
-  flex: 2 3 20rem;
-  margin-left:1.5rem;
-}
-
-.col-3 {
-  flex: 2 1 20rem;
-  padding:0.5rem;
-
+  flex: 2 1 50rem;
 }
 
 /*header*/
@@ -143,6 +135,10 @@ a.logo {
   margin-right:2rem;
 }
 
+.fa-caret-down {
+  color:white;
+}
+
 
 /*images:*/
 
@@ -151,18 +147,25 @@ img {
   border: 0.1rem #c0c0c0 solid;
 }
 
+img.small {
+  max-width: 3rem;
+  width: 100%;
+}
+
 img.image-body {
   max-width: 30rem;
   width: 100%;
 }
 
-img.large {
+.large-img {
   width: 100%;
 }
 /*product*/
+
 .Product-details {
   color:white;
   font-weight:bold;
+  padding-left:2rem;
 }
 
 /*card*/
@@ -197,7 +200,7 @@ img.large {
 .cart-index {
   font-size:1rem;
   margin:1rem;
-  padding:0.5rem 1rem;
+  padding:1rem 3rem;
   background-color: #f8f8f8;
   border-radius: 1rem;
 }
@@ -207,7 +210,9 @@ img.large {
 }
 
 .eachInput {
-  width:2.5rem;
+  width:3rem;
+  border-radius: 0.2rem;
+  border:#888785 0.1rem solid;
 }
 
 .dTable{
@@ -218,6 +223,7 @@ img.large {
   word-break: break-all;
   word-wrap: break-all;
   table-layout: fixed;
+
 }
 
 
@@ -228,8 +234,10 @@ img.large {
 
 .cart-delete{
   font-size:1rem;
-  background-color: #f0c040;
   padding:0.2rem 0.5rem;
+  background-color: #888785;
+  width:100%;
+  color:white;
 }
 
 .cart-button {
@@ -237,16 +245,12 @@ img.large {
   margin-bottom:1rem
 }
 
-.cart-col-2{
-  min-width:20rem;
-}
-
 /*Form*/
 .form {
   background-color: #f8f8f8;
   max-width: 60rem;
   border-radius:1rem;
-  padding:1rem;
+  padding:0.5rem 1rem;
   margin:2rem auto;
 }
 
@@ -258,7 +262,6 @@ img.large {
 
 .form label {
   margin:1rem 0;
-  display:block;
 }
 
 .form input{
@@ -327,19 +330,18 @@ footer {
   color: #fff;
 }
 
-/*payment steps*/
-.payment-steps > div {
+/*checkout steps*/
+.checkout-steps > div {
   border-top: 0.3rem #fff solid;
   color:  #fff;
   flex: 1;
   padding: 1rem;
   font-weight: bold;
 }
-.payment-steps > div.active {
+.checkout-steps > div.active {
   border-top-color: yellow;
   color: yellow;
 }
-
 /*alert*/
 
 .success {
