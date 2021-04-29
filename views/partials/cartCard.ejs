@@ -34,12 +34,14 @@
         <button class="primary block" 　>カートに追加</button>
       </form>
       <% } else { %>
-      <button class="primary block" 　>
-        <ul>
-          <li><a href="/signUp">新規登録はこちら</a></li>
-          <li class="small">※新規登録後カート追加が可能です</li>
-        </ul>
-      </button>
+      <a href="/signUp">
+        <button href="/signUp" class="primary block" 　>
+          <ul>
+            <li>新規登録はこちら</li>
+            <li class="small">※新規登録後カート追加が可能です</li>
+          </ul>
+        </button>
+      </a>
       <% } %>
     </li>
   </ul>
