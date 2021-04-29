@@ -1,5 +1,5 @@
-const cartItem =require("../models/CartModel.js");
-
+const Products = require("../models/Products.js");
+const p = Products
 
 module.exports = {
   loginCheck:async (req, res, next) => {
@@ -8,8 +8,7 @@ module.exports = {
       res.locals.userName = 'ゲスト'
       res.locals.cartItem = ''
     } else　{
-      const itemIncart = await cartItem.find({})
-      .then((r) => {res.locals.cartItem = r})
+      res.locals.cartItem  = await p.cart.findAll();
       res.locals.isLoggedIn = true
       res.locals.userName = req.session.userName
     }

@@ -6,10 +6,10 @@ module.exports = {
     res.render("Cart.ejs");
   },
   addCartItem: async (req, res) => {
-    const ItemId = req.params.id;
+    const id = req.params.id;
     const qty = req.query.qty;
     if (qty > 0) {
-      const product = await Product.findById(ItemId);
+      const product = await Product.findById(id);
       const doesExit = await cartItem.exists({ productId: product._id });
       if (!doesExit) {
         cartItem.create({
@@ -27,12 +27,12 @@ module.exports = {
       }
       res.redirect("/cart");
     } else {
-      res.redirect("/product/" + ItemId);
+      res.redirect("/product/" + id);
     }
   },
   deleteCartItem: async (req, res) => {
-    const ItemId = req.params.id;
-    await cartItem.deleteOne({ productId: ItemId });
+    const id = req.params.id;
+    await cartItem.deleteOne({ productId: id });
     res.redirect("/cart");
   },
 };

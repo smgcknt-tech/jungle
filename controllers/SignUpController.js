@@ -1,5 +1,6 @@
-const User = require("../models/UserModel.js");
 const bcryptjs = require("bcryptjs");
+const Users = require("../models/Users.js");
+const u = Users
 
 const SignUpController = {
   getSignUp: (req, res) => {
@@ -7,14 +8,16 @@ const SignUpController = {
   },
   duplicationCheck: async (req, res, next) => {
     const email = req.body.email;
-    const doesExist = await User.exists({ email: email });
     const errors = [];
-    if (doesExist) {
-      errors.push("メールアドレスはすでに使用されています");
-      res.render("SignUp.ejs", { errors: errors });
-    } else {
-      next();
-    }
+    await u.signUp.userExists(email)
+      .then((doesExist) => {
+        if (doesExist) {
+          errors.push("メールアドレスはすでに使用されています");
+          res.render("SignUp.ejs", { errors: errors });
+        } else {
+          next();
+        }
+      });
   },
   emptyCheck: (req, res, next) => {
     const userName = req.body.userName;
@@ -36,21 +39,17 @@ const SignUpController = {
       next();
     }
   },
-  postSignUp: (req, res) => {
+  postSignUp:(req, res) => {
     const userName = req.body.userName;
     const email = req.body.email;
     const password = req.body.password;
-    bcryptjs.hash(password, 10, async (error, hash) => {
-      const user = await new User({
-        isAdmin: false,
-        name: userName,
-        email: email,
-        password: hash,
-      });
-      await user.save();
-      req.session.userId = user._id;
-      req.session.userName = userName;
-      res.redirect("/");
+    bcryptjs.hash(password, 10, async(error, hash) => {
+      await u.signUp.newUser(userName, email, hash)
+        .then((user) => {
+          req.session.userId = user._id;
+          req.session.userName = userName;
+          res.redirect("/");
+        });
     });
   },
 };

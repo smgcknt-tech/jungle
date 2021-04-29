@@ -1,11 +1,11 @@
-const Product = require("../models/ProductModel.js");
-
+const Products = require("../models/Products.js");
+const p = Products
 
 const ProductController ={
-  getProduct: async (req, res) => {
+  getProduct:async(req, res) => {
     const id = req.params.id
-    const product = await Product.findById(id);
-    res.render("Product.ejs", { product: product });
+    const product = await p.product.findOne(id)
+    res.render("Product.ejs", { product: product })
   },
 }
 
