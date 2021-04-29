@@ -327,6 +327,19 @@ footer {
   color: #fff;
 }
 
+/*payment steps*/
+.payment-steps > div {
+  border-top: 0.3rem #fff solid;
+  color:  #fff;
+  flex: 1;
+  padding: 1rem;
+  font-weight: bold;
+}
+.payment-steps > div.active {
+  border-top-color: yellow;
+  color: yellow;
+}
+
 /*alert*/
 
 .success {
