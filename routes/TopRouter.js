@@ -1,5 +1,5 @@
 const express =require ("express");
-const TopController =require ("../controllers/TopController.js");
+const TopController =require ("../controllers/TopController");
 const router = express.Router();
 router.get("/", TopController.getTop);
 

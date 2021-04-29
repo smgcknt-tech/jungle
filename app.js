@@ -5,15 +5,15 @@ const cors = require("cors");
 const dotenv = require("dotenv");
 const session = require("express-session");
 //from controllers
-const MidllewareController = require("./controllers/MiddlewareController.js");
+const MidllewareController = require("./controllers/MiddlewareController");
 //from routes
-const TopRouter = require("./routes/TopRouter.js");
-const ProductRouter = require("./routes/ProductRouter.js");
-const CartRouter = require("./routes/CartRouter.js");
-const SignInRouter = require("./routes/SignInRouter.js");
-const SignOutRouter = require("./routes/SignOutRouter.js");
-const SignUpRouter = require("./routes/SignUpRouter.js");
-const CheckOutRouter = require("./routes/CheckOutRouter.js");
+const TopRouter = require("./routes/TopRouter");
+const ProductRouter = require("./routes/ProductRouter");
+const CartRouter = require("./routes/CartRouter");
+const SignInRouter = require("./routes/SignInRouter");
+const SignOutRouter = require("./routes/SignOutRouter");
+const SignUpRouter = require("./routes/SignUpRouter");
+const CheckOutRouter = require("./routes/CheckOutRouter");
 //general setting
 const app = express();
 dotenv.config();
@@ -26,9 +26,9 @@ app.use(session({ secret: "my_secret_key", resave: false, saveUninitialized: fal
 app.use(express.static("public"));
 app.use([
   MidllewareController.loginCheck, 
-  MidllewareController.errorCatcher
+  MidllewareController.errorCatcher,
 ]);
-//router ※corsより下に配置
+//router ※middlewareより下に配置
 app.use("/", TopRouter);
 app.use("/product", ProductRouter);
 app.use("/cart", CartRouter);
@@ -36,7 +36,7 @@ app.use("/signIn", SignInRouter);
 app.use("/signOut", SignOutRouter);
 app.use("/signUp", SignUpRouter);
 app.use("/checkOut", CheckOutRouter);
-//DB-connection
+//db-connection
 const PORT = process.env.PORT || 3000;
 mongoose
   .connect(process.env.CONNECTION_URL, {

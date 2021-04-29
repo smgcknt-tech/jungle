@@ -16,7 +16,7 @@ $( () =>{
   $('.eachInput').change(() => {
     let eachPrice = []
     $('.eachPrice').each((i, val) => {
-      a = Number($(val).text());
+      a = Number($(val).text().slice(0,-1));
       eachPrice.push(a)
     });
     let totalItem = 0;
@@ -28,15 +28,13 @@ $( () =>{
       sumPrice.push(b)
       $("#sum_qty").text("合計：" + totalItem + "点");
     });
-
-    console.log(sumPrice)
     $('.sumPrice').each((i, val) => {
-      $(val).text(sumPrice[i])
+      $(val).text("小計 "+ sumPrice[i] + "円")
     })
 
     let totalPrice = 0;
     $(".sumPrice").each((i, val) => {
-      let b = Number($(val).text());
+      let b = Number($(val).text().slice(2,-1));
       totalPrice += b;
       $("#sum_price").text("合計：" + totalPrice + "円");
     });
@@ -47,7 +45,7 @@ $( () =>{
 
   let totalPrice = 0;
   $(".sumPrice").each((i, val) => {
-    let b = Number($(val).text());
+    let b = Number($(val).text().slice(2,-1));
     totalPrice += b;
     $("#sum_price").text("合計：" + totalPrice + "円");
   });

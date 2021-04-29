@@ -179,13 +179,8 @@ img.image-body {
 }
 
 .card-body {
-  padding:0 1rem;
+  padding:0.5rem 2rem;
 }
-
-.card-body >* {
-  padding:0.2rem;
-}
-
 
 .rating span {
   color: gold;
@@ -199,27 +194,28 @@ img.image-body {
 /*cart*/
 .cart-index {
   font-size:1rem;
-  margin:1rem;
-  padding:1rem 3rem;
+  padding:1rem 1.5rem;
   background-color: #f8f8f8;
   border-radius: 1rem;
+  margin:0 1rem ;
 }
 
-.min-10 {
-  width:10rem;
+.min-8 {
+  width:8rem;
 }
 
 .eachInput {
   width:3rem;
   border-radius: 0.2rem;
   border:#888785 0.1rem solid;
+  text-align: center;
 }
 
 .dTable{
   width: 100%;
   display:table;
   border-collapse: separate;
-  border-spacing: 0.2rem 0.2rem;
+  border-spacing: 0.1rem 0.1rem;
   word-break: break-all;
   word-wrap: break-all;
   table-layout: fixed;
@@ -238,11 +234,6 @@ img.image-body {
   background-color: #888785;
   width:100%;
   color:white;
-}
-
-.cart-button {
-  background-color: #f0c040;
-  margin-bottom:1rem
 }
 
 /*Form*/

@@ -19,7 +19,7 @@
                 <%locals.cartItem.map((p)=>{%>
                 <li class="eachCart" key="<%=p.productId%>">
                   <div class="row dTable">
-                    <div class="min-10 dTable_c">
+                    <div class="min-8 dTable_c">
                       <h3>
                           <a href="/product/<%=p.productId%>"> <%=p.name%> </a>
                       </h3>
@@ -32,9 +32,9 @@
                       value="<%=p.qty%>"
                     />
 
-                    <div class="eachPrice dTable_c"><%=p.price%></div>
+                    <div class="eachPrice dTable_c"><%=p.price%>円</div>
 
-                    <div class="sumPrice dTable_c"><%=p.price*p.qty%></div>
+                    <div class="sumPrice dTable_c">小計<%=p.price*p.qty%>円</div>
                     <form action="cart/delete/<%=p.productId%>" method="POST">
                       <button class="cart-delete dTable_c">削除</button>
                     </form>
@@ -45,7 +45,7 @@
             </div>
           </div>
           <div class="col-1">
-            <div class="cart-subtotal">
+            <div
               <div class="card card-body">
                 <ul>
                   <li>
@@ -55,7 +55,7 @@
                   <li>
                     <form action="/checkOut/2" class="form">
                       <button class="primary block" type="submit">
-                        支払ボタン
+                        レジに進む
                       </button>
                     </form>
                   </li>
