@@ -2,7 +2,7 @@ const bcryptjs = require("bcryptjs");
 const Users = require("../models/Users.js");
 const u = Users
 
-const SignUpController = {
+module.exports = {
   getSignUp: (req, res) => {
     res.render("SignUp.ejs", { errors: [] });
   },
@@ -54,4 +54,8 @@ const SignUpController = {
   },
 };
 
-module.exports = SignUpController;
+//error-catcher
+process.on("unhandledRejection", (reason, p) => {
+  console.log("Unhandled Rejection at: Promise", p, "reason:", reason);
+});
+

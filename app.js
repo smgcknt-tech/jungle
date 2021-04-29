@@ -18,7 +18,7 @@ const app = express();
 dotenv.config();
 app.set("views", "./views/pages");
 app.set("view engines", "ejs");
-//all-time middleware
+//middleware
 app.use(cors());
 app.use(express.urlencoded({ extended: false }));
 app.use(session({ secret: "my_secret_key", resave: false, saveUninitialized: false }));
@@ -34,7 +34,7 @@ app.use("/cart", CartRouter);
 app.use("/signIn", SignInRouter);
 app.use("/signOut", SignOutRouter);
 app.use("/signUp", SignUpRouter);
-//mongoDB接続情報
+//DB-connection
 const PORT = process.env.PORT || 3000;
 mongoose
   .connect(process.env.CONNECTION_URL, {

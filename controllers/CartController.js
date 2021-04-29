@@ -1,5 +1,5 @@
-const Product = require("../models/ProductModel");
-const cartItem = require("../models/CartModel");
+const Products = require("../models/Products.js");
+const p = Products;
 
 module.exports = {
   getCart: (req, res) => {
@@ -9,21 +9,12 @@ module.exports = {
     const id = req.params.id;
     const qty = req.query.qty;
     if (qty > 0) {
-      const product = await Product.findById(id);
-      const doesExit = await cartItem.exists({ productId: product._id });
-      if (!doesExit) {
-        cartItem.create({
-          productId: product._id,
-          name: product.name,
-          price: product.price,
-          qty: qty,
-          countInStock: product.countInStock,
-        });
+      const product = await p.product.findOne(id);
+      const doesExist = await p.cart.duplicationCheck(product._id);
+      if (doesExist) {
+        await p.cart.update(product._id, qty);
       } else {
-        cartItem.findOneAndUpdate(
-          { productId: product._id },
-          { $inc: { qty: qty } }
-        );
+        await p.cart.create(product, qty);
       }
       res.redirect("/cart");
     } else {
@@ -32,11 +23,12 @@ module.exports = {
   },
   deleteCartItem: async (req, res) => {
     const id = req.params.id;
-    await cartItem.deleteOne({ productId: id });
+    await p.cart.delete(id);
     res.redirect("/cart");
   },
 };
 
+//error-catcher
 process.on("unhandledRejection", (reason, p) => {
   console.log("Unhandled Rejection at: Promise", p, "reason:", reason);
 });

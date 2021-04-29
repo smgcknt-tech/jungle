@@ -17,7 +17,8 @@ body {
 }
 
 a {
-  text-decoration: none;
+  text-decoration:none;
+  color:black;
 }
 
 a:hover {
@@ -57,6 +58,11 @@ button:hover {
 
 button.primary {
   background-color: #f0c040;
+}
+
+li.small {
+  font-size:0.5rem;
+  color:rgb(247, 20, 20);;
 }
 
 button.block {
@@ -184,7 +190,7 @@ img.large {
 }
 
 .rating span:last-child {
-  color: #404040;
+  color: #f8f8f8 ;
 }
 
 /*cart*/
@@ -229,8 +235,8 @@ img.large {
 .cart-button {
   background-color: #f0c040;
   margin-bottom:1rem
-
 }
+
 .cart-col-2{
   min-width:20rem;
 }

@@ -1,7 +1,7 @@
 const Products = require("../models/Products.js");
 const p = Products
 
-const ProductController ={
+module.exports = {
   getProduct:async(req, res) => {
     const id = req.params.id
     const product = await p.product.findOne(id)
@@ -9,4 +9,8 @@ const ProductController ={
   },
 }
 
-module.exports =  ProductController;
+
+//error-catcher
+process.on("unhandledRejection", (reason, p) => {
+  console.log("Unhandled Rejection at: Promise", p, "reason:", reason);
+});

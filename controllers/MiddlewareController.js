@@ -6,7 +6,7 @@ module.exports = {
     if(req.session.userId === undefined){
       res.locals.isLoggedIn = false
       res.locals.userName = 'ゲスト'
-      res.locals.cartItem = ''
+      res.locals.cartItem = [];
     } else　{
       res.locals.cartItem  = await p.cart.findAll();
       res.locals.isLoggedIn = true
@@ -19,3 +19,9 @@ module.exports = {
     next();
   }
 }
+
+//error-catcher
+process.on("unhandledRejection", (reason, p) => {
+  console.log("Unhandled Rejection at: Promise", p, "reason:", reason);
+});
+

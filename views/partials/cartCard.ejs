@@ -29,13 +29,18 @@
       <% } %>
     </select>
     <li>
-      <form
-        id="cartForm"
-        action="/Cart/<%=product._id%>"
-        method="POST"
-      >
+      <% if (locals.isLoggedIn) { %>
+      <form id="cartForm" action="/Cart/<%=product._id%>" method="POST">
         <button class="primary block" 　>カートに追加</button>
       </form>
+      <% } else { %>
+      <button class="primary block" 　>
+        <ul>
+          <li><a href="/signUp">新規登録はこちら</a></li>
+          <li class="small">※新規登録後カート追加が可能です</li>
+        </ul>
+      </button>
+      <% } %>
     </li>
   </ul>
 </div>

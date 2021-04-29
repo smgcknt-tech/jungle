@@ -1,7 +1,7 @@
 const Users = require("../models/Users.js");
 const u = Users
 
-const SignInController = {
+module.exports = {
   getSignIn: (req, res) => {
     res.render("SignIn.ejs");
   },
@@ -10,4 +10,9 @@ const SignInController = {
   },
 };
 
-module.exports = SignInController;
+//error-catcher
+process.on("unhandledRejection", (reason, p) => {
+  console.log("Unhandled Rejection at: Promise", p, "reason:", reason);
+});
+
+
