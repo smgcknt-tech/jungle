@@ -11,8 +11,8 @@ module.exports = {
     },
   },
   cart: {
-    findAll: () => {
-      return cartItem.find({});
+    findAll: (userId) => {
+      return cartItem.find({user:userId});
     },
     duplicationCheck: (id) => {
       return cartItem.exists({ productId: id });
@@ -23,7 +23,7 @@ module.exports = {
         { $inc: { qty: qty } }
       );
     },
-    create: (product,qty) => {
+    create: (userId, product, qty) => {
       return cartItem.create({
         productId: product._id,
         name: product.name,
@@ -31,6 +31,7 @@ module.exports = {
         qty: qty,
         countInStock: product.countInStock,
         image:product.image,
+        user:userId
       });
     },
     delete:(id)=>{

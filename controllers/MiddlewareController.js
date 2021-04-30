@@ -8,7 +8,8 @@ module.exports = {
       res.locals.userName = 'ゲスト'
       res.locals.cartItem = [];
     } else　{
-      res.locals.cartItem  = await p.cart.findAll();
+      const userId = req.session.userId
+      res.locals.cartItem  = await p.cart.findAll(userId);
       res.locals.isLoggedIn = true
       res.locals.userName = req.session.userName
     }

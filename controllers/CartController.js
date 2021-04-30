@@ -6,6 +6,7 @@ module.exports = {
     res.render("Cart.ejs");
   },
   addCartItem: async (req, res) => {
+    const userId = req.session.userId
     const id = req.params.id;
     const qty = req.query.qty;
     if (qty > 0) {
@@ -14,7 +15,7 @@ module.exports = {
       if (doesExist) {
         await p.cart.update(product._id, qty);
       } else {
-        await p.cart.create(product, qty);
+        await p.cart.create(userId, product, qty);
       }
       res.redirect("/cart");
     } else {
