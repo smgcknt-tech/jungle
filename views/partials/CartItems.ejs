@@ -1,0 +1,32 @@
+<div class="cartItems">
+  <h1>カート一覧</h1>
+  <ul>
+    <%locals.cartItem.map((p)=>{%>
+    <li class="eachCart" key="<%=p.productId%>">
+      <div class="row dTable">
+        <div class="min-30 dTable_c">
+          <h3>
+            <a href="/product/<%=p.productId%>"> <%=p.name%> </a>
+          </h3>
+        </div>
+        <input
+          class="eachInput dTable_c"
+          type="number"
+          min="1"
+          max="<%=p.countInStock%>"
+          value="<%=p.qty%>"
+        />
+
+        <div class="eachPrice dTable_c"><%=p.price%>円</div>
+
+        <div class="sumPrice dTable_c">小計<%=p.price*p.qty%>円</div>
+        <div class="dTable_c">
+        <form action="cart/delete/<%=p.productId%>" method="POST">
+          <button class="cart-delete"><i class="fas fa-trash"></i></button>
+        </form>
+        </div>
+      </div>
+    </li>
+    <%})%>
+  </ul>
+</div>

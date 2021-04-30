@@ -13,39 +13,10 @@
       <main>
         <div class="row">
           <div class="col-2">
-            <div class="cart-index">
-              <h1>カート一覧</h1>
-              <ul>
-                <%locals.cartItem.map((p)=>{%>
-                <li class="eachCart" key="<%=p.productId%>">
-                  <div class="row dTable">
-                    <div class="min-8 dTable_c">
-                      <h3>
-                          <a href="/product/<%=p.productId%>"> <%=p.name%> </a>
-                      </h3>
-                    </div>
-                    <input
-                      class="eachInput dTable_c"
-                      type="number"
-                      min="1"
-                      max="<%=p.countInStock%>"
-                      value="<%=p.qty%>"
-                    />
-
-                    <div class="eachPrice dTable_c"><%=p.price%>円</div>
-
-                    <div class="sumPrice dTable_c">小計<%=p.price*p.qty%>円</div>
-                    <form action="cart/delete/<%=p.productId%>" method="POST">
-                      <button class="cart-delete dTable_c">削除</button>
-                    </form>
-                  </div>
-                </li>
-                <%})%>
-              </ul>
-            </div>
+            <%-include('../partials/CartItems');%>
           </div>
           <div class="col-1">
-            <div
+            <div>
               <div class="card card-body">
                 <ul>
                   <li>

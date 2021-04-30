@@ -17,8 +17,8 @@ body {
 }
 
 a {
-  text-decoration:none;
-  color:black;
+  text-decoration: none;
+  color: black;
 }
 
 a:hover {
@@ -35,11 +35,11 @@ li {
   margin-top: 1rem;
 }
 
-
 select:hover,
-textarea:hover
-
-input, select, textarea, button {
+textarea:hover input,
+select,
+textarea,
+button {
   padding: 1rem;
   border-radius: 0.5rem;
   border: 0.1rem #a4a4a4 solid;
@@ -61,8 +61,8 @@ button.primary {
 }
 
 li.small {
-  font-size:0.5rem;
-  color:rgb(247, 20, 20);;
+  font-size: 0.5rem;
+  color: rgb(247, 20, 20);
 }
 
 button.block {
@@ -109,7 +109,8 @@ h2 {
 }
 
 /*header*/
-header a , header span {
+header a,
+header span {
   color: #fff;
   padding: 1rem;
   font-size: 1.5rem;
@@ -126,19 +127,18 @@ a.logo {
   background-color: #fd3434;
   color: #fff;
   border-radius: 50%;
-  padding: 0.2rem 0.6rem ;
+  padding: 0.2rem 0.6rem;
   font-size: 1.3rem;
-  margin-left: 0.2rem
+  margin-left: 0.2rem;
 }
 
 .menu-container {
-  margin-right:2rem;
+  margin-right: 2rem;
 }
 
 .fa-caret-down {
-  color:white;
+  color: white;
 }
-
 
 /*images:*/
 
@@ -163,9 +163,9 @@ img.image-body {
 /*product*/
 
 .Product-details {
-  color:white;
-  font-weight:bold;
-  padding-left:2rem;
+  color: white;
+  font-weight: bold;
+  padding-left: 2rem;
 }
 
 /*card*/
@@ -179,7 +179,7 @@ img.image-body {
 }
 
 .card-body {
-  padding:0.5rem 2rem;
+  padding: 0.5rem 2rem;
 }
 
 .rating span {
@@ -188,112 +188,108 @@ img.image-body {
 }
 
 .rating span:last-child {
-  color: #f8f8f8 ;
+  color: #f8f8f8;
 }
 
 /*cart*/
-.cart-index {
-  font-size:1rem;
-  padding:1rem 1.5rem;
+.cartItems {
+  font-size: 1rem;
+  padding: 1rem 1.5rem;
   background-color: #f8f8f8;
   border-radius: 1rem;
-  margin:0 1rem ;
+  margin: 0 1rem;
 }
 
-.min-8 {
-  width:8rem;
+.min-30 {
+  width: 30%;
 }
 
 .eachInput {
-  width:3rem;
+  width: 3rem;
   border-radius: 0.2rem;
-  border:#888785 0.1rem solid;
+  border: #888785 0.1rem solid;
   text-align: center;
 }
 
-.dTable{
+.dTable {
   width: 100%;
-  display:table;
+  display: table;
   border-collapse: separate;
   border-spacing: 0.1rem 0.1rem;
   word-break: break-all;
   word-wrap: break-all;
   table-layout: fixed;
-
 }
 
-
-.dTable_c{
-  display:table-cell;
-  font-weight:bold;
+.dTable_c {
+  display: table-cell;
+  font-weight: bold;
 }
 
-.cart-delete{
-  font-size:1rem;
-  padding:0.2rem 0.5rem;
-  background-color: #888785;
-  width:100%;
-  color:white;
+.cart-delete {
+  border: none;
+}
+/*cart PlaceOrder*/
+.cartItems.placeOrder {
+  padding: 1rem 0rem;
 }
 
 /*Form*/
 .form {
   background-color: #f8f8f8;
   max-width: 60rem;
-  border-radius:1rem;
-  padding:0.5rem 1rem;
-  margin:2rem auto;
+  border-radius: 1rem;
+  padding: 0.5rem 1rem;
+  margin: 2rem auto;
 }
 
 .form > div {
-  display:flex;
-  flex-direction:column;
-  margin:1rem;
+  display: flex;
+  flex-direction: column;
+  margin: 1rem;
 }
 
 .form label {
-  margin:1rem 0;
+  margin: 1rem 0;
 }
 
-.form input{
-    padding: 1rem;
-    border-radius: 0.5rem;
-    border: 0.1rem #a4a4a4 solid;
-    font-size: 1.6rem;
-    font-family: Helvetica, Arial, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
-.dropdown{
-  display:inline-block;
-  position:relative;
+.form input {
+  padding: 1rem;
+  border-radius: 0.5rem;
+  border: 0.1rem #a4a4a4 solid;
+  font-size: 1.6rem;
+  font-family: Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.dropdown {
+  display: inline-block;
+  position: relative;
 }
 
-.dropdown-content{
-  position:absolute;
-  display:none;
+.dropdown-content {
+  position: absolute;
+  display: none;
   right: 0;
   min-width: 10rem;
-  padding:0.1rem;
-  z-index:1;
-  background-color:#29ab87;
-  border-radius:0.5rem;
+  padding: 0.1rem;
+  z-index: 1;
+  background-color: #29ab87;
+  border-radius: 0.5rem;
 }
 
-.dropdown-content a{
-  font-size:1.3rem;
+.dropdown-content a {
+  font-size: 1.3rem;
 }
 
 .dropdown:hover .dropdown-content {
-  display:block;
+  display: block;
 }
 
-.error-container{
-  color:rgb(247, 20, 20);
-  font-weight:bold;
+.error-container {
+  color: rgb(247, 20, 20);
+  font-weight: bold;
 }
-
-
 
 /*top-layout*/
 
@@ -324,7 +320,7 @@ footer {
 /*checkout steps*/
 .checkout-steps > div {
   border-top: 0.3rem #fff solid;
-  color:  #fff;
+  color: #fff;
   flex: 1;
   padding: 1rem;
   font-weight: bold;

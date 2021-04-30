@@ -1,24 +1,61 @@
 <div class="row top">
-    <div class="col-2">
-        <ul>
-            <li>
-                <div class="card card-body">
-                    <h2>配送</h2>
-                    <p>
-                        <strong>指名:</strong>
-                        <strong>住所:</strong>
-                    </p>
+  <div class="col-2">
+    <ul>
+      <li>
+        <div class="card card-body">
+          <h2>配送</h2>
+          <p>
+            <strong>氏名:</strong>
+          </p>
+          <p>
+            <strong>住所:</strong>
+          </p>
+        </div>
+        <div class="card card-body">
+          <h2>お支払方法</h2>
+          <p>
+            <strong>お支払方法:</strong>
+          </p>
+        </div>
+        <div class="card card-body">
+          <h2>注文内容</h2>
+          <div class="cartItems placeOrder">
+            <ul>
+              <%locals.cartItem.map((p)=>{%>
+              <li class="eachCart" key="<%=p.productId%>">
+                <div class="row dTable">
+                  <div class="min-10 dTable_c">
+                    <h3>
+                      <a href="/product/<%=p.productId%>"><%=p.name%></a>
+                    </h3>
+                  </div>
+                  <div class="eachPrice dTable_c"><%=p.qty%>点</div>
 
+                  <div class="eachPrice dTable_c"><%=p.price%>円</div>
+
+                  <div class="sumPrice dTable_c">小計<%=p.price*p.qty%>円</div>
                 </div>
-            </li>
-        </ul>
-
+              </li>
+              <%})%>
+            </ul>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div class="col-1">
+    <div class="card card-body">
+      <ul>
+        <li>
+          <h2>注文内容</h2>
+          <div>商品</div>
+          <div>価格</div>
+          <div>合計（税込）</div>
+        </li>
+        <li>
+          <button type="button" class="primary block">注文確定</button>
+        </li>
+      </ul>
     </div>
-    <div class="col-1">
-
-    </div>
-    <div class="col-3">
-
-    </div>
-
+  </div>
 </div>
