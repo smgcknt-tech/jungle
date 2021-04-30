@@ -36,6 +36,12 @@ module.exports = {
     },
     delete:(id)=>{
       return cartItem.deleteOne({ productId: id })
-    }
+    },
+    updateQty:(qty,id)=>{
+      return cartItem.findOneAndUpdate(
+        { productId: id },
+        { $inc: { qty: qty } }
+      );
+    },
   },
 };

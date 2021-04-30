@@ -11,6 +11,7 @@
         </div>
         <input
           class="eachInput dTable_c"
+          id="<%=p.productId%>"
           type="number"
           min="1"
           max="<%=p.countInStock%>"
@@ -21,9 +22,9 @@
 
         <div class="sumPrice dTable_c">小計<%=p.price*p.qty%>円</div>
         <div class="dTable_c">
-        <form action="cart/delete/<%=p.productId%>" method="POST">
-          <button class="cart-delete"><i class="fas fa-trash"></i></button>
-        </form>
+          <form action="cart/delete/<%=p.productId%>" method="POST">
+            <button class="cart-delete"><i class="fas fa-trash"></i></button>
+          </form>
         </div>
       </div>
     </li>

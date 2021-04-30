@@ -27,6 +27,14 @@ module.exports = {
     await p.cart.delete(id);
     res.redirect("/cart");
   },
+  updateQty: async (req, res) => {
+    let obj = {}; 
+    console.log('body: ' + JSON.stringify(req.body));
+    console.log(req.body);
+    const qty = req.body.qty;
+    const id = req.body.id;
+    await p.cart.updateQty(qty,id);
+  },
 };
 
 //error-catcher
