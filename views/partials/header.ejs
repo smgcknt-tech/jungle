@@ -5,7 +5,7 @@
       <%if (locals.isLoggedIn) {%>
       <a href="/cart"
         >カートリスト <%if (locals.cartItem.length > 0) {%>
-        <span class="badge"><%=locals.cartItem.length%></span>
+        <span id="badge"><%=locals.cartItem.length%></span>
         <%}%> <%}%>
       </a>
       <%if (locals.isLoggedIn) {%>

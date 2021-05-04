@@ -1,4 +1,10 @@
+<%if (locals.cartItem.length === 0) {%>
 <div class="cartItems">
+  <h1>カート一覧</h1>
+  <h2>現在登録された商品はございません。</h2>
+</div>
+<%}else{%>
+<div class="cartItems" id="cart-box">
   <h1>カート一覧</h1>
   <ul>
     <%locals.cartItem.map((p)=>{%>
@@ -20,14 +26,15 @@
 
         <div class="eachPrice dTable_c"><%=p.price%>円</div>
 
-        <div class="sumPrice dTable_c">小計<%=p.price*p.qty%>円</div>
+        <div class="sumPrice dTable_c min-20">小計<%=p.price*p.qty%>円</div>
         <div class="dTable_c">
-          <form action="cart/delete/<%=p.productId%>" method="POST">
-            <button class="cart-delete"><i class="fas fa-trash"></i></button>
-          </form>
+          <a class="cart_delete" data-id="<%=p.productId%>"
+            ><i class="fas fa-trash"></i
+          ></a>
         </div>
       </div>
     </li>
     <%})%>
   </ul>
 </div>
+<%}%>

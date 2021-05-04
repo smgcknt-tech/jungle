@@ -12,28 +12,26 @@
       <%-include('../partials/Header');%>
       <main>
         <div class="row">
-          <div class="col-2">
-            <%-include('../partials/CartItems');%>
-          </div>
-          <div class="col-1">
-            <div>
-              <div class="card card-body">
-                <ul>
-                  <li>
-                    <h2 id="sum_price"></h2>
-                    <h2 id="sum_qty"></h2>
-                  </li>
-                  <li>
-                    <form action="/checkOut/2" class="form">
-                      <button class="primary block" type="submit">
-                        レジに進む
-                      </button>
-                    </form>
-                  </li>
-                </ul>
-              </div>
+          <div class="col-2"><%-include('../partials/CartItems');%></div>
+          <%if (locals.cartItem.length > 0) {%>
+          <div class="col-1" id="cart-sum">
+            <div class="card card-body " >
+              <ul>
+                <li>
+                  <h2 id="sum_price">0円</h2>
+                  <h2 id="sum_qty">0点</h2>
+                </li>
+                <li>
+                  <form action="/checkOut/2" class="form">
+                    <button class="primary block" type="submit">
+                      レジに進む
+                    </button>
+                  </form>
+                </li>
+              </ul>
             </div>
           </div>
+          <%}%>
         </div>
       </main>
       <%-include('../partials/Footer');%>

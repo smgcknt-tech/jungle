@@ -21,7 +21,8 @@ app.set("views", "./views/pages");
 app.set("view engines", "ejs");
 //middleware
 app.use(cors());
-app.use(express.urlencoded({ extended: false }));
+app.use(express.json())
+app.use(express.urlencoded({ extended: true })); 
 app.use(session({ secret: "my_secret_key", resave: false, saveUninitialized: false }));
 app.use(express.static("public"));
 app.use([

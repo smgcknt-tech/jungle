@@ -1,3 +1,4 @@
+const axios = require('axios')
 const Products = require("../models/Products.js");
 const p = Products;
 
@@ -13,7 +14,7 @@ module.exports = {
       const product = await p.product.findOne(id);
       const doesExist = await p.cart.duplicationCheck(product._id);
       if (doesExist) {
-        await p.cart.update(product._id, qty);
+        await p.cart.addQty(product._id, qty);
       } else {
         await p.cart.create(userId, product, qty);
       }
@@ -22,18 +23,19 @@ module.exports = {
       res.redirect("/product/" + id);
     }
   },
-  deleteCartItem: async (req, res) => {
-    const id = req.params.id;
-    await p.cart.delete(id);
-    res.redirect("/cart");
-  },
-  updateQty: async (req, res) => {
-    let obj = {}; 
-    console.log('body: ' + JSON.stringify(req.body));
-    console.log(req.body);
-    const qty = req.body.qty;
+  deleteCartItem: async(req, res) => {
     const id = req.body.id;
-    await p.cart.updateQty(qty,id);
+    const userId = req.session.userId
+    await p.cart.delete(id)
+    const cartItem = await p.cart.findAll(userId)
+    res.send(String(cartItem.length));
+    
+  },
+  updateQty:async(req, res)=> {
+    const id = req.body.id
+    const qty = req.body.qty
+    await p.cart.updateQty(id, qty)
+    res.json(req.body);
   },
 };
 

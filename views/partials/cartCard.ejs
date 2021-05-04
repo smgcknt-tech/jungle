@@ -29,7 +29,7 @@
     </select>
     <li>
       <% if (locals.isLoggedIn) { %>
-      <form id="cartForm" action="/Cart/<%=product._id%>" method="POST" class="form">
+      <form id="cartForm" action="/Cart/create/<%=product._id%>" method="POST" class="form">
         <button class="primary block" type="submit" 　>カートに追加</button>
       </form>
       <% } else { %>

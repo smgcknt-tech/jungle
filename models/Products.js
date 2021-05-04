@@ -17,7 +17,7 @@ module.exports = {
     duplicationCheck: (id) => {
       return cartItem.exists({ productId: id });
     },
-    update: (id, qty) => {
+    addQty: (id, qty) => {
       return cartItem.findOneAndUpdate(
         { productId: id },
         { $inc: { qty: qty } }
@@ -37,10 +37,10 @@ module.exports = {
     delete:(id)=>{
       return cartItem.deleteOne({ productId: id })
     },
-    updateQty:(qty,id)=>{
+    updateQty: (id, qty) => {
       return cartItem.findOneAndUpdate(
         { productId: id },
-        { $inc: { qty: qty } }
+        { qty: qty }
       );
     },
   },

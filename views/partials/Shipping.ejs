@@ -1,18 +1,14 @@
 <form action="/checkOut/3" class="form">
   <div><h1>住所</h1></div>
   <div>
-    <label for="fullName">氏名</label>
-    <input type="text" placeholder="サンプル　太郎" />
-  </div>
-  <div>
-    <label for="postalCcde">郵便番号</label>
-    <input type="text" placeholder="000-0000" />
+    <label for="postal-code">郵便番号</label>
+    <input name="postal-code" type="text" placeholder="000-0000" />
   </div>
   <div>
     <label for="adress">住所</label>
-    <input type="text" placeholder="サンプル区3丁目２番地" />
+    <input name="adress" type="text" placeholder="サンプル区3丁目２番地" />
   </div>
   <div>
-    <button class="primary" type="submit">次へ進む</button>
+    <button id="step2" class="primary" type="submit">次へ進む</button>
   </div>
 </form>

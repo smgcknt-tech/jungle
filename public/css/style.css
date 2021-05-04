@@ -108,6 +108,10 @@ h2 {
   flex: 2 1 50rem;
 }
 
+.red {
+  color:red;
+}
+
 /*header*/
 header a,
 header span {
@@ -123,7 +127,7 @@ a.logo {
   display: inline-block;
 }
 
-.badge {
+#badge {
   background-color: #fd3434;
   color: #fff;
   border-radius: 50%;
@@ -194,7 +198,7 @@ img.image-body {
 /*cart*/
 .cartItems {
   font-size: 1rem;
-  padding: 1rem 1.5rem;
+  padding: 1rem 2rem;
   background-color: #f8f8f8;
   border-radius: 1rem;
   margin: 0 1rem;
@@ -202,6 +206,10 @@ img.image-body {
 
 .min-30 {
   width: 30%;
+}
+
+.min-20 {
+  width: 20%;
 }
 
 .eachInput {
@@ -215,7 +223,7 @@ img.image-body {
   width: 100%;
   display: table;
   border-collapse: separate;
-  border-spacing: 0.1rem 0.1rem;
+  border-spacing: 0.5rem 0.1rem;
   word-break: break-all;
   word-wrap: break-all;
   table-layout: fixed;
@@ -228,7 +236,12 @@ img.image-body {
 
 .cart-delete {
   border: none;
+
 }
+.fa-trash {
+  padding-left:1rem;
+}
+
 /*cart PlaceOrder*/
 .cartItems.placeOrder {
   padding: 1rem 0rem;
@@ -329,6 +342,12 @@ footer {
   border-top-color: yellow;
   color: yellow;
 }
+.red::placeholder { 
+  color: red;
+  opacity: 1; 
+}
+
+
 /*alert*/
 
 .success {
