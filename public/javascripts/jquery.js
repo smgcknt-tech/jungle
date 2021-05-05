@@ -85,11 +85,11 @@ $(() => {
     });
   });
 
-  //checkout.ejs//
-  const postalCode = $("input[name='postal-code']");
-  const adress = $("input[name='adress']");
+  //Shipping.ejs//
   const step2 = $("button[id='step2']");
   step2.on("click", (e) => {
+    const postalCode = $("input[name='postal-code']");
+    const adress = $("input[name='adress']");
     if (postalCode.val() === "") {
       e.preventDefault();
       postalCode.attr("placeholder", "未入力です!").addClass("red");
@@ -98,6 +98,8 @@ $(() => {
       e.preventDefault();
       adress.attr("placeholder", "未入力です!").addClass("red");
     }
+
+
   });
 
   //Payment.ejs//
