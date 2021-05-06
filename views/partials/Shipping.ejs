@@ -2,11 +2,11 @@
   <div><h1>住所</h1></div>
   <div>
     <label for="postal-code">郵便番号</label>
-    <input name="postalCode" type="text" placeholder="000-0000" />
+    <input id="postal-code" type="text" name="zip11" size="10" maxlength="8" onKeyUp="AjaxZip3.zip2addr(this,'','addr11','addr11');" placeholder="1230012" />
   </div>
   <div>
     <label for="adress">住所</label>
-    <input name="adress" type="text" placeholder="サンプル区3丁目２番地" />
+    <input id="adress" type="text" name="addr11" size="60" placeholder="サンプル県サンプル市3丁目" />
   </div>
   <div>
     <button id="step2" class="primary" type="submit">次へ進む</button>

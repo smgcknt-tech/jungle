@@ -51,6 +51,18 @@ module.exports = {
     findShipping: (userId) => {
       return ShippingInfo.findOne({ user: userId });
     },
+    shippingDuplicationCheck: (userId) => {
+      return ShippingInfo.exists({ user: userId });
+    },
+    updateShipping: (postalCode, adress, userId) => {
+      return ShippingInfo.findOneAndUpdate(
+        { user: userId },
+        {
+          postalCode: postalCode,
+          adress: adress,
+        }
+      );
+    },
   },
 };
 

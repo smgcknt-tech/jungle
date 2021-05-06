@@ -88,8 +88,8 @@ $(() => {
   //Shipping.ejs//
   const step2 = $("button[id='step2']");
   step2.on("click", (e) => {
-    const postalCode = $("input[name='postal-code']");
-    const adress = $("input[name='adress']");
+    const postalCode = $("input[id='postal-code']");
+    const adress = $("input[id='adress']");
 
     if (postalCode.val() === "") {
       e.preventDefault();

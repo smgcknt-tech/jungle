@@ -7,7 +7,5 @@ const ShippingSchema = mongoose.Schema({
 },
 { timestamps: true }
 );
-
 const ShippingInfo = mongoose.model("ShippingInfo", ShippingSchema );
-
 module.exports = ShippingInfo;
