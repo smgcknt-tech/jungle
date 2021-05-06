@@ -1,4 +1,3 @@
-const axios = require('axios')
 const Products = require("../models/Products.js");
 const p = Products;
 

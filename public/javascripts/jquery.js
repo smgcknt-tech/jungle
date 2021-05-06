@@ -90,6 +90,7 @@ $(() => {
   step2.on("click", (e) => {
     const postalCode = $("input[name='postal-code']");
     const adress = $("input[name='adress']");
+
     if (postalCode.val() === "") {
       e.preventDefault();
       postalCode.attr("placeholder", "未入力です!").addClass("red");
@@ -98,8 +99,6 @@ $(() => {
       e.preventDefault();
       adress.attr("placeholder", "未入力です!").addClass("red");
     }
-
-
   });
 
   //Payment.ejs//
@@ -108,7 +107,9 @@ $(() => {
     const checkedMethod = $("input:radio[name='paymentMethod']:checked");
     if (checkedMethod.length === 0) {
       e.preventDefault();
-      $("#payment-title").append('<h1 class="red">お支払い方法が未入力です!</h1>')
+      $("#payment-title").append(
+        '<h1 class="red">お支払い方法が未入力です!</h1>'
+      );
     }
   });
 });

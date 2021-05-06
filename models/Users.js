@@ -1,5 +1,6 @@
 const User = require("./UserModel");
 const bcryptjs = require("bcryptjs");
+const ShippingInfo = require("./ShippingModel");
 
 module.exports = {
   signIn: {
@@ -35,6 +36,20 @@ module.exports = {
       });
       await user.save();
       return user;
+    },
+  },
+  checkOut: {
+    newShipping: async (postalCode, adress, userId) => {
+      const shipping = new ShippingInfo({
+        postalCode: postalCode,
+        adress: adress,
+        user: userId,
+      });
+      await shipping.save();
+      return shipping;
+    },
+    findShipping: (userId) => {
+      return ShippingInfo.findOne({ user: userId });
     },
   },
 };
