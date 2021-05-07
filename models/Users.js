@@ -1,8 +1,13 @@
 const User = require("./UserModel");
 const bcryptjs = require("bcryptjs");
-const ShippingInfo = require("./ShippingModel");
+const { ShippingInfo, paymentMethod } = require("./checkOutModel");
 
 module.exports = {
+  midlleware: {
+    findUserdata: (userId) => {
+     return User.findOne({ _id: userId }).populate("payment")
+    }
+  },
   signIn: {
     findUser: async (req, res) => {
       const email = req.body.email;
@@ -63,8 +68,29 @@ module.exports = {
         }
       );
     },
+    newMethod: async (method, userId) => {
+      const createdMethod = new paymentMethod({
+        method: method,
+        user: userId,
+      });
+      await createdMethod.save();
+      await User.findOneAndUpdate(
+        { _id: userId },
+        { payment: createdMethod._id}
+      );
+      return createdMethod;
+    },
+    methodDuplicationCheck: async (userId) => {
+      return paymentMethod.exists({ user: userId });
+    },
+    updateMethod: async (method, userId) => {
+      return paymentMethod.findOneAndUpdate(
+        { user: userId },
+        { method: method }
+      );
+    },
   },
-};
+}
 
 //error_catcher
 process.on("unhandledRejection", (reason, p) => {
