@@ -1,10 +1,13 @@
 const Users = require("../models/Users");
 const u = Users;
+const dotenv = require("dotenv");
+dotenv.config();
 
 module.exports = {
   checkOut: async (req, res) => {
     const id = Number(req.params.id);
     const userId = req.session.userId;
+    const paypalId = process.env.PAY_PAL_CLIENT_ID
     const steps = [(step1 = ""), (step2 = ""), (step3 = ""), (step4 = "")];
     for (let i = 0; i < id; i++) {
       steps[i] = "active";
@@ -28,7 +31,7 @@ module.exports = {
         await u.checkOut.newMethod(method, userId);
       }
     }
-    res.render("CheckOut.ejs", { steps: steps });
+    res.render("CheckOut.ejs", { steps : steps, paypalId : paypalId });
   },
 };
 

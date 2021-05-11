@@ -112,6 +112,10 @@ h2 {
   color:red;
 }
 
+.width-100{
+  width:100%;
+}
+
 /*header*/
 header a,
 header span {

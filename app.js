@@ -14,6 +14,7 @@ const SignInRouter = require("./routes/SignInRouter");
 const SignOutRouter = require("./routes/SignOutRouter");
 const SignUpRouter = require("./routes/SignUpRouter");
 const CheckOutRouter = require("./routes/CheckOutRouter");
+const apiRouter = require("./routes/apiRouter");
 //general setting
 const app = express();
 dotenv.config();
@@ -37,6 +38,7 @@ app.use("/signIn", SignInRouter);
 app.use("/signOut", SignOutRouter);
 app.use("/signUp", SignUpRouter);
 app.use("/checkOut", CheckOutRouter);
+app.use("/api",apiRouter);
 //db-connection
 const PORT = process.env.PORT || 3000;
 mongoose

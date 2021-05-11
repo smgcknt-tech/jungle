@@ -23,11 +23,11 @@
                       <a href="/product/<%=p.productId%>"><%=p.name%></a>
                     </h3>
                   </div>
-                  <div class="eachPrice dTable_c"><%=p.qty%>点</div>
+                  <div class="eachQty dTable_c"><%=p.qty%>点</div>
 
                   <div class="eachPrice dTable_c"><%=p.price%>円</div>
 
-                  <div class="sumPrice dTable_c">小計<%=p.price*p.qty%>円</div>
+                  <div class="orderedSumPrice dTable_c">小計<%=p.price*p.qty%>円</div>
                 </div>
               </li>
               <%})%>
@@ -42,13 +42,14 @@
       <ul>
         <li>
           <h2>注文内容</h2>
-          <div>商品</div>
-          <div>価格</div>
-          <div>合計（税込）</div>
+          <div id="ordered_qty"></div>
+          <div id="ordered_price" value=""></div>
         </li>
-        <li>
-          <button type="button" class="primary block">注文確定</button>
-        </li>
+        <% if (locals.userData.payment.method === "paypal") {%>
+        <li><div id="paypal-button-container"></div></li>
+        <%}else{%>
+        <li><button class="primary width-100">現金決済</button></li>
+        <%}%>
       </ul>
     </div>
   </div>

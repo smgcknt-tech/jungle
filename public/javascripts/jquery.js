@@ -21,7 +21,8 @@ $(() => {
     $(".sumPrice").each((i, val) => {
       let b = Number($(val).text().slice(2, -1));
       totalPrice += b;
-      $("#sum_price").text("合計：" + totalPrice + "円");
+      let taxIncluded = totalPrice + totalPrice * 0.1;
+      $("#sum_price").text("合計：" + taxIncluded + "円(税込)");
     });
   };
   calculateTotalPrice();
@@ -61,7 +62,8 @@ $(() => {
     $(".sumPrice").each((i, val) => {
       let b = Number($(val).text().slice(2, -1));
       totalPrice += b;
-      $("#sum_price").text("合計：" + totalPrice + "円");
+      let taxIncluded = totalPrice + totalPrice * 0.1;
+      $("#sum_price").text("合計：" + taxIncluded + "円(税込)");
     });
   });
 
@@ -112,4 +114,30 @@ $(() => {
       );
     }
   });
+
+  //placeOrder.js//
+  const calculateOrderedItem = () => {
+    let totalItem = 0;
+    $(".eachQty").each((i, val) => {
+      let a = Number($(val).text().slice(0, -1));
+      totalItem += a;
+      $("#ordered_qty").text("合計：" + totalItem + "点");
+    });
+  };
+  calculateOrderedItem();
+
+  const calculateOrderedPrice = () => {
+    let totalPrice = 0;
+    $(".orderedSumPrice").each((i, val) => {
+      let b = Number($(val).text().slice(2, -1));
+      totalPrice += b;
+      let taxIncluded = totalPrice + totalPrice * 0.1;
+      console.log(taxIncluded)
+      $("#ordered_price").text("合計：" + taxIncluded + "円(税込)");
+      $("#ordered_price").attr("value",taxIncluded);
+    });
+  };
+  calculateOrderedPrice();
+
+
 });
