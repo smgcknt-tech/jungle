@@ -115,7 +115,7 @@ $(() => {
     }
   });
 
-  //placeOrder.js//
+  //placeOrder.ejs//
   const calculateOrderedItem = () => {
     let totalItem = 0;
     $(".eachQty").each((i, val) => {
@@ -132,12 +132,22 @@ $(() => {
       let b = Number($(val).text().slice(2, -1));
       totalPrice += b;
       let taxIncluded = totalPrice + totalPrice * 0.1;
-      console.log(taxIncluded)
       $("#ordered_price").text("合計：" + taxIncluded + "円(税込)");
-      $("#ordered_price").attr("value",taxIncluded);
+      $("#ordered_price").attr("value", taxIncluded);
     });
   };
   calculateOrderedPrice();
+  
+  //OrderConfirmation.ejs//
+  const showPaymentButton = () => {
+    const payment = $("#payment_method").text();
+    if (payment.includes("paypal")) {
+      $("#payment_button").html('<li id = "payment_button"> <div id="paypal-button-container"></div> </li>');
+    }else if (payment.includes("cash")) {
+      $("#payment_button").html('<li id = "payment_button"><button class="primary width-100">現金決済</button></li>');
+    }
+  };
+  showPaymentButton();
 
 
 });

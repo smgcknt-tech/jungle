@@ -1,3 +1,5 @@
+$(() => {
+
 paypal.Buttons({
     createOrder: function(data, actions) {
       const payment = document.getElementById('ordered_price').getAttribute("value");
@@ -15,3 +17,5 @@ paypal.Buttons({
       });
     }    
 }).render('#paypal-button-container');
+
+});

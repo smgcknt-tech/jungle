@@ -45,11 +45,7 @@
           <div id="ordered_qty"></div>
           <div id="ordered_price" value=""></div>
         </li>
-        <% if (locals.userData.payment.method === "paypal") {%>
-        <li><div id="paypal-button-container"></div></li>
-        <%}else{%>
-        <li><button class="primary width-100">現金決済</button></li>
-        <%}%>
+      <a href="/checkOut/orderConfirmation"><button class="primary width-100">確定</button></a>
       </ul>
     </div>
   </div>
