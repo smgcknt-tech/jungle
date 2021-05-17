@@ -1,5 +1,8 @@
 const Product = require("../models/ProductModel");
 const cartItem = require("../models/CartModel");
+const Order = require("./OrderModels");
+const User = require("./UserModel");
+
 
 module.exports = {
   product: {
@@ -42,6 +45,23 @@ module.exports = {
         { productId: id },
         { qty: qty }
       );
+    },
+  },
+  order:{
+    createOrder: async (ordered_price,userId)=>{
+      const createdOrder = new Order({
+        ordered_price : ordered_price,
+        user: userId
+      });
+      await createdOrder.save();
+      await User.findOneAndUpdate(
+        { _id: userId },
+        { $push: { order: createdOrder._id } },
+      );
+      return createdOrder;
+
+
+
     },
   },
 };

@@ -7,6 +7,7 @@ const userSchema = new mongoose.Schema({
   isAdmin: { type: Boolean, default: false, required: true },
   shipping:{type: mongoose.Schema.Types.ObjectId, ref: 'ShippingInfo'},
   payment:{type: mongoose.Schema.Types.ObjectId, ref: 'paymentMethod'},
+  order:[{type: mongoose.Schema.Types.ObjectId, ref: 'Order'}],
 });
 const User = mongoose.model("User", userSchema);
 

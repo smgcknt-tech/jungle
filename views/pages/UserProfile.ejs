@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <%-include('../partials/Stylesheet');%>
+    <title>Jungle</title>
+  </head>
+
+  <body>
+    <div class="grid-container">
+      <%-include('../partials/Header');%>
+      <main>
+        <div>
+          <form class="form" action="/api/update/userProfile" method="POST">
+            <div><h1>User Profile</h1></div>
+            <div>
+              <label for="name">Name</label>
+              <input
+                name="name"
+                type="text"
+                placeholder="名前を入力"
+                value="<%=locals.userData.name%>"
+              />
+            </div>
+            <div>
+              <label for="email">email</label>
+              <input
+                name="email"
+                type="text"
+                placeholder="emailを入力"
+                value="<%=locals.userData.email%>"
+              />
+            </div>
+            <div>
+              <label for="password">password</label>
+              <input
+                name="password"
+                type="password"
+                placeholder="passwordを入力"
+              />
+            </div>
+            <div>
+              <button id="updateConfirmation" class="primary" type="submit">登録</button>
+            </div>
+          </form>
+        </div>
+      </main>
+      <%-include('../partials/Footer');%>
+    </div>
+    <%-include('../partials/Jquery');%>
+  </body>
+</html>

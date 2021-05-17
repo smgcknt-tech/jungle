@@ -137,17 +137,37 @@ $(() => {
     });
   };
   calculateOrderedPrice();
-  
+
+  $("#orderConfirmation").on("click", () => {
+    const ordered_price = $("#ordered_price").attr("value");
+    const data = { ordered_price: ordered_price };
+    $.post("/checkOut/create/order", data, (data) => {}, "json");
+  });
+
   //OrderConfirmation.ejs//
   const showPaymentButton = () => {
     const payment = $("#payment_method").text();
     if (payment.includes("paypal")) {
-      $("#payment_button").html('<li id = "payment_button"> <div id="paypal-button-container"></div> </li>');
-    }else if (payment.includes("cash")) {
-      $("#payment_button").html('<li id = "payment_button"><button class="primary width-100">現金決済</button></li>');
+      $("#payment_button").html(
+        '<li id = "payment_button"> <div id="paypal-button-container"></div> </li>'
+      );
+    } else if (payment.includes("cash")) {
+      $("#payment_button").html(
+        '<li id = "payment_button"><button class="primary width-100">現金決済</button></li>'
+      );
     }
   };
   showPaymentButton();
 
+  //UserProfile.ejs//
+  const updateProfile = $("button[id='updateConfirmation']");
+  updateProfile.on("click", (e) => {
+    const updatedPassword = $("input[name='password']");
+    if (updatedPassword.val() === "") {
+      e.preventDefault();
+      updatedPassword.attr("placeholder", "未入力です!").addClass("red");
+    }
+  });
 
+  
 });

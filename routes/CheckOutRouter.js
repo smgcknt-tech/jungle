@@ -4,6 +4,7 @@ const c = CheckOutController
 const router = express.Router();
 router.post('/:id',c.checkOut,);
 router.get('/orderConfirmation',c.orderConfirmation,);
+router.post('/create/order',c.createOrder,);
 router.get('/orderHistory',c.orderHistory,);
 module.exports =  router
 

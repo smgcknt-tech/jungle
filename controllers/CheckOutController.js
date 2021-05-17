@@ -1,6 +1,8 @@
 const Users = require("../models/Users");
 const u = Users;
 const dotenv = require("dotenv");
+const Products = require("../models/Products");
+const p = Products
 dotenv.config();
 const paypalId = process.env.PAY_PAL_CLIENT_ID
 
@@ -35,6 +37,11 @@ module.exports = {
   },
   orderConfirmation:(req,res)=>{    
     res.render("orderConfirmation.ejs", {paypalId : paypalId });
+  },
+  createOrder:(req,res)=>{
+    const ordered_price =req.body.ordered_price;
+    const userId = req.session.userId;
+    p.order.createOrder(ordered_price,userId)
   },
   orderHistory:(req,res)=>{    
     res.render("orderHistory.ejs", {paypalId : paypalId });

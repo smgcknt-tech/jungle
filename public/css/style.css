@@ -351,6 +351,26 @@ footer {
   opacity: 1; 
 }
 
+/*orderHstory*/
+.table{
+  width:100%;
+  border-collapse:collapse;
+}
+
+.table tbody tr:nth-of-type(odd) {
+  background-color: #f4f4f4;
+}
+.table tbody tr:nth-of-type(even) {
+  background-color: #b6b2b2;
+}
+
+.table td, 
+.table th {
+  text-align:left;
+  border:0.1rem solid #f4f4f4 ;
+  padding:0.5rem;
+}
+
 
 /*alert*/
 

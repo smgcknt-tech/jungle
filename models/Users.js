@@ -5,8 +5,10 @@ const { ShippingInfo, paymentMethod } = require("./checkOutModel");
 module.exports = {
   midlleware: {
     findUserdata: (userId) => {
-     return User.findOne({ _id: userId }).populate("payment")
-    }
+      return User.findOne({ _id: userId })
+        .populate("payment")
+        .populate("order");
+    },
   },
   signIn: {
     findUser: async (req, res) => {
@@ -76,7 +78,7 @@ module.exports = {
       await createdMethod.save();
       await User.findOneAndUpdate(
         { _id: userId },
-        { payment: createdMethod._id}
+        { payment: createdMethod._id }
       );
       return createdMethod;
     },
@@ -90,7 +92,19 @@ module.exports = {
       );
     },
   },
-}
+  userProfile: {
+    update: (req,hash) => {
+      return User.findOneAndUpdate(
+        { _id: req.session.userId },
+        {
+          name: req.body.name,
+          email: req.body.email,
+          password: hash,
+        }
+      );
+    },
+  },
+};
 
 //error_catcher
 process.on("unhandledRejection", (reason, p) => {

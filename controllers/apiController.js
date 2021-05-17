@@ -1,7 +1,16 @@
+const Users = require("../models/Users");
+const u = Users;
+const bcryptjs = require("bcryptjs");
+
 module.exports = {
-    paypal: async (req, res) => {
-    res.send(process.env.PAY_PAL_CLIENT_ID||'sb')
-    }
+    updateUserProfile :(req,res) => {
+        password = req.body.password;
+        bcryptjs.hash(password, 10,async(error, hash) => {
+        await u.userProfile.update(req,hash)
+        res.redirect("/");
+        });
+
+    },
 }
 
 //error-catcher
