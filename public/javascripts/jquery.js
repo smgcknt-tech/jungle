@@ -186,9 +186,16 @@ $(() => {
   //productRegister.ejs//
   $("#imageFile").on("change", (e) => {
     const file = e.target.files[0];
-    const createdFormData = new FormData();
-    createdFormData.append('image', file);
-    console.log(createdFormData.file.path);
+    const bodyFormData = new FormData();
+    bodyFormData.append('image', file);
+    $.ajax({
+      type: "POST",
+      url: "/api/upload/image",
+      ContentType:'multipart/form-data',
+      data:bodyFormData,
+    }).done((results) =>{
+      console.log(results);
+    })
 
 
   })

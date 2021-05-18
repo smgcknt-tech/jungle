@@ -2,6 +2,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
+const path = require("path");
 const dotenv = require("dotenv");
 const session = require("express-session");
 //from controllers
@@ -28,6 +29,7 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: true })); 
 app.use(session({ secret: "my_secret_key", resave: false, saveUninitialized: false }));
 app.use(express.static("public"));
+app.use('/uploads', express.static(path.join(__dirname, '/uploads')));
 app.use([
   MidllewareController.loginCheck, 
   MidllewareController.errorCatcher,
