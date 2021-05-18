@@ -12,6 +12,43 @@ module.exports = {
     findAll: () => {
       return Product.find({});
     },
+    create: async(req,userId) => {
+      const createdProduct = await new Product({
+        name: req.body.name,
+        price: req.body.price,
+        category: req.body.category,
+        brand: req.body.brand,
+        countInStock: req.body.countInStock,
+        image: req.body.image,
+        description: req.body.description,
+        rating:0,
+        numReviews:0,
+        user:userId,  
+      });
+      await createdProduct.save();
+      await User.findOneAndUpdate(
+        { _id: userId },
+        { $push: { product: createdProduct._id } },
+      );
+      return createdProduct;
+    },
+    editProduct: (req,productId) => {
+      return Product.findOneAndUpdate(
+        { _id : productId},
+        {
+        name: req.body.name,
+        price: req.body.price,
+        category: req.body.category,
+        brand: req.body.brand,
+        countInStock: req.body.countInStock,
+        image: req.body.image,
+        description: req.body.description,
+        }
+      );
+    },
+    deleteProduct:(productId)=>{
+      return Product.deleteOne({_id : productId})
+    },
   },
   cart: {
     findAll: (userId) => {

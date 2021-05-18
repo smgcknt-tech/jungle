@@ -169,5 +169,29 @@ $(() => {
     }
   });
 
-  
+  //productList.ejs//
+  $(".product_delete").on("click", (e) => {
+    let id = $(e.currentTarget).attr("id");
+    const data = {id:id}
+    $.ajax({
+      type: "POST",
+      url: "/api/delete/product",
+      dataType: "json",
+      data: data,
+    }).done((results) =>{
+      $(e.currentTarget).closest(".eachProduct").remove();
+    })
+  });
+
+  //productRegister.ejs//
+  $("#imageFile").on("change", (e) => {
+    const file = e.target.files[0];
+    const createdFormData = new FormData();
+    createdFormData.append('image', file);
+    console.log(createdFormData.file.path);
+
+
+  })
+
+
 });

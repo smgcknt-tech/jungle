@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <%-include('../partials/Stylesheet');%>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>商品編集</title>
+</head>
+<body>
+    <div class="grid-container">
+        <%-include('../partials/Header');%>
+        <main>
+        <form class="form" action="/api/create/product" method="POST">
+          <div>
+            <h1>商品登録</h1>
+           
+          </div>
+              <div>
+                <label htmlFor="name">Name</label>
+                <input
+                  name="name"
+                  type="text"
+                  placeholder="Enter name"
+                  
+                ></input>
+              </div>
+              <div>
+                <label htmlFor="price">Price</label>
+                <input
+                  name="price"
+                  type="text"
+                  placeholder="Enter price"
+                
+                ></input>
+              </div>
+              <div>
+                <label htmlFor="image">Image</label>
+                <input
+                  name="image"
+                  type="text"
+                  placeholder="Enter image"
+             
+                ></input>          
+              </div>
+              <div>
+                <label htmlFor="imageFile">Image File</label>
+                <input
+                  type="file"
+                  id="imageFile"
+                  label="Choose Image"
+                ></input>
+              </div>
+              <div>
+                <label htmlFor="category">Category</label>
+                <input
+                  name="category"
+                  type="text"
+                  placeholder="Enter category"
+             
+                ></input>
+              </div>
+              <div>
+                <label htmlFor="brand">Brand</label>
+                <input
+                  name="brand"
+                  type="text"
+                  placeholder="Enter brand"
+         
+                ></input>
+              </div>
+              <div>
+                <label htmlFor="countInStock">Count In Stock</label>
+                <input
+                  name="countInStock"
+                  type="text"
+                  placeholder="Enter countInStock"
+           
+                ></input>
+              </div>
+              <div>
+                <label htmlFor="description">Description</label>
+                <textarea
+                  name="description"
+                  rows="3"
+                  type="text"
+                  placeholder="Enter description"
+                ></textarea>
+              </div>
+              <div>
+                <label></label>
+                <button class="primary" type="submit">
+                  Update
+                </button>
+              </div>
+        </form>
+    </main>
+    <%-include('../partials/Footer');%>
+  </div>
+  <%-include('../partials/Jquery');%>
+</body>
+</html>

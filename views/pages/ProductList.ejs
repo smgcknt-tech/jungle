@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <%-include('../partials/Stylesheet');%>
+    <title>商品リスト</title>
+</head>
+<body>
+    <div class="grid-container">
+        <%-include('../partials/Header');%>
+        <main>
+        <div class="row">
+            <h1>商品リスト</h1>
+            <button type="button" class="primary"><a href="/admin/RegisterProduct" >商品登録</a></button>
+        </div>        
+          <table class="table">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>商品名</th>
+                <th>価格</th>
+                <th>カテゴリー</th>
+                <th>ブランド</th>
+                <th>編集</th>
+              </tr>
+            </thead>
+            <tbody>
+              <%products.map((product) => {%>
+                <tr class="eachProduct" key=<%=product._id%>>
+                  <td><%=product._id%></td>
+                  <td><%=product.name%></td>
+                  <td><%=product.price%></td>
+                  <td><%=product.category%></td>
+                  <td><%=product.brand%></td>
+                  <td>
+                    <button ><a href="/admin/editProduct/<%=product._id%>">編集</a></button>
+                    <button class="product_delete" id="<%=product._id%>">削除</button>
+                  </td>
+                </tr>
+              <%})%>
+            </tbody>
+          </table>
+        </main>
+        <%-include('../partials/Footer');%>
+      </div>
+      <%-include('../partials/Jquery');%>
+</body>
+</html>
