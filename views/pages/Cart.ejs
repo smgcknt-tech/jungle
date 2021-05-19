@@ -3,16 +3,16 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <%-include('../partials/Stylesheet');%>
+    <%-include('../Stylesheet');%>
     <title>カート</title>
   </head>
 
   <body>
     <div class="grid-container">
-      <%-include('../partials/Header');%>
+      <%-include('../Header');%>
       <main>
         <div class="row">
-          <div class="col-2"><%-include('../partials/CartItems');%></div>
+          <div class="col-2"><%-include('../CartItems');%></div>
           <%if (locals.cartItem.length > 0) {%>
           <div class="col-1" id="cart-sum">
             <div class="card card-body " >
@@ -34,8 +34,8 @@
           <%}%>
         </div>
       </main>
-      <%-include('../partials/Footer');%>
+      <%-include('../Footer');%>
     </div>
-    <%-include('../partials/Jquery');%>
+    <%-include('../Jquery');%>
   </body>
 </html>

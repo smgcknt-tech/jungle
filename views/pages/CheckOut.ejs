@@ -4,25 +4,25 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <%-include('../partials/Stylesheet');%>
+    <%-include('../Stylesheet');%>
     <title>注文画面</title>
   </head>
   <body>
     <div class="grid-container">
-      <%-include('../partials/Header');%>
+      <%-include('../Header');%>
       <main>
-        <%-include('../partials/CheckOutSteps',{ steps: steps });%>
+        <%-include('../CheckOutSteps',{ steps: steps });%>
         <%if(steps[1] !=="" && steps[2] ===""){%>
-        <%-include('../partials/Shipping');%>
+        <%-include('../Shipping');%>
         <%} else if(steps[2] !=="" &&steps[3] ===""){%> 
-        <%-include('../partials/Payment');%> 
+        <%-include('../Payment');%> 
         <%} else if(steps[3] !==""){%> 
-        <%-include('../partials/PlaceOrder');%> 
+        <%-include('../PlaceOrder');%> 
         <%}%>
       </main>
-      <%-include('../partials/Footer');%>
+      <%-include('../Footer');%>
     </div>
     <script src="https://ajaxzip3.github.io/ajaxzip3.js" charset="UTF-8"></script>
-    <%-include('../partials/Jquery');%>
+    <%-include('../Jquery');%>
   </body>
 </html>

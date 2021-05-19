@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <%-include('../partials/Stylesheet');%>
+  <%-include('../Stylesheet');%>
   <title>商品詳細</title>
 </head>
 
@@ -13,24 +13,24 @@
     <div>該当商品なし</div>
   <%} else {%>
     <div class="grid-container">
-      <%-include('../partials/Header');%>
+      <%-include('../Header');%>
         <main>
           <div class="row top">
             <div class="col-1">
               <img class="large-img" src="<%=product.image%>" alt="<%=product.name%>" />
             </div>
             <div class="col-2">
-              <%-include('../partials/ProductDetail',{product:product});%>
+              <%-include('../ProductDetail',{product:product});%>
             </div>
             <div class="col-1">
-              <%-include('../partials/CartCard',{product:product});%>
+              <%-include('../CartCard',{product:product});%>
             </div>
           </div>
         </main>
-        <%-include('../partials/Footer');%>
+        <%-include('../Footer');%>
       </div>
   <%}%>
-      <%-include('../partials/Jquery');%>
+      <%-include('../Jquery');%>
 </body>
 
 </html>
