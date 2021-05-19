@@ -9,7 +9,42 @@
 
   <body>
     <div class="grid-container">
-      <%-include('../partials/Header');%>
+      <header class="row">
+        <div class="row left"><a href="/" class="logo">Jungle</a></div>
+        <div class="row right">
+          <div class="menu-container">
+            <%if (locals.isLoggedIn) {%>
+            <a href="/cart"
+              >カートリスト <%if (locals.cartItem.length > 0) {%>
+              <span id="badge"><%=locals.cartItem.length%></span>
+              <%}%> <%}%>
+            </a>
+            <%if (locals.isLoggedIn) {%>
+            <div class="dropdown">
+              <span><%=locals.userName%></span><i class="fa fa-caret-down"></i>
+              <ul class="dropdown-content">
+                <li><a href="/signOut">サインアウト</a></li>
+                <li><a href="/checkOut/orderHistory">購入履歴</a></li>
+                <li><a href="/userProfile">プロファイル</a></li>
+              </ul>
+            </div>
+            　　<%　if(locals.userData.isAdmin) {%>
+                  <div class="dropdown">
+                    <span>Admin</span><i class="fa fa-caret-down"></i>
+                    <ul class="dropdown-content">
+                      <li>
+                        <a href="/admin/productList">商品</a>
+                      </li>
+                    </ul>      　
+                  </div>
+                <%}%>
+            <% }else { %>
+            <a href="/signUp">新規登録</a>
+            <a href="/signIn">サインイン</a>
+            <% } %>
+          </div>
+        </div>
+      </header>
       <main>
         <div class="row center">
           <%-include('../partials/ProductCard',{products:products});%>
