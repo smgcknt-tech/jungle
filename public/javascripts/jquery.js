@@ -184,21 +184,29 @@ $(() => {
   });
 
   //productRegister.ejs//
+
   $("#imageFile").on("change", (e) => {
-    const file = e.target.files[0];
-    const bodyFormData = new FormData();
-    bodyFormData.append('image', file);
-    $.ajax({
-      type: "POST",
-      url: "/api/upload/image",
-      ContentType:'multipart/form-data',
-      data:bodyFormData,
-    }).done((results) =>{
-      console.log(results);
-    })
+      const file = e.target.files[0];
+      const bodyFormData = new FormData();
+      bodyFormData.append('image', file);
+      $.ajax({
+          url:'/api/upload/image',
+          type: 'POST',
+          contentType: false,
+          processData: false,
+          cache: false,
+          data: bodyFormData,
+          success: (res)=> {
+              alert(res);
+              $('input[name=image]').val(res)
+          },
+          error: ()=> {
+              alert('Error: In sending the request!');
+          }
+      })
+  });
 
 
-  })
 
 
 });
