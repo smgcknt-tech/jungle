@@ -21,7 +21,7 @@ const adminRouter = require("./routes/adminRouter");
 //general setting
 const app = express();
 dotenv.config();
-app.set("views", "./views/pages");
+app.set('views', __dirname + '/views/pages');
 app.set("view engines", "ejs");
 //middleware
 app.use(cors());
