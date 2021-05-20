@@ -29,6 +29,7 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: true })); 
 app.use(session({ secret: "my_secret_key", resave: false, saveUninitialized: false }));
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'build')));
 app.use('/uploads', express.static(path.join(__dirname, '/uploads')));
 app.use([
   MidllewareController.loginCheck, 
