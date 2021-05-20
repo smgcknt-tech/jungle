@@ -21,19 +21,18 @@ const adminRouter = require("./routes/adminRouter");
 //general setting
 const app = express();
 dotenv.config();
-app.set('views', __dirname + '/views/pages');
+app.set("views", __dirname + "/views/pages");
 app.set("view engines", "ejs");
 //middleware
 app.use(cors());
-app.use(express.json())
-app.use(express.urlencoded({ extended: true })); 
-app.use(session({ secret: "my_secret_key", resave: false, saveUninitialized: false }));
-app.use(express.static(path.join(__dirname,'public')));
-app.use('/uploads', express.static(path.join(__dirname, '/uploads')));
-app.use([
-  MidllewareController.loginCheck, 
-  MidllewareController.errorCatcher,
-]);
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(
+  session({ secret: "my_secret_key", resave: false, saveUninitialized: false })
+);
+app.use(express.static(path.join(__dirname, "public")));
+app.use("/uploads", express.static(path.join(__dirname, "/uploads")));
+app.use([MidllewareController.loginCheck, MidllewareController.errorCatcher]);
 //router ※middlewareより下に配置
 app.use("/", TopRouter);
 app.use("/product", ProductRouter);
@@ -43,8 +42,8 @@ app.use("/signOut", SignOutRouter);
 app.use("/signUp", SignUpRouter);
 app.use("/checkOut", CheckOutRouter);
 app.use("/UserProfile", UserProfileRouter);
-app.use("/api",apiRouter);
-app.use("/admin",adminRouter);
+app.use("/api", apiRouter);
+app.use("/admin", adminRouter);
 //db-connection
 const PORT = process.env.PORT || 3000;
 mongoose
