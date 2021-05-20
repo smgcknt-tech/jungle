@@ -1,5 +1,6 @@
 <header class="row">
   <div class="row left"><a href="/" class="logo">jungle</a></div>
+  <div><%-include('./searchBox');%></div>
   <div class="row right">
     <div class="menu-container">
       <%if (locals.isLoggedIn) {%>
@@ -23,6 +24,9 @@
               <ul class="dropdown-content">
                 <li>
                   <a href="/admin/productList">商品</a>
+                </li>
+                <li>
+                  <a href="">注文</a>
                 </li>
               </ul>      　
             </div>

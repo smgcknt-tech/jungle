@@ -109,9 +109,7 @@ $(() => {
     const checkedMethod = $("input:radio[name='paymentMethod']:checked");
     if (checkedMethod.length === 0) {
       e.preventDefault();
-      $("#payment-title").append(
-        '<h1 class="red">お支払い方法が未入力です!</h1>'
-      );
+      $("#payment-title").append('<h1 class="red">未入力です!</h1>');
     }
   });
 
@@ -172,39 +170,57 @@ $(() => {
   //productList.ejs//
   $(".product_delete").on("click", (e) => {
     let id = $(e.currentTarget).attr("id");
-    const data = {id:id}
+    const data = { id: id };
     $.ajax({
       type: "POST",
       url: "/api/delete/product",
       dataType: "json",
       data: data,
-    }).done((results) =>{
+    }).done((results) => {
       $(e.currentTarget).closest(".eachProduct").remove();
-    })
+    });
   });
 
   //productRegister.ejs//
 
   $("#imageFile").on("change", (e) => {
-      const file = e.target.files[0];
-      const bodyFormData = new FormData();
-      bodyFormData.append('image', file);
-      $.ajax({
-          url:'/api/upload/image',
-          type: 'POST',
-          contentType: false,
-          processData: false,
-          cache: false,
-          data: bodyFormData,
-          success: (res)=> {
-              alert(res);
-              $('input[name=image]').val(res)
-          },
-          error: ()=> {
-              alert('Error: In sending the request!');
-          }
-      })
+    const file = e.target.files[0];
+    const bodyFormData = new FormData();
+    bodyFormData.append("image", file);
+    $.ajax({
+      url: "/api/upload/image",
+      type: "POST",
+      contentType: false,
+      processData: false,
+      cache: false,
+      data: bodyFormData,
+      success: (res) => {
+        alert(res);
+        $("input[name=image]").val(res);
+      },
+      error: () => {
+        alert("Error: In sending the request!");
+      },
+    });
   });
+
+  $("#register-button").on("click", (e) => {
+    const name = $("input[name='name']");
+    const price = $("input[name='price']");
+    const image = $("input[name='image']");
+    const category = $("input[name='category']");
+    const brand = $("input[name='brand']");
+    const countInStock = $("input[name='countInStock']");   
+    const description = $("textarea[name='description']");
+    const arr =[name,price,image,category,brand,countInStock,description]
+    for(let i = 0; i < arr.length ; i++) {
+      if (arr[i].val() === "") {
+        e.preventDefault();
+        arr[i].attr("placeholder", "未入力です!").addClass("red");
+      }
+    }  
+  });
+
 
 
 
