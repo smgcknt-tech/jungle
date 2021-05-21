@@ -11,9 +11,16 @@
     <div class="grid-container">
       <%-include('../Header');%>
       <main>
+        <%if(results.length > 0 ){%>
         <div class="row center">
           <%-include('../ProductCard',{products:results});%>
         </div>
+        <%}else{%>
+        <div>
+          <h1>カート一覧</h1>
+          <h2>条件に一致する商品はございません。</h2>
+        </div>
+        <%}%>
       </main>
       <%-include('../Footer');%>
     </div>

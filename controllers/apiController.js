@@ -35,13 +35,14 @@ module.exports = {
     },
     searchProduct:async(req,res)=>{
         const kwd = req.query.search_key;
-        console.log(kwd);
         const results = await p.product.searchProduct(kwd);
-        console.log(results);
         res.render("searchResults.ejs",{results:results})
-
-
-    }
+    },
+    searchCategory:async(req,res)=>{
+        const category = req.params.id;
+        const results = await p.product.searchCategory(category);
+        res.render("searchResults.ejs",{results:results})
+    },
 }
 
 //error-catcher

@@ -12,8 +12,19 @@ module.exports = {
     findAll: () => {
       return Product.find({});
     },
+    findCategory:async() => {
+      const products = await Product.find({});
+      const arr = products.map((product)=>{
+        return product.category
+      })
+      const categories = await Array.from(new Set(arr));
+      return categories
+    },
     searchProduct: (kwd) => {
       return Product.find({ name: { $regex: kwd, $options: "i" }});
+    },
+    searchCategory:(category)=> {
+      return Product.find({category:category});
     },
     create: async(req,userId) => {
       const createdProduct = await new Product({

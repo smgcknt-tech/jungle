@@ -30,7 +30,7 @@ body {
     display: grid;
     grid-template-areas: "header" "main" "footer";
     grid-template-columns: 1fr;
-    grid-template-rows:9rem 1fr 5rem;
+    grid-template-rows:10rem 1fr 5rem;
     height: 100%;
   }
 }
@@ -169,6 +169,7 @@ a.logo {
   font-size: 2.5rem;
   font-weight: bold;
   display: inline-block;
+  margin-bottom:0.5rem;
 }
 
 #badge {
@@ -186,6 +187,41 @@ a.logo {
 
 .fa-caret-down {
   color: white;
+}
+
+/* Aside */
+aside {
+  position: fixed;
+  width: 30rem;
+  height: 100%;
+  background-color: #efefef;
+  z-index: 1000;
+  transform: translateX(-30rem);
+  transition: all 0.5s;
+}
+aside.open {
+  transform: translateX(0);
+}
+button.open-sidebar {
+  font-size: 3rem;
+  padding: 0.2rem 0.5rem;
+  margin: 0 0.5rem;
+  background: none;
+  color: #ffffff;
+  cursor: pointer;
+  border:none
+}
+button.open-sidebar:hover {
+  border-color: #ffffff;
+}
+aside ul {
+  padding: 0;
+  list-style: none;
+}
+aside li {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
 }
 
 /*images:*/
@@ -323,6 +359,8 @@ img.image-body {
   display: inline-block;
   position: relative;
   margin-left:0;
+  cursor: pointer;
+
 }
 
 .dropdown-content {
@@ -374,6 +412,10 @@ img.image-body {
   border-collapse:collapse;
 }
 
+tr{
+  background-color:#b6b2b2;
+}
+
 .table tbody tr:nth-of-type(odd) {
   background-color: #f4f4f4;
 }
@@ -393,13 +435,11 @@ img.image-body {
   border-radius: 0 0.5rem 0.5rem 0;
   border-right: none;
   margin-right: 1rem;
-  margin-top: 0.5rem;
 }
 .search input {
   border-radius: 0.5rem 0 0 0.5rem;
   border-right: none;
   margin-left: 0.5rem;
-  margin-top: 0.5rem;
   padding: 1rem;
   border-radius: 0.5rem;
   border: 0.1rem #a4a4a4 solid;
@@ -407,7 +447,7 @@ img.image-body {
 }
 @media screen and (max-width: 480px) {
 	.search input {
-    width: 12rem;
+    width: 10rem;
   }
 }
 

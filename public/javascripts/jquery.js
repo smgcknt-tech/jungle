@@ -233,6 +233,25 @@ $(() => {
       }
     }  
   });
+  //searchBox.ejs//
+  
+  $("#search-button").on("click", (e) => {
+    const kwd = $("input[name='search_key']");
+    const arr =[kwd]
+    for(let i = 0; i < arr.length ; i++) {
+      if (arr[i].val() === "") {
+        e.preventDefault();
+        arr[i].attr("placeholder", "未入力です!").addClass("red");
+      }
+    }  
+  });
+  //sideBar.ejs//
+  $(".open-sidebar").on("click", () => {
+    $('#sideBar').addClass('open'); 
+  });
+  $(".close-sidebar").on("click", () => {
+    $('#sideBar').removeClass('open'); 
+  });
 
 
 

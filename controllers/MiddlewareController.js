@@ -5,6 +5,7 @@ const u = Users;
 
 module.exports = {
   loginCheck:async (req, res, next) => {
+    res.locals.categories = await p.product.findCategory()
     if(req.session.userId === undefined){
       res.locals.isLoggedIn = false
       res.locals.userName = 'ゲスト'
