@@ -233,6 +233,8 @@ $(() => {
       }
     }  
   });
+  //header.ejs//
+  $("input[name='search_key']").val("")
   //searchBox.ejs//
   
   $("#search-button").on("click", (e) => {
@@ -243,7 +245,7 @@ $(() => {
         e.preventDefault();
         arr[i].attr("placeholder", "未入力です!").addClass("red");
       }
-    }  
+    }
   });
   //sideBar.ejs//
   $(".open-sidebar").on("click", () => {
