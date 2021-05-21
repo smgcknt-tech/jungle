@@ -1,7 +1,7 @@
 <header class="row">
   <div><a href="/" class="logo">jungle</a></div>
   <div><%-include('./searchBox');%></div>
-  <div>
+  <div class="row">
     <div>
       <%if (locals.isLoggedIn) {%>
       <a href="/cart"
@@ -19,17 +19,15 @@
         <li><a href="/userProfile">プロファイル</a></li>
       </ul>
     </div>
-    　　<%　if(locals.userData.isAdmin) {%>
+    　<%if(locals.userData.isAdmin) {%>
     <div class="dropdown">
       <span>Admin</span><i class="fa fa-caret-down"></i>
       <ul class="dropdown-content">
         <li>
           <a href="/admin/productList">商品</a>
         </li>
-        <li>
-          <a href="">注文</a>
-        </li>
-      </ul>     　
+      </ul>
+      　
     </div>
     <%}%> <% }else { %>
     <a href="/signUp">新規登録</a>

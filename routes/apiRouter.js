@@ -17,6 +17,7 @@ const upload = multer({ storage })
 router.post("/update/userProfile", a.updateUserProfile);
 router.post("/create/product", a.createProduct);
 router.post("/edit/product/:id", a.editProduct);
+router.get("/search/product", a.searchProduct);
 router.post("/delete/product", a.deleteProduct);
 router.post("/upload/image",upload.single('image'), (req, res) => {
   res.send(`/${req.file.path}`);

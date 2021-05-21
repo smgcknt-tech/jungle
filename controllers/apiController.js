@@ -32,7 +32,13 @@ module.exports = {
     uploadimage:(req,res) => {
 
         res.send(`/${req.file.path}`);
-
+    },
+    searchProduct:async(req,res)=>{
+        const kwd = req.query.search_key;
+        console.log(kwd);
+        const results = await p.product.searchProduct(kwd);
+        console.log(results);
+        res.render("searchResults.ejs",{results:results})
 
 
     }

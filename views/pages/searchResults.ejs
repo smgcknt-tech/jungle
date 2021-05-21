@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <%-include('../Stylesheet');%>
+    <title>Jungle</title>
+  </head>
+
+  <body>
+    <div class="grid-container">
+      <%-include('../Header');%>
+      <main>
+        <div class="row center">
+          <%-include('../ProductCard',{products:results});%>
+        </div>
+      </main>
+      <%-include('../Footer');%>
+    </div>
+    <%-include('../Jquery');%>
+  </body>
+</html>

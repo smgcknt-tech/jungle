@@ -35,9 +35,15 @@ module.exports = {
     userExists: (email) => {
       return User.exists({ email: email });
     },
-    newUser: async (userName, email, hash) => {
+    newUser: async (userName, email, hash, admin) => {
+      if(admin === "undefined"){
+        admin = false;
+      }else{
+        admin = true
+      }
+      console.log(admin)
       const user = new User({
-        isAdmin: false,
+        isAdmin: admin,
         name: userName,
         email: email,
         password: hash,

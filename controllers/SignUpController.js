@@ -43,8 +43,9 @@ module.exports = {
     const userName = req.body.userName;
     const email = req.body.email;
     const password = req.body.password;
+    let admin = req.body.admin;
     bcryptjs.hash(password, 10, async(error, hash) => {
-      await u.signUp.newUser(userName, email, hash)
+      await u.signUp.newUser(userName, email, hash,admin)
         .then((user) => {
           req.session.userId = user._id;
           req.session.userName = userName;

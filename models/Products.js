@@ -12,6 +12,9 @@ module.exports = {
     findAll: () => {
       return Product.find({});
     },
+    searchProduct: (kwd) => {
+      return Product.find({ name: { $regex: kwd, $options: "i" }});
+    },
     create: async(req,userId) => {
       const createdProduct = await new Product({
         name: req.body.name,

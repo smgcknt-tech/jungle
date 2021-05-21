@@ -86,6 +86,19 @@ $(() => {
       }
     });
   });
+  //SignIn.ejs//
+  $("#signIn-button").on("click", (e) => {
+    const email = $("input[name='email']");
+    const password = $("input[name='password']");
+    const arr =[email,password]
+    for(let i = 0; i < arr.length ; i++) {
+      if (arr[i].val() === "") {
+        e.preventDefault();
+        arr[i].attr("placeholder", "未入力です!").addClass("red");
+      }
+    }  
+  });
+
 
   //Shipping.ejs//
   const step2 = $("button[id='step2']");

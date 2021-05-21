@@ -30,7 +30,7 @@ body {
     display: grid;
     grid-template-areas: "header" "main" "footer";
     grid-template-columns: 1fr;
-    grid-template-rows:12rem 1fr 5rem;
+    grid-template-rows:9rem 1fr 5rem;
     height: 100%;
   }
 }
@@ -322,6 +322,7 @@ img.image-body {
 .dropdown {
   display: inline-block;
   position: relative;
+  margin-left:0;
 }
 
 .dropdown-content {
@@ -391,17 +392,25 @@ img.image-body {
 .search button {
   border-radius: 0 0.5rem 0.5rem 0;
   border-right: none;
-  margin-right: 0.5rem;
+  margin-right: 1rem;
+  margin-top: 0.5rem;
 }
 .search input {
   border-radius: 0.5rem 0 0 0.5rem;
   border-right: none;
   margin-left: 0.5rem;
+  margin-top: 0.5rem;
   padding: 1rem;
   border-radius: 0.5rem;
   border: 0.1rem #a4a4a4 solid;
   font-size: 1.6rem;
 }
+@media screen and (max-width: 480px) {
+	.search input {
+    width: 12rem;
+  }
+}
+
 
 
 /*alert*/
