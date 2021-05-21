@@ -29,11 +29,19 @@ module.exports = {
       const doesExist = await u.checkOut.methodDuplicationCheck(userId);
       if (doesExist) {
         await u.checkOut.updateMethod(method, userId);
+
       } else {
         await u.checkOut.newMethod(method, userId);
       }
+    } 
+    
+    if(id !==4 ){
+      res.render("CheckOut.ejs", { steps : steps}); 
+
+    }else{
+      res.redirect("/checkOut/orderConfirmation");
     }
-    res.render("CheckOut.ejs", { steps : steps});
+
   },
   orderConfirmation:(req,res)=>{    
     res.render("orderConfirmation.ejs", {paypalId : paypalId });
