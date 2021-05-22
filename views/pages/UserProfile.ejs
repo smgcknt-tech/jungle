@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <%-include('../Stylesheet');%>
-    <title>Jungle</title>
+    <title>ユーザ情報</title>
   </head>
 
   <body>
@@ -13,7 +13,7 @@
       <main>
         <div>
           <form class="form" action="/api/update/userProfile" method="POST">
-            <div><h1>User Profile</h1></div>
+            <div><h1>ユーザー情報</h1></div>
             <div>
               <label for="name">Name</label>
               <input
@@ -24,7 +24,7 @@
               />
             </div>
             <div>
-              <label for="email">email</label>
+              <label for="email">メール</label>
               <input
                 name="email"
                 type="text"
@@ -33,7 +33,7 @@
               />
             </div>
             <div>
-              <label for="password">password</label>
+              <label for="password">パスワード</label>
               <input
                 name="password"
                 type="password"

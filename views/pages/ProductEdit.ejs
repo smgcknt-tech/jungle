@@ -13,11 +13,11 @@
         <main>
           <form class="form" action="/api/edit/product/<%=editingProduct._id%>" method="POST">
           <div>
-            <h1>Edit Product</h1>
+            <h1>商品情報編集</h1>
             
           </div>
               <div>
-                <label htmlFor="name">Name</label>
+                <label htmlFor="name">商品名</label>
                 <input
                   name="name"
                   type="text"
@@ -26,7 +26,7 @@
                 ></input>
               </div>
               <div>
-                <label htmlFor="price">Price</label>
+                <label htmlFor="price">価格</label>
                 <input
                   name="price"
                   type="text"
@@ -35,7 +35,7 @@
                 ></input>
               </div>
               <div>
-                <label htmlFor="image">Image</label>
+                <label htmlFor="image">商品画像</label>
                 <input
                   name="image"
                   type="text"
@@ -44,7 +44,7 @@
                 ></input>
               </div>
               <div>
-                <label htmlFor="category">Category</label>
+                <label htmlFor="category">カテゴリー</label>
                 <input
                   name="category"
                   type="text"
@@ -53,7 +53,7 @@
                 ></input>
               </div>
               <div>
-                <label htmlFor="brand">Brand</label>
+                <label htmlFor="brand">ブランド</label>
                 <input
                   name="brand"
                   type="text"
@@ -62,7 +62,7 @@
                 ></input>
               </div>
               <div>
-                <label htmlFor="countInStock">Count In Stock</label>
+                <label htmlFor="countInStock">在庫</label>
                 <input
                   name="countInStock"
                   type="text"
@@ -71,7 +71,7 @@
                 ></input>
               </div>
               <div>
-                <label htmlFor="description">Description</label>
+                <label htmlFor="description">商品詳細</label>
                 <textarea
                   name="description"
                   rows="3"
@@ -82,7 +82,7 @@
               <div>
                 <label></label>
                 <button class="primary" type="submit">
-                  Update
+                  更新
                 </button>
               </div>
         </form>
