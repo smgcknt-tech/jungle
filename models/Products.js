@@ -3,7 +3,6 @@ const cartItem = require("../models/CartModel");
 const Order = require("./OrderModels");
 const User = require("./UserModel");
 
-
 module.exports = {
   product: {
     findOne: (id) => {
@@ -12,21 +11,21 @@ module.exports = {
     findAll: () => {
       return Product.find({});
     },
-    findCategory:async() => {
+    findCategory: async () => {
       const products = await Product.find({});
-      const arr = products.map((product)=>{
-        return product.category
-      })
+      const arr = products.map((product) => {
+        return product.category;
+      });
       const categories = await Array.from(new Set(arr));
-      return categories
+      return categories;
     },
     searchProduct: (kwd) => {
-      return Product.find({ name: { $regex: kwd, $options: "i" }});
+      return Product.find({ name: { $regex: kwd, $options: "i" } });
     },
-    searchCategory:(category)=> {
-      return Product.find({category:category});
+    searchCategory: (category) => {
+      return Product.find({ category: category });
     },
-    create: async(req,userId) => {
+    create: async (req, userId) => {
       const createdProduct = await new Product({
         name: req.body.name,
         price: req.body.price,
@@ -35,38 +34,38 @@ module.exports = {
         countInStock: req.body.countInStock,
         image: req.body.image,
         description: req.body.description,
-        rating:0,
-        numReviews:0,
-        user:userId,  
+        rating: 0,
+        numReviews: 0,
+        user: userId,
       });
       await createdProduct.save();
       await User.findOneAndUpdate(
         { _id: userId },
-        { $push: { product: createdProduct._id } },
+        { $push: { product: createdProduct._id } }
       );
       return createdProduct;
     },
-    editProduct: (req,productId) => {
+    editProduct: (req, productId) => {
       return Product.findOneAndUpdate(
-        { _id : productId},
+        { _id: productId },
         {
-        name: req.body.name,
-        price: req.body.price,
-        category: req.body.category,
-        brand: req.body.brand,
-        countInStock: req.body.countInStock,
-        image: req.body.image,
-        description: req.body.description,
+          name: req.body.name,
+          price: req.body.price,
+          category: req.body.category,
+          brand: req.body.brand,
+          countInStock: req.body.countInStock,
+          image: req.body.image,
+          description: req.body.description,
         }
       );
     },
-    deleteProduct:(productId)=>{
-      return Product.deleteOne({_id : productId})
+    deleteProduct: (productId) => {
+      return Product.deleteOne({ _id: productId });
     },
   },
   cart: {
     findAll: (userId) => {
-      return cartItem.find({user:userId});
+      return cartItem.find({ user: userId });
     },
     duplicationCheck: (id) => {
       return cartItem.exists({ productId: id });
@@ -84,35 +83,35 @@ module.exports = {
         price: product.price,
         qty: qty,
         countInStock: product.countInStock,
-        image:product.image,
-        user:userId
+        image: product.image,
+        user: userId,
       });
     },
-    delete:(id)=>{
-      return cartItem.deleteOne({ productId: id })
+    delete: (id) => {
+      return cartItem.deleteOne({ productId: id });
+    },
+    deleteAllCart: (id) => {
+      return cartItem.deleteMany({ user: id });
     },
     updateQty: (id, qty) => {
-      return cartItem.findOneAndUpdate(
-        { productId: id },
-        { qty: qty }
-      );
+      return cartItem.findOneAndUpdate({ productId: id }, { qty: qty });
     },
   },
-  order:{
-    createOrder: async (ordered_price,userId)=>{
+  order: {
+    createOrder: async (req, userId) => {
       const createdOrder = new Order({
-        ordered_price : ordered_price,
-        user: userId
+        ordered_price: req.body.ordered_price,
+        method: req.body.method,
+        payment: req.body.payment,
+        user: userId,
       });
       await createdOrder.save();
       await User.findOneAndUpdate(
         { _id: userId },
-        { $push: { order: createdOrder._id } },
+        { $push: { order: createdOrder._id } }
       );
+      
       return createdOrder;
-
-
-
     },
   },
 };

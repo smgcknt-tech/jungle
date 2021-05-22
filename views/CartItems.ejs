@@ -24,13 +24,11 @@
           value="<%=p.qty%>"
         />
 
-        <div class="eachPrice dTable_c"><%=p.price%>円</div>
+        <div class="eachPrice dTable_c" data-price="<%=p.price%>"><%=p.price.toLocaleString()%>円</div>
 
-        <div class="sumPrice dTable_c min-20">小計<%=p.price*p.qty%>円</div>
+        <div class="sumPrice dTable_c min-20" data-price="<%=p.price%>">小計<%=(p.price*p.qty).toLocaleString()%>円</div>
         <div class="dTable_c">
-          <a class="cart_delete" data-id="<%=p.productId%>"
-            ><i class="fas fa-trash"></i
-          ></a>
+          <a class="cart_delete" data-id="<%=p.productId%>"><i class="fas fa-trash"></i></a>
         </div>
       </div>
     </li>

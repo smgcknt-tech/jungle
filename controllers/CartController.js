@@ -28,7 +28,6 @@ module.exports = {
     await p.cart.delete(id)
     const cartItem = await p.cart.findAll(userId)
     res.send(String(cartItem.length));
-    
   },
   updateQty:async(req, res)=> {
     const id = req.body.id
@@ -38,7 +37,4 @@ module.exports = {
   },
 };
 
-//error-catcher
-process.on("unhandledRejection", (reason, p) => {
-  console.log("Unhandled Rejection at: Promise", p, "reason:", reason);
-});
+

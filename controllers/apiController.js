@@ -21,6 +21,7 @@ module.exports = {
     },
     editProduct :async (req,res) => {
         const productId = req.params.id
+        console.log(Number(req.body.price).toLocaleString())
         await p.product.editProduct(req,productId);
         res.redirect("/admin/productList");
     },
@@ -45,8 +46,4 @@ module.exports = {
     },
 }
 
-//error-catcher
-process.on("unhandledRejection", (reason, p) => {
-    console.log("Unhandled Rejection at: Promise", p, "reason:", reason);
-});
   

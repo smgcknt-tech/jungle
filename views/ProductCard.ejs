@@ -10,7 +10,7 @@
     </a>
     <%-include('./Rating.ejs',{rating:product.rating,
     numReviews:product.numReviews});%>
-    <div class="price">￥<%=product.price%></div>
+    <div class="price">￥<%=product.price.toLocaleString()%></div>
   </div>
 </div>
 <% }) %>

@@ -4,19 +4,13 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <%-include('../Stylesheet');%>
-    <title>検索結果</title>
+    <title>支払い完了</title>
   </head>
   <body>
     <div class="grid-container">
       <%-include('../Header');%>
       <main>
-        <%if(results.length > 0 ){%>
-        <div class="row center">
-          <%-include('../ProductCard',{products:results});%>
-        </div>
-        <%}else{%>
-        <div class="center"><h1 class="center message">申し訳ございません。条件に一致する商品はございません。</h1></div>
-        <%}%>
+          <div class="center"><h1 class="center message">お支払、完了いたしました。ご利用ありがとうございました！</h1></div>
       </main>
       <%-include('../Footer');%>
     </div>

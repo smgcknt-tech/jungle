@@ -46,17 +46,17 @@ module.exports = {
   orderConfirmation:(req,res)=>{    
     res.render("orderConfirmation.ejs", {paypalId : paypalId });
   },
-  createOrder:(req,res)=>{
-    const ordered_price =req.body.ordered_price;
+  createOrder:async(req,res)=>{
     const userId = req.session.userId;
-    p.order.createOrder(ordered_price,userId)
+    await p.order.createOrder(req,userId)
+    //決済済みの商品だけ削除
+    await p.cart.deleteAllCart(userId)
   },
   orderHistory:(req,res)=>{    
     res.render("orderHistory.ejs", {paypalId : paypalId });
   },
+  thanks:(req,res)=>{    
+    res.render("thanks.ejs");
+  },
 };
 
-//error-catcher
-process.on("unhandledRejection", (reason, p) => {
-  console.log("Unhandled Rejection at: Promise", p, "reason:", reason);
-});

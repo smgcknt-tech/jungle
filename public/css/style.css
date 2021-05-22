@@ -137,6 +137,23 @@ h2 {
   justify-content: right;
 }
 
+.center{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height:100%;
+}
+
+.message{
+  width:80%;
+  height:25%;
+  padding:2rem;
+  color:#c0c0c0;
+  background-color: #efefef;
+  border-radius:0.5rem;
+  border: 0.1rem #c0c0c0 solid;
+}
+
 .row.top {
   align-items: flex-start;
 }
@@ -155,6 +172,7 @@ h2 {
 .width-100{
   width:100%;
 }
+
 
 /*header*/
 header a,
@@ -412,7 +430,7 @@ img.image-body {
   border-collapse:collapse;
 }
 
-tr{
+thead{
   background-color:#b6b2b2;
 }
 

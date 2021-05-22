@@ -36,11 +36,11 @@
                               <a href="/product/<%=p.productId%>"><%=p.name%></a>
                             </h3>
                           </div>
-                          <div class="eachQty dTable_c"><%=p.qty%>点</div>
+                          <div class="eachQty dTable_c" data-qty="<%=p.qty%>"><%=p.qty%>点</div>
         
-                          <div class="eachPrice dTable_c"><%=p.price%>円</div>
+                          <div class="eachPrice dTable_c"><%=p.price.toLocaleString()%>円</div>
         
-                          <div class="orderedSumPrice dTable_c">小計<%=p.price*p.qty%>円</div>
+                          <div class="orderedSumPrice dTable_c">小計<%=(p.price * p.qty).toLocaleString()%>円</div>
                         </div>
                       </li>
                       <%})%>
@@ -59,6 +59,11 @@
                   <div id="ordered_price" value=""></div>
                 </li>
                 <li id="payment_button"></li>
+                <li>
+                  <h2>テスト決済用ペイパルアカウント</h2>
+                  <p>email: sb-ttu43x6177036@personal.example.com</p>
+                  <p>password: ;?5HDTom</p>
+                </li>
               </ul>
             </div>
           </div>

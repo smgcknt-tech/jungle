@@ -19,10 +19,10 @@ $(() => {
   const calculateTotalPrice = () => {
     let totalPrice = 0;
     $(".sumPrice").each((i, val) => {
-      let b = Number($(val).text().slice(2, -1));
+      let b = Number($(val).data("price"));
       totalPrice += b;
       let taxIncluded = totalPrice + totalPrice * 0.1;
-      $("#sum_price").text("合計：" + taxIncluded + "円(税込)");
+      $("#sum_price").text("合計：" + Math.ceil(taxIncluded).toLocaleString() + "円(税込)");
     });
   };
   calculateTotalPrice();
@@ -30,7 +30,7 @@ $(() => {
   $(".eachInput").change(() => {
     let eachPrice = [];
     $(".eachPrice").each((i, val) => {
-      a = Number($(val).text().slice(0, -1));
+      a = Number($(val).data("price"));
       eachPrice.push(a);
     });
     let totalItem = 0;
@@ -60,15 +60,16 @@ $(() => {
 
     let totalPrice = 0;
     $(".sumPrice").each((i, val) => {
-      let b = Number($(val).text().slice(2, -1));
+      let b = Number($(val).data("price"));
       totalPrice += b;
       let taxIncluded = totalPrice + totalPrice * 0.1;
-      $("#sum_price").text("合計：" + taxIncluded + "円(税込)");
+      $("#sum_price").text("合計：" + Math.ceil(taxIncluded).toLocaleString() + "円(税込)");
     });
   });
 
   $(".cart_delete").on("click", (e) => {
-    let id = Number($(e.currentTarget).data("id"));
+    let id = $(e.currentTarget).data("id");
+    console.log(id)
     $.ajax({
       type: "POST",
       url: "/cart/delete",
@@ -84,21 +85,21 @@ $(() => {
         $("#cart-sum").remove();
         $("#cart-box").append("<h2>現在登録された商品はございません。</h2>");
       }
-    });
+    })
   });
+
   //SignIn.ejs//
   $("#signIn-button").on("click", (e) => {
     const email = $("input[name='email']");
     const password = $("input[name='password']");
-    const arr =[email,password]
-    for(let i = 0; i < arr.length ; i++) {
+    const arr = [email, password];
+    for (let i = 0; i < arr.length; i++) {
       if (arr[i].val() === "") {
         e.preventDefault();
         arr[i].attr("placeholder", "未入力です!").addClass("red");
       }
-    }  
+    }
   });
-
 
   //Shipping.ejs//
   const step2 = $("button[id='step2']");
@@ -126,49 +127,56 @@ $(() => {
     }
   });
 
-  //placeOrder.ejs//
+  //OrderConfirmation.ejs//
   const calculateOrderedItem = () => {
     let totalItem = 0;
     $(".eachQty").each((i, val) => {
-      let a = Number($(val).text().slice(0, -1));
+      let a = Number($(val).data("qty"));
       totalItem += a;
       $("#ordered_qty").text("合計：" + totalItem + "点");
     });
   };
   calculateOrderedItem();
 
-  const calculateOrderedPrice = () => {
+  const calculateOrderedTotalPrice = () => {
     let totalPrice = 0;
     $(".orderedSumPrice").each((i, val) => {
-      let b = Number($(val).text().slice(2, -1));
+      let b = Number($(val).text().slice(2,-1).split(",").join(""))
       totalPrice += b;
       let taxIncluded = totalPrice + totalPrice * 0.1;
-      $("#ordered_price").text("合計：" + taxIncluded + "円(税込)");
-      $("#ordered_price").attr("value", taxIncluded);
+      $("#ordered_price").text("合計：" + Math.ceil(taxIncluded).toLocaleString() + "円(税込)");
+      $("#ordered_price").attr("value",Math.ceil(taxIncluded))
     });
   };
-  calculateOrderedPrice();
 
-  $("#orderConfirmation").on("click", () => {
-    const ordered_price = $("#ordered_price").attr("value");
-    const data = { ordered_price: ordered_price };
-    $.post("/checkOut/create/order", data, (data) => {}, "json");
-  });
+  calculateOrderedTotalPrice();
 
-  //OrderConfirmation.ejs//
   const showPaymentButton = () => {
     const payment = $("#payment_method").text();
     if (payment.includes("paypal")) {
       $("#payment_button").html(
         '<li id = "payment_button"> <div id="paypal-button-container"></div> </li>'
       );
-    } else if (payment.includes("cash")) {
+    } else if (payment.includes("着払い")) {
       $("#payment_button").html(
-        '<li id = "payment_button"><button class="primary width-100">現金決済</button></li>'
+        '<li id = "payment_button"> <button class="primary width-100" id="cash_on_delivery">着払い</button></li>'
       );
     }
   };
   showPaymentButton();
+
+  $("#cash_on_delivery").on("click", (e) => {
+    const ordered_price = $("#ordered_price").attr("value");
+    const data = {
+      ordered_price: ordered_price,
+      method: "現金",
+      payment: "完了",
+    };
+    $.post("/checkOut/create/order", data, () => {}, "json");
+    window.location.href="/checkOut/thanks"
+  });
+
+
 
   //UserProfile.ejs//
   const updateProfile = $("button[id='updateConfirmation']");
@@ -223,24 +231,32 @@ $(() => {
     const image = $("input[name='image']");
     const category = $("input[name='category']");
     const brand = $("input[name='brand']");
-    const countInStock = $("input[name='countInStock']");   
+    const countInStock = $("input[name='countInStock']");
     const description = $("textarea[name='description']");
-    const arr =[name,price,image,category,brand,countInStock,description]
-    for(let i = 0; i < arr.length ; i++) {
+    const arr = [
+      name,
+      price,
+      image,
+      category,
+      brand,
+      countInStock,
+      description,
+    ];
+    for (let i = 0; i < arr.length; i++) {
       if (arr[i].val() === "") {
         e.preventDefault();
         arr[i].attr("placeholder", "未入力です!").addClass("red");
       }
-    }  
+    }
   });
   //header.ejs//
-  $("input[name='search_key']").val("")
+  $("input[name='search_key']").val("");
   //searchBox.ejs//
-  
+
   $("#search-button").on("click", (e) => {
     const kwd = $("input[name='search_key']");
-    const arr =[kwd]
-    for(let i = 0; i < arr.length ; i++) {
+    const arr = [kwd];
+    for (let i = 0; i < arr.length; i++) {
       if (arr[i].val() === "") {
         e.preventDefault();
         arr[i].attr("placeholder", "未入力です!").addClass("red");
@@ -249,14 +265,9 @@ $(() => {
   });
   //sideBar.ejs//
   $(".open-sidebar").on("click", () => {
-    $('#sideBar').addClass('open'); 
+    $("#sideBar").addClass("open");
   });
   $(".close-sidebar").on("click", () => {
-    $('#sideBar').removeClass('open'); 
+    $("#sideBar").removeClass("open");
   });
-
-
-
-
-
 });
