@@ -1,4 +1,3 @@
-const multer =require ("multer");
 const Users = require("../models/Users");
 const u = Users;
 const bcryptjs = require("bcryptjs");
@@ -29,10 +28,6 @@ module.exports = {
         const productId = req.body.id
         await p.product.deleteProduct(productId);
         res.send({message:"ok"})
-    },
-    uploadimage:(req,res) => {
-
-        res.send(`/${req.file.path}`);
     },
     searchProduct:async(req,res)=>{
         const kwd = req.query.search_key;

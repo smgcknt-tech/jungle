@@ -16,6 +16,7 @@ const SignOutRouter = require("./routes/SignOutRouter");
 const SignUpRouter = require("./routes/SignUpRouter");
 const CheckOutRouter = require("./routes/CheckOutRouter");
 const UserProfileRouter = require("./routes/UserProfileRouter");
+const UploadRouter = require("./routes/UploadRouter");
 const apiRouter = require("./routes/apiRouter");
 const adminRouter = require("./routes/adminRouter");
 //general setting
@@ -42,6 +43,7 @@ app.use("/signOut", SignOutRouter);
 app.use("/signUp", SignUpRouter);
 app.use("/checkOut", CheckOutRouter);
 app.use("/UserProfile", UserProfileRouter);
+app.use("/upload", UploadRouter);
 app.use("/api", apiRouter);
 app.use("/admin", adminRouter);
 //db-connection
