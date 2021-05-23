@@ -301,12 +301,16 @@ img.image-body {
   border-radius: 1rem;
   margin: 0 1rem;
 }
+.eachCart > *{
+  text-align:center;
+}
 
 @media screen and (max-width: 569px) {
   .cartItems{
     font-size: 0.1rem;
     padding:0.3rem;
   }
+
   .cartItems h1{
     padding-left:0.5rem;
     font-size: 0.1rem;
@@ -320,7 +324,7 @@ img.image-body {
 }
 
 
-.min-35{
+.min-30{
   width: 35%;
 }
 
