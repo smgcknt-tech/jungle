@@ -31,10 +31,10 @@ module.exports = {
       return Product.find({ name: { $regex: kwd, $options: "i" } });
     },
     searchCategory: (category) => {
-      return Product.find({ category: category });
+      return Product.find({category : category});
     },
-    searchCategory: (brand) => {
-      return Product.find({ brand: brand });
+    searchBrand: (brand) => {
+     return Product.find({ brand: brand });
     },
     create: async (req, userId) => {
       const createdProduct = await new Product({

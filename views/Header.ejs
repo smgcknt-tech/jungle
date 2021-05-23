@@ -10,10 +10,11 @@
   <div class="row">
     <div>
       <%if (locals.isLoggedIn) {%>
-      <a href="/cart"
-        >カートリスト <%if (locals.cartItem.length > 0) {%>
+      <a href="/cart">カートリスト 
+        <%if (locals.cartItem.length > 0) {%>
         <span id="badge"><%=locals.cartItem.length%></span>
-        <%}%> <%}%>
+        <%}%> 
+      <%}%>
       </a>
     </div>
     <%if (locals.isLoggedIn) {%>
@@ -22,22 +23,22 @@
       <ul class="dropdown-content">
         <li><a href="/signOut">サインアウト</a></li>
         <li><a href="/checkOut/orderHistory">購入履歴</a></li>
-        <li><a href="/userProfile">プロファイル</a></li>
+   <li><a href="/userProfile">プロファイル</a></li>
       </ul>
     </div>
-    　<%if(locals.userData.isAdmin) {%>
-    <div class="dropdown">
-      <span>Admin</span><i class="fa fa-caret-down"></i>
-      <ul class="dropdown-content">
-        <li>
-          <a href="/admin/productList">商品</a>
-        </li>
-      </ul>
-      　
-    </div>
-    <%}%> <% }else { %>
-    <a href="/signUp">新規登録</a>
-    <a href="/signIn">サインイン</a>
+    　<%if(locals.userData.isAdmin){%>
+        <div class="dropdown">
+          <span>Admin</span><i class="fa fa-caret-down"></i>
+          <ul class="dropdown-content">
+            <li>
+              <a href="/admin/productList">商品</a>
+            </li>
+          </ul>
+        </div>
+      <%}%> 
+    <% }else {%>
+      <a href="/signUp">新規登録</a>
+      <a href="/signIn">サインイン</a>
     <% } %>
   </div>
 </header>
