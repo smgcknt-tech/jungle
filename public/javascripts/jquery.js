@@ -52,6 +52,7 @@ $(() => {
           console.log(response);
         },
       });
+      
     });
 
     $(".sumPrice").each((i, val) => {
@@ -63,6 +64,7 @@ $(() => {
       let b = Number($(val).data("price"));
       totalPrice += b;
       let taxIncluded = totalPrice + totalPrice * 0.1;
+
       $("#sum_price").text("合計：" + Math.ceil(taxIncluded).toLocaleString() + "円(税込)");
     });
   });

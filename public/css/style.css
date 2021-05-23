@@ -302,8 +302,26 @@ img.image-body {
   margin: 0 1rem;
 }
 
-.min-30 {
-  width: 30%;
+@media screen and (max-width: 569px) {
+  .cartItems{
+    font-size: 0.1rem;
+    padding:0 0.3rem;
+  }
+  .cartItems h1{
+    padding-left:0.5rem;
+    font-size: 0.1rem;
+  }
+  .delete-icon {
+    width: 10%;
+  }
+  .eachInput.dTable_c{
+    font-size: 0.1rem;
+  }
+}
+
+
+.min-40 {
+  width: 40%;
 }
 
 .min-20 {
