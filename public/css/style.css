@@ -25,7 +25,7 @@ body {
   grid-template-rows: 5rem 1fr 5rem;
   height: 100%;
 }
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 767px) {
   .grid-container {
     display: grid;
     grid-template-areas: "header" "main" "footer";
@@ -35,7 +35,7 @@ body {
   }
 }
 
-@media screen and (max-width: 1000px) {
+@media (max-width: 1020px) and (min-width: 768px)  {
   .grid-container {
     display: grid;
     grid-template-areas: "header" "main" "footer";
