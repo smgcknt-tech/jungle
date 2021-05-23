@@ -10,12 +10,12 @@
     <%locals.cartItem.map((p)=>{%>
     <li class="eachCart" key="<%=p.productId%>">
       <div class="row dTable">
-        <div class="min-40 dTable_c">
+        <div class="min-35 dTable_c">
           <h3><a href="/product/<%=p.productId%>"><%=p.name%> </a> </h3>
         </div>
         <input class="eachInput dTable_c" id="<%=p.productId%>" type="number" min="1" max="<%=p.countInStock%>" value="<%=p.qty%>"/>
         <div class="eachPrice dTable_c" data-price="<%=p.price%>"><%=p.price.toLocaleString()%>円</div>
-        <div class="sumPrice dTable_c min-20" data-price="<%=p.price*p.qty%>">小計<%=(p.price*p.qty).toLocaleString()%>円</div>
+        <div class="sumPrice dTable_c min-25" data-price="<%=p.price*p.qty%>">小計<%=(p.price*p.qty).toLocaleString()%>円</div>
         <div class="delete-icon dTable_c">
           <a class="cart_delete" data-id="<%=p.productId%>"><i class=" fas fa-trash"></i></a>
         </div>

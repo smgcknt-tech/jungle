@@ -305,7 +305,7 @@ img.image-body {
 @media screen and (max-width: 569px) {
   .cartItems{
     font-size: 0.1rem;
-    padding:0 0.3rem;
+    padding:0.3rem;
   }
   .cartItems h1{
     padding-left:0.5rem;
@@ -320,12 +320,12 @@ img.image-body {
 }
 
 
-.min-40 {
+.min-35{
   width: 35%;
 }
 
-.min-20 {
-  width: 20%;
+.min-25 {
+  width: 25%;
 }
 
 .eachInput {
