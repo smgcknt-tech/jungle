@@ -12,81 +12,39 @@
         <%-include('../Header');%>
         <main>
         <form class="form" action="/api/create/product" method="POST">
-          <div>
-            <h1>商品登録</h1>
-           
-          </div>
+          <div><h1>商品登録</h1></div>
               <div>
                 <label htmlFor="name">商品名</label>
-                <input
-                  name="name"
-                  type="text"
-                  placeholder="Enter name"
-                  
-                ></input>
+                <input name="name" type="text" placeholder="Enter name">
               </div>
               <div>
                 <label htmlFor="price">価格</label>
-                <input
-                  name="price"
-                  type="text"
-                  placeholder="Enter price"
-                
-                ></input>
+                <input name="price" type="text" placeholder="Enter price">
               </div>
               <div>
                 <label htmlFor="image">画像</label>
-                <input
-                  name="image"
-                  type="text"
-                  placeholder="Enter image"
-                  value=""
-             
-                ></input>          
+                <input name="image" type="text" placeholder="Enter image" value="">          
               </div>
               <div>
                 <label htmlFor="imageFile">画像ファイル</label>
-                <input
-                  type="file"
-                  id="imageFile"
-                  label="Choose Image"
-                ></input>
+                <input type="file" id="imageFile" label="Choose Image"
+                >
               </div>
               <div>
                 <label htmlFor="category">カテゴリー</label>
-                <input
-                  name="category"
-                  type="text"
-                  placeholder="Enter category"
-             
-                ></input>
+                <input name="category" type="text" placeholder="Enter category">
               </div>
               <div>
                 <label htmlFor="brand">ブランド</label>
-                <input
-                  name="brand"
-                  type="text"
-                  placeholder="Enter brand"
-         
-                ></input>
+                <input name="brand" type="text" placeholder="Enter brand">
               </div>
               <div>
                 <label htmlFor="countInStock">在庫</label>
-                <input
-                  name="countInStock"
-                  type="text"
-                  placeholder="Enter countInStock"
-           
-                ></input>
+                <input name="countInStock" type="text" placeholder="Enter countInStock">
               </div>
               <div>
                 <label htmlFor="description">詳細</label>
-                <textarea
-                  name="description"
-                  rows="3"
-                  type="text"
-                  placeholder="Enter description"
-                ></textarea>
+                <textarea name="description" rows="3" type="text" placeholder="Enter description"></textarea>
               </div>
               <div>
                 <label></label>

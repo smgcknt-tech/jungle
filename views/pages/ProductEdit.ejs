@@ -8,93 +8,46 @@
     <title>商品編集</title>
 </head>
 <body>
-    <div class="grid-container">
-        <%-include('../Header');%>
-        <main>
+  <div class="grid-container">
+    <%-include('../Header');%>
+      <main>
+        <div>
           <form class="form" action="/api/edit/product/<%=editingProduct._id%>" method="POST">
-          <div>
-            <h1>商品情報編集</h1>
-            
-          </div>
-              <div>
-                <label htmlFor="name">商品名</label>
-                <input
-                  name="name"
-                  type="text"
-                  placeholder="Enter name"
-                  value="<%=editingProduct.name%>"
-                ></input>
-              </div>
-              <div>
-                <label htmlFor="price">価格</label>
-                <input
-                  name="price"
-                  type="text"
-                  placeholder="Enter price"
-                  value="<%=editingProduct.price%>"
-                ></input>
-              </div>
-              <div>
-                <label htmlFor="image">商品画像</label>
-                <input
-                  name="image"
-                  type="text"
-                  placeholder="Enter image"
-                  value="<%=editingProduct.image%>"
-                ></input>
-              </div>
-              <div>
-                <label htmlFor="imageFile">画像ファイル</label>
-                <input
-                  type="file"
-                  id="imageFile"
-                  label="Choose Image"
-                ></input>
-              </div>
-              <div>
-                <label htmlFor="category">カテゴリー</label>
-                <input
-                  name="category"
-                  type="text"
-                  placeholder="Enter category"
-                  value="<%=editingProduct.category%>"      
-                ></input>
-              </div>
-              <div>
-                <label htmlFor="brand">ブランド</label>
-                <input
-                  name="brand"
-                  type="text"
-                  placeholder="Enter brand"
-                  value="<%=editingProduct.brand%>"
-                ></input>
-              </div>
-              <div>
-                <label htmlFor="countInStock">在庫</label>
-                <input
-                  name="countInStock"
-                  type="text"
-                  placeholder="Enter countInStock"
-                  value="<%=editingProduct.countInStock%>"
-                ></input>
-              </div>
-              <div>
-                <label htmlFor="description">商品詳細</label>
-                <textarea
-                  name="description"
-                  rows="3"
-                  type="text"
-                  placeholder="Enter description"
-                ><%=editingProduct.description%></textarea>
-              </div>
-              <div>
-                <label></label>
-                <button class="primary" type="submit">
-                  更新
-                </button>
-              </div>
-        </form>
-    </main>
+            <div><h1>商品情報編集</h1></div>
+            <div>
+              <label htmlFor="name">商品名</label>
+              <input name="name" type="text" placeholder="Enter name" value="<%=editingProduct.name%>">
+            </div>
+            <div>
+              <label htmlFor="price">価格</label>
+              <input name="price" type="text" placeholder="Enter price" value="<%=editingProduct.price%>">
+            </div>
+            <div>
+              <label htmlFor="image">商品画像</label>
+              <input name="image" type="text" placeholder="Enter image" value="<%=editingProduct.image%>">
+            </div>
+            <div>
+              <label htmlFor="category">カテゴリー</label>
+              <input name="category" type="text" placeholder="Enter category" value="<%=editingProduct.category%>">
+            </div>
+            <div>
+              <label htmlFor="brand">ブランド</label>
+              <input name="brand" type="text" placeholder="Enter brand" value="<%=editingProduct.brand%>">
+            </div>
+            <div>
+              <label htmlFor="countInStock">在庫</label>
+              <input name="countInStock" type="text" placeholder="Enter countInStock" value="<%=editingProduct.countInStock%>">
+            </div>
+            <div>
+              <label htmlFor="description">商品詳細</label>
+              <textarea name="description" rows="3" type="text" placeholder="Enter description"><%=editingProduct.description%></textarea>
+            </div>
+            <div>
+              <label><button class="primary block" type="submit">更新</button></label>
+            </div>
+          </form>
+        </div>
+      </main>
     <%-include('../Footer');%>
   </div>
 </body>

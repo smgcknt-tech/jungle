@@ -250,6 +250,31 @@ $(() => {
       }
     }
   });
+  //productEdit.ejs//
+  $("#editImageFile").on("change", (e) => {
+
+    const file = e.target.files[0];
+    const bodyFormData = new FormData();
+    bodyFormData.append("image", file);
+    $.ajax({
+      url: "/upload/image",
+      type: "POST",
+      contentType: false,
+      processData: false,
+      cache: false,
+      data: bodyFormData,
+      success: (res) => {
+        alert(res);
+        $("input[name=image]").val(res);
+      },
+      error: () => {
+        alert("Error: In sending the request!");
+      },
+    });
+  });
+
+
+
   //header.ejs//
   $("input[name='search_key']").val("");
   //searchBox.ejs//
