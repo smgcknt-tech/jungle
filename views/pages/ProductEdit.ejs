@@ -27,6 +27,10 @@
               <input name="image" type="text" placeholder="Enter image" value="<%=editingProduct.image%>">
             </div>
             <div>
+              <label htmlFor="imageFile">画像ファイル</label>
+              <input type="file" id="imageFile" label="Choose Image">
+            </div>
+            <div>
               <label htmlFor="category">カテゴリー</label>
               <input name="category" type="text" placeholder="Enter category" value="<%=editingProduct.category%>">
             </div>
@@ -50,5 +54,6 @@
       </main>
     <%-include('../Footer');%>
   </div>
+  <%-include('../Jquery');%>
 </body>
 </html>

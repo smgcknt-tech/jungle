@@ -481,6 +481,10 @@ thead{
   border:0.1rem solid #f4f4f4 ;
   padding:0.5rem;
 }
+/* productRegister */
+#imageFile{
+  font-size:1rem
+}
 
 /* Search */
 .search button {
