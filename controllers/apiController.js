@@ -39,6 +39,11 @@ module.exports = {
         const results = await p.product.searchCategory(category);
         res.render("searchResults.ejs",{results:results})
     },
+    searchBrand:async(req,res)=>{
+        const brand = req.params.id;
+        const results = await p.product.searchCategory(brand);
+        res.render("searchResults.ejs",{results:results})
+    },
 }
 
   

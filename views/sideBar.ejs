@@ -1,11 +1,19 @@
 <aside id="sideBar">
   <ul class="categories">
     <li>
-      <strong>Categories</strong>
+      <strong>カテゴリー</strong>
       <button class="close-sidebar" type="button"><i class="fas fa-times"></i></button>
     </li>
     <%locals.categories.map((category)=>{%>
       <li><a href="/api/search/category/<%=category%>"><%=category%></a></li>
+    <%})%>
+  </ul>
+  <ul class="brands">
+    <li>
+      <strong>ブランド</strong>
+    </li>
+    <%locals.brands.map((brands)=>{%>
+      <li><a href="/api/search/brand/<%=brands%>"><%=brands%></a></li>
     <%})%>
   </ul>
 </aside>

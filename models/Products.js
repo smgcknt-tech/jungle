@@ -19,11 +19,22 @@ module.exports = {
       const categories = await Array.from(new Set(arr));
       return categories;
     },
+    findBrand: async () => {
+      const products = await Product.find({});
+      const arr = products.map((product) => {
+        return product.brand;
+      });
+      const brands = await Array.from(new Set(arr));
+      return brands;
+    },
     searchProduct: (kwd) => {
       return Product.find({ name: { $regex: kwd, $options: "i" } });
     },
     searchCategory: (category) => {
       return Product.find({ category: category });
+    },
+    searchCategory: (brand) => {
+      return Product.find({ brand: brand });
     },
     create: async (req, userId) => {
       const createdProduct = await new Product({
