@@ -33,12 +33,14 @@
         <button class="primary block" type="submit" 　>カートに追加</button>
       </form>
       <% } else { %>
+        <a id="SignUpButton" href="/signUp/<%=product._id%>">
         <button class="primary block" type="submit">
           <ul>
-            <a id="SignUpButton" href="/signUp/<%=product._id%>"><li>新規登録はこちら</li></a>
+           <li>新規登録はこちら</li>
             <li class="small">※新規登録後カート追加が可能です</li>
           </ul>
         </button>
+        </a>
       <% } %>
     </li>
   </ul>

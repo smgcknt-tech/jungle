@@ -94,7 +94,7 @@ module.exports = {
             }
             res.redirect("/cart");
           } else {
-            res.redirect("/cart");
+            res.redirect(`/product/${id}`);
           }
         });
     });
