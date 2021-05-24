@@ -18,10 +18,15 @@ $(() => {
       onApprove:(data, actions) =>{
         return actions.order.capture().then((details) => {
           const ordered_price = $("#ordered_price").attr("value");
+          let ordered_products =[];
+          $(".eachCart").each((i, val) => {
+            ordered_products.push($(val).attr("key"));
+          });
           const data = {
             ordered_price: ordered_price,
             method: "paypal",
             payment: "完了",
+            ordered_products:ordered_products,
           };
           $.post("/checkOut/create/order", data, () => {}, "json");
           window.location.href="/checkOut/thanks"

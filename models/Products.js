@@ -2,6 +2,7 @@ const Product = require("../models/ProductModel");
 const cartItem = require("../models/CartModel");
 const Order = require("./OrderModels");
 const User = require("./UserModel");
+const { Error } = require("mongoose");
 
 module.exports = {
   product: {
@@ -31,10 +32,10 @@ module.exports = {
       return Product.find({ name: { $regex: kwd, $options: "i" } });
     },
     searchCategory: (category) => {
-      return Product.find({category : category});
+      return Product.find({ category: category });
     },
     searchBrand: (brand) => {
-     return Product.find({ brand: brand });
+      return Product.find({ brand: brand });
     },
     create: async (req, userId) => {
       const createdProduct = await new Product({
@@ -114,6 +115,7 @@ module.exports = {
         ordered_price: req.body.ordered_price,
         method: req.body.method,
         payment: req.body.payment,
+        ordered_products: req.body.ordered_products,
         user: userId,
       });
       await createdOrder.save();
@@ -121,7 +123,6 @@ module.exports = {
         { _id: userId },
         { $push: { order: createdOrder._id } }
       );
-      
       return createdOrder;
     },
   },

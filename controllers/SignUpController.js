@@ -6,7 +6,7 @@ const p = Products;
 
 module.exports = {
   getSignUp: (req, res) => {
-    res.render("SignUp.ejs", { 
+    res.render("SignUp.ejs",{ 
       errors: [],
       id:"",
       qty:0,
@@ -67,6 +67,11 @@ module.exports = {
         .then((user) => {
           req.session.userId = user._id;
           req.session.userName = userName;
+          if(user.isAdmin){
+            req.session.isAdmin = true;
+          } else{
+            req.session.isAdmin = false;
+          }
           res.redirect("/");
         });
     });

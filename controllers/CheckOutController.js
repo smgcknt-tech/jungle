@@ -49,7 +49,6 @@ module.exports = {
   createOrder:async(req,res)=>{
     const userId = req.session.userId;
     await p.order.createOrder(req,userId)
-    //決済済みの商品だけ削除
     await p.cart.deleteAllCart(userId)
   },
   orderHistory:(req,res)=>{    

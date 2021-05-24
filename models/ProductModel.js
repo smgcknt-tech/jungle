@@ -12,6 +12,7 @@ const productSchema = new mongoose.Schema(
       rating: { type: Number},
       numReviews: { type: Number},
       user:{ type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
+      order:[{type: mongoose.Schema.Types.ObjectId, ref: 'Order'}],
     },
     {
       timestamps: true,

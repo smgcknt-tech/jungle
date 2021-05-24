@@ -8,7 +8,7 @@ const userSchema = new mongoose.Schema({
   shipping:{type: mongoose.Schema.Types.ObjectId, ref: 'ShippingInfo'},
   payment:{type: mongoose.Schema.Types.ObjectId, ref: 'paymentMethod'},
   order:[{type: mongoose.Schema.Types.ObjectId, ref: 'Order'}],
-  product: [{type: mongoose.Schema.Types.ObjectId, ref: 'Product'}],
+  ordered_product: [{type: mongoose.Schema.Types.ObjectId, ref: 'Product'}],
 });
 const User = mongoose.model("User", userSchema);
 

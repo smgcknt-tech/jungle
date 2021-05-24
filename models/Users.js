@@ -7,8 +7,8 @@ module.exports = {
     findUserdata: (userId) => {
       return User.findOne({ _id: userId })
         .populate("payment")
+        .populate("product")
         .populate("order")
-        .populate("product");
     },
   },
   signIn: {
@@ -19,10 +19,16 @@ module.exports = {
         if (results.length > 0) {
           const plain = req.body.password;
           const hash = results[0].password;
+          const isAdmin = results[0].isAdmin;
           bcryptjs.compare(plain, hash, (error, isEqual) => {
             if (isEqual) {
               req.session.userName = results[0].name;
               req.session.userId = results[0]._id;
+              if(isAdmin){
+                req.session.isAdmin = true;
+              } else{
+                req.session.isAdmin = false;
+              }
               res.redirect("/");
             } else {
               errors.push("パスワードが違います");
@@ -41,12 +47,11 @@ module.exports = {
       return User.exists({ email: email });
     },
     newUser: async (userName, email, hash, admin) => {
-      if(admin === "undefined"){
+      if(admin === undefined){
         admin = false;
       }else{
         admin = true
       }
-      console.log(admin)
       const user = new User({
         isAdmin: admin,
         name: userName,
@@ -118,7 +123,3 @@ module.exports = {
   },
 };
 
-//error_catcher
-process.on("unhandledRejection", (reason, p) => {
-  console.log("Unhandled Rejection at: Promise", p, "reason:", reason);
-});
