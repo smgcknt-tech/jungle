@@ -1,10 +1,28 @@
 const bcryptjs = require("bcryptjs");
 const Users = require("../models/Users.js");
 const u = Users
+const Products = require("../models/Products.js");
+const p = Products;
 
 module.exports = {
   getSignUp: (req, res) => {
-    res.render("SignUp.ejs", { errors: [] });
+    res.render("SignUp.ejs", { 
+      errors: [],
+      id:"",
+      qty:0,
+      url:""       
+    });
+  },
+  getSignUpWithCart: (req, res) => {
+    const id = req.params.id
+    const qty = req.query.qty
+    const url = "/signUp/" + id +"?qty="+ qty;
+    res.render("SignUp.ejs", { 
+      errors: [],
+      id:id,
+      qty:qty,
+      url:url 
+    });
   },
   duplicationCheck: async (req, res, next) => {
     const email = req.body.email;
@@ -53,5 +71,33 @@ module.exports = {
         });
     });
   },
+  postSignUpWithCart:(req, res) => {
+    const userName = req.body.userName;
+    const email = req.body.email;
+    const password = req.body.password;
+    const id = req.params.id
+    const qty = req.query.qty
+    let admin = req.body.admin;
+    bcryptjs.hash(password, 10, async(error, hash) => {
+      await u.signUp.newUser(userName, email, hash,admin)
+        .then(async(user) => {
+          req.session.userId = user._id;
+          const userId = req.session.userId;
+          req.session.userName = userName;
+          if (qty > 0) {
+            const product = await p.product.findOne(id);
+            const doesExist = await p.cart.duplicationCheck(product._id);
+            if (doesExist) {
+              await p.cart.addQty(product._id, qty);
+            } else {
+              await p.cart.create(userId, product, qty);
+            }
+            res.redirect("/cart");
+          } else {
+            res.redirect("/cart");
+          }
+        });
+    });
+  }
 };
 

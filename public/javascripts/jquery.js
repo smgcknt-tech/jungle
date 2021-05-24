@@ -4,7 +4,12 @@ $(() => {
     let url = $("#cartForm").attr("action") + "?qty=" + $("#cartNum").val();
     $("#cartForm").attr("action", url);
   });
+  $("#cartNum").change(() => {
+    let url = $("#SignUpButton").attr("href") + "?qty=" + $("#cartNum").val();
+    $("#SignUpButton").attr("href", url);
+  });
   //cart.ejs//
+
 
   const calculateTotalItem = () => {
     let totalItem = 0;

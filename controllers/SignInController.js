@@ -3,7 +3,8 @@ const u = Users
 
 module.exports = {
   getSignIn: (req, res) => {
-    res.render("SignIn.ejs");
+    let errors=[];
+    res.render("SignIn.ejs",{errors:errors});
   },
   postSignIn: (req, res) => {
     u.signIn.findUser(req, res);

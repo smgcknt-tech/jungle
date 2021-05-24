@@ -14,6 +14,7 @@ module.exports = {
   signIn: {
     findUser: async (req, res) => {
       const email = req.body.email;
+      let errors =[];
       await User.find({ email: email }, (err, results) => {
         if (results.length > 0) {
           const plain = req.body.password;
@@ -24,9 +25,13 @@ module.exports = {
               req.session.userId = results[0]._id;
               res.redirect("/");
             } else {
-              res.redirect("/signIn");
+              errors.push("パスワードが違います");
+              res.render("signIn.ejs",{errors:errors});
             }
           });
+        } else {
+          errors.push("メールアドレスが違います")
+          res.render("signIn.ejs",{errors:errors});
         }
       });
     },
