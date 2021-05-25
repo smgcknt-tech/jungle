@@ -29,7 +29,7 @@
                   <div class="cartItems placeOrder">
                     <ul>
                       <%locals.cartItem.map((p)=>{%>
-                      <li class="eachCart" key="<%=p.productId%>">
+                      <li class="eachCart" key="<%=p.productId%>" data-qty="<%=p.qty%>">
                         <div class="row dTable">
                           <div class="min-10 dTable_c">
                             <h3>

@@ -20,7 +20,10 @@ $(() => {
           const ordered_price = $("#ordered_price").attr("value");
           let ordered_products =[];
           $(".eachCart").each((i, val) => {
-            ordered_products.push($(val).attr("key"));
+            const id = $(val).attr("key")
+            const qty =Number($(val).data("qty"))
+            const obj ={ productId:id, productQty:qty}
+            ordered_products.push(obj);
           });
           const data = {
             ordered_price: ordered_price,

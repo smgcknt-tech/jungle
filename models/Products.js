@@ -119,6 +119,13 @@ module.exports = {
         user: userId,
       });
       await createdOrder.save();
+      createdOrder.ordered_products.forEach(async(x)=>{
+          await Product.findOneAndUpdate(
+              { _id: x.productId},
+              {$inc: {countInStock:-x.productQty }}
+          );
+      }) 
+      
       await User.findOneAndUpdate(
         { _id: userId },
         { $push: { order: createdOrder._id } }
@@ -126,35 +133,36 @@ module.exports = {
       return createdOrder;
     },
   },
-  review:{
-    createReview:async (req,userId)=> {
+  review: {
+    createReview: async (req, userId) => {
       const createdReview = new Review({
-        is_posted_by:userId,
-        reviewed_product:req.params.id,
-        public_name:req.body.public_name,
-        review:req.body.review,
-        title:req.body.title,
-        comment:req.body.comment,
+        is_posted_by: userId,
+        reviewed_product: req.params.id,
+        public_name: req.body.public_name,
+        review: req.body.review,
+        title: req.body.title,
+        comment: req.body.comment,
       });
       await createdReview.save();
-      const productReviews = await Review.find({reviewed_product:req.params.id}).select("review");
-      let sum =0;
-      for(let i= 0; i < productReviews.length; i++){
-        sum = sum + productReviews[i].review
+      const productReviews = await Review.find({
+        reviewed_product: req.params.id,
+      }).select("review");
+      let sum = 0;
+      for (let i = 0; i < productReviews.length; i++) {
+        sum = sum + productReviews[i].review;
       }
-      const avg = sum/productReviews.length
+      const avg = sum / productReviews.length;
       await Product.findOneAndUpdate(
-        { _id: req.params.id},
-        { 
-          rating:avg,
-          numReviews:productReviews.length,
+        { _id: req.params.id },
+        {
+          rating: avg,
+          numReviews: productReviews.length,
         }
       );
       return createdReview;
-
     },
     findReviews: (id) => {
-      return Review.find({reviewed_product:id});
-    }
-  }
+      return Review.find({ reviewed_product: id });
+    },
+  },
 };

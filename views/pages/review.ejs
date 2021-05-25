@@ -4,9 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <%-include('../Stylesheet');%>
-    <title>レビュー</title>
+    <title>レビューフォーム</title>
   </head>
-
   <body>
     <div class="grid-container">
       <%-include('../Header');%>
@@ -14,9 +13,7 @@
         <div>
           <form class="form" action="/product/review/<%=product._id%>" method="POST">
             <div>
-              <h1>レビュー</h1>
-            </div>
-            <div>
+              <h1>レビューフォーム</h1>
               <h2><%=product.name%></h2>
               <img class="image-body" src="<%=product.image%>" />
             </div>
