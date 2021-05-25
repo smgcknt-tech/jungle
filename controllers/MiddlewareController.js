@@ -15,7 +15,7 @@ module.exports = {
     } else　{
       const userId = req.session.userId
       const userData = await u.midlleware.findUserdata(userId)
-      res.locals.userData  = userDataｙｙ
+      res.locals.userData  = userData
       res.locals.cartItem  = await p.cart.findAll(userId);
       res.locals.shipping  = await u.checkOut.findShipping(userId);
       res.locals.isLoggedIn = true

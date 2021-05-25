@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <%-include('../Stylesheet');%>
+    <title>レビュー</title>
+  </head>
+
+  <body>
+    <div class="grid-container">
+      <%-include('../Header');%>
+      <main>
+        <div>
+          <form class="form" action="/SignIn" method="POST">
+            <div>
+              <h1>レビュー</h1>
+            </div>
+            <div>
+              <label for="review">評価</label>
+              <input type="email" id="review" name="review" />
+            </div>
+            <div>
+              <label for="review">題名</label>
+              <input type="email" id="review" name="review" />
+            </div>
+            <div>
+              <label for="review">コメント</label>
+              <input type="email" id="review" name="review" />
+            </div>
+            <div>
+              <label for="review">名前</label>
+              <input type="email" id="review" name="review" />
+            </div>
+            <div>
+              <label for="review-form-button">
+                  <button id="review-form-button" class="primary block" type="submit">決定</button>
+              </label>
+            </div>
+          </form>
+        </div>   
+      </main>
+      <%-include('../Footer');%>
+    </div>
+    <%-include('../Jquery');%>
+  </body>
+</html>

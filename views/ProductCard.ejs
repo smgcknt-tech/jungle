@@ -5,13 +5,7 @@
   <div class="card-body">
     <a href="/product/<%=product._id%>"><h2><%=product.name%></h2></a>
     <%-include('./Rating.ejs',{rating:product.rating,numReviews:product.numReviews});%>
-    <%if(userData.order.find((x)=>{return x.ordered_products.includes(product._id)})){%>
-      <div class="row">
-      <div class="price">￥<%=product.price.toLocaleString()%></div><div><a>★レビュー</a></div>
-      </div>
-    <%}else{%>
       <div class="price">￥<%=product.price.toLocaleString()%></div>
-    <%}%>
   </div>
 </div>
 <% }) %>

@@ -1,16 +1,21 @@
 <div class="Product-details">
-<ul>
-  <li>
-    <h1><%=product.name%></h1>
-  </li>
-  <li>
-    <%-include('./Rating.ejs',{ rating:product.rating,
-    numReviews:product.numReviews });%>
-  </li>
-  <li>価格:￥<%=product.price.toLocaleString()%></li>
-  <li>
-    商品詳細
-    <p><%=product.description%></p>
-  </li>
-</ul>
+  <ul>
+    <li>
+      <h1><%=product.name%></h1>
+    </li>
+    <li>
+      <%-include('./Rating.ejs',{ rating:product.rating,
+      numReviews:product.numReviews });%>
+    </li>
+    <%if (locals.isLoggedIn) {%>
+      <%if(locals.userData.order.find((x)=>{return x.ordered_products.includes(product._id)})){%>
+      <li><span class="review-button"><a　href="/product/review/<%=product._id%>">★商品をレビューする</a></span></li>
+      <%}%> 
+    <%}%>
+    <li>価格:￥<%=product.price.toLocaleString()%></li>
+    <li>
+      商品詳細
+      <p><%=product.description%></p>
+    </li>
+  </ul>
 </div>

@@ -270,6 +270,13 @@ img.image-body {
 .large-img {
   width: 100%;
 }
+
+/*productCard*/
+.review-button{
+  cursor: pointer;
+  color:#f0c040;
+}
+
 /*product*/
 
 .Product-details {
@@ -277,6 +284,8 @@ img.image-body {
   font-weight: bold;
   padding-left: 2rem;
 }
+
+
 
 /*card*/
 
