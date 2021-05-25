@@ -12,25 +12,35 @@
       <%-include('../Header');%>
       <main>
         <div>
-          <form class="form" action="/SignIn" method="POST">
+          <form class="form" action="/product/review/<%=product._id%>" method="POST">
             <div>
               <h1>レビュー</h1>
             </div>
             <div>
+              <h2><%=product.name%></h2>
+              <img class="image-body" src="<%=product.image%>" />
+            </div>
+            <div>
               <label for="review">評価</label>
-              <input type="email" id="review" name="review" />
+              <ul>
+                <li><label><input class="input" type="radio" value="1" name="review" ><span>大変不満 ★</span></label></li>
+                <li><label><input class="input" type="radio" value="2" name="review" ><span>少し不満 ★★</span></label></li>
+                <li><label><input class="input" type="radio" value="3" name="review" ><span>どちらでもない ★★★</span></label></li>
+                <li><label><input class="input" type="radio" value="4" name="review" ><span>少し満足 ★★★★</span></label></li>
+                <li><label><input class="input" type="radio" value="5" name="review" ><span>大変満足 ★★★★★</span></label></li>
+            </ul>
             </div>
             <div>
-              <label for="review">題名</label>
-              <input type="email" id="review" name="review" />
+              <label for="title">題名</label>
+              <input type="text" name="title" placeholder="例：大変気に入りました" />
             </div>
             <div>
-              <label for="review">コメント</label>
-              <input type="email" id="review" name="review" />
+              <label for="comment">コメント</label>
+              <textarea type="text" name="comment" placeholder="評価の理由"></textarea>
             </div>
             <div>
-              <label for="review">名前</label>
-              <input type="email" id="review" name="review" />
+              <label for="public_name">投稿者名</label>
+              <input type="text" name="public_name" placeholder="コメント用の名前" value="<%=locals.userData.name%>"/>
             </div>
             <div>
               <label for="review-form-button">

@@ -2,7 +2,7 @@ const Product = require("../models/ProductModel");
 const cartItem = require("../models/CartModel");
 const Order = require("./OrderModels");
 const User = require("./UserModel");
-const { Error } = require("mongoose");
+const Review = require("./ReviewModel");
 
 module.exports = {
   product: {
@@ -126,4 +126,35 @@ module.exports = {
       return createdOrder;
     },
   },
+  review:{
+    createReview:async (req,userId)=> {
+      const createdReview = new Review({
+        is_posted_by:userId,
+        reviewed_product:req.params.id,
+        public_name:req.body.public_name,
+        review:req.body.review,
+        title:req.body.title,
+        comment:req.body.comment,
+      });
+      await createdReview.save();
+      const productReviews = await Review.find({reviewed_product:req.params.id}).select("review");
+      let sum =0;
+      for(let i= 0; i < productReviews.length; i++){
+        sum = sum + productReviews[i].review
+      }
+      const avg = sum/productReviews.length
+      await Product.findOneAndUpdate(
+        { _id: req.params.id},
+        { 
+          rating:avg,
+          numReviews:productReviews.length,
+        }
+      );
+      return createdReview;
+
+    },
+    findReviews: (id) => {
+      return Review.find({reviewed_product:id});
+    }
+  }
 };

@@ -1,0 +1,32 @@
+<div class="card">
+<div class="row left">
+<h1 class="margin-l-2">商品レビュー <%=reviews.length%>件</h1>
+<%if (locals.isLoggedIn) {%>
+    <%if(locals.userData.order.find((x)=>{return x.ordered_products.includes(product._id)})){%>
+    <strong class="margin-l-2 review-button"><a href="/product/review/<%=product._id%>">  商品を評価する</a></strong>
+    <%}%> 
+<%}%>
+</div>
+<%reviews.map( (review)=> {%>
+<div class="card-body reviewCard" id="<%=review._id%>">
+  <ul>
+    <li>日時：<%=review.createdAt %></li>
+    <li>投稿者：<%=review.public_name %></li>
+    <li>
+      <div class="rating">
+        <strong>評価:</strong>
+        <span><i class="<%=review.review >= 1 ? " fa fa-star" :review.review>= 0.5 ? "fa fa-star-half-alt" : "far fa-star"%>"></i></span>
+        <span><i class="<%=review.review >= 2 ? " fa fa-star" :review.review>= 1.5 ? "fa fa-star-half-alt" : "far fa-star"%>"></i></span>
+        <span><i class="<%=review.review >= 3 ? " fa fa-star" :review.review>= 2.5 ? "fa fa-star-half-alt" : "far fa-star"%>"></i></span>
+        <span><i class="<%=review.review >= 4 ? " fa fa-star" :review.review>= 3.5 ? "fa fa-star-half-alt" : "far fa-star"%>"></i></span>
+        <span><i class="<%=review.review >= 5 ? " fa fa-star" :review.review>= 4.5 ? "fa fa-star-half-alt" : "far fa-star"%>"></i></span>
+        <span><%=review.review%> ポイント</span>
+    </div>
+
+    </li>
+    <li><strong>タイトル：<%=review.title%></strong></li>
+    <li><p>コメント：<%=review.comment%></p></li>
+  </ul>
+</div>
+<%});%>
+</div>

@@ -4,8 +4,8 @@
   <a href="/product/<%=product._id%>"><img class="image-body" src="<%=product.image%>" /></a>
   <div class="card-body">
     <a href="/product/<%=product._id%>"><h2><%=product.name%></h2></a>
-    <%-include('./Rating.ejs',{rating:product.rating,numReviews:product.numReviews});%>
-      <div class="price">￥<%=product.price.toLocaleString()%></div>
+    <div><%-include('./Rating.ejs',{rating:product.rating,numReviews:product.numReviews});%></div>
+    <div class="price">￥<%=product.price.toLocaleString()%></div>
   </div>
 </div>
 <% }) %>

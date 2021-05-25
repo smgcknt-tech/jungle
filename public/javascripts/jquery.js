@@ -283,4 +283,25 @@ $(() => {
   $(".close-sidebar").on("click", () => {
     $("#sideBar").removeClass("open");
   });
+
+
+  //review.ejs//
+  $("#review-form-button").on("click", (e) => {
+    const title = $("input[name='title']");
+    const comment= $("textarea[name='comment']");
+    const public_name = $("input[name='public_name']");
+    const arr = [title,comment,public_name];
+    const checkedReview = $("input:radio[name='review']:checked");
+    if (checkedReview.length === 0) {
+      e.preventDefault();
+      $("label[for='review']").append('※未選択です').addClass("red");;
+    }
+    for (let i = 0; i < arr.length; i++) {
+      if (arr[i].val() === "") {
+        e.preventDefault();
+        arr[i].attr("placeholder", "未入力です!").addClass("red");
+      }
+    }
+
+  });
 });

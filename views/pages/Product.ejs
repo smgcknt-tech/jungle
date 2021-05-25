@@ -1,23 +1,22 @@
 <!DOCTYPE html>
 <html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <%-include('../Stylesheet');%>
+    <title>商品詳細</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <%-include('../Stylesheet');%>
-  <title>商品詳細</title>
-</head>
-
-<body>
-  <% if(!product) { %>
+  <body>
+    <% if(!product) { %>
     <div>該当商品なし</div>
-  <%} else {%>
+    <%} else {%>
     <div class="grid-container">
       <%-include('../Header');%>
-        <main>
+      <main>
           <div class="row top">
             <div class="col-1">
-              <img class="large-img" src="<%=product.image%>" alt="<%=product.name%>" />
+              <img class="large-img" src="<%=product.image%>" alt="<%=product.name%>"/>
             </div>
             <div class="col-2">
               <%-include('../ProductDetail',{product:product});%>
@@ -26,11 +25,12 @@
               <%-include('../CartCard',{product:product});%>
             </div>
           </div>
-        </main>
-        <%-include('../Footer');%>
-      </div>
-  <%}%>
-      <%-include('../Jquery');%>
-</body>
-
+          <div class="col-1">
+            <%-include('../reviewCard',{reviews:reviews});%>
+          </div>
+      </main>
+      <%-include('../Footer');%>
+    </div>
+    <%}%> <%-include('../Jquery');%>
+  </body>
 </html>
