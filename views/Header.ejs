@@ -1,20 +1,18 @@
 <header class="row">
   <div class="row">
-  <button type="button" class="open-sidebar">
-  <i class="fa fa-bars"></i>
-  </button>
-  <div><a href="/" class="logo">jungle</a></div>
+    <button type="button" class="open-sidebar">
+      <i class="fa fa-bars"></i>
+    </button>
+    <div><a href="/" class="logo">jungle</a></div>
   </div>
-
   <div><%-include('./searchBox');%></div>
   <div class="row right">
     <div>
       <%if (locals.isLoggedIn) {%>
-      <a href="/cart">カートリスト 
-        <%if (locals.cartItem.length > 0) {%>
+      <a href="/cart"
+        >カートリスト <%if (locals.cartItem.length > 0) {%>
         <span id="badge"><%=locals.cartItem.length%></span>
-        <%}%> 
-      <%}%>
+        <%}%> <%}%>
       </a>
     </div>
     <%if (locals.isLoggedIn) {%>
@@ -23,24 +21,23 @@
       <ul class="dropdown-content">
         <li><a href="/signOut">サインアウト</a></li>
         <li><a href="/checkOut/orderHistory">購入履歴</a></li>
-   <li><a href="/userProfile">プロファイル</a></li>
+        <li><a href="/userProfile">プロファイル</a></li>
       </ul>
     </div>
     　<%if(locals.isAdmin){%>
-        <div class="dropdown">
-          <span>Admin</span><i class="fa fa-caret-down"></i>
-          <ul class="dropdown-content">
-            <li>
-              <a href="/admin/productList">商品</a>
-            </li>
-          </ul>
-        </div>
+      <div class="dropdown">
+        <span>Admin</span><i class="fa fa-caret-down"></i>
+        <ul class="dropdown-content">
+          <li>
+            <a href="/admin/productList">商品</a>
+          </li>
+        </ul>
+      </div>
       <%}%> 
     <% }else {%>
-      <a href="/signUp">新規登録</a>
-      <a href="/signIn">サインイン</a>
+    <a href="/signUp">新規登録</a>
+    <a href="/signIn">サインイン</a>
     <% } %>
   </div>
 </header>
 <%-include('./sideBar');%>
-
