@@ -75,7 +75,6 @@ $(() => {
 
   $(".cart_delete").on("click", (e) => {
     let id = $(e.currentTarget).data("id");
-    console.log(id)
     $.ajax({
       type: "POST",
       url: "/cart/delete",

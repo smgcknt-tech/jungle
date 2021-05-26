@@ -16,7 +16,6 @@ module.exports = {
       const userId = req.session.userId;
       const userData = await u.midlleware.findUserdata(userId);
       res.locals.userData = userData;
-      console.log(userData.order[0].ordered_products)
       res.locals.cartItem = await p.cart.findAll(userId);
       res.locals.shipping = await u.checkOut.findShipping(userId);
       res.locals.isLoggedIn = true;
