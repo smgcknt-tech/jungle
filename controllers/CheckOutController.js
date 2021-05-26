@@ -5,6 +5,7 @@ const Products = require("../models/Products");
 const p = Products
 dotenv.config();
 const paypalId = process.env.PAY_PAL_CLIENT_ID
+const googleMapApi = process.env.GOOGLE_API_KEY
 
 module.exports = {
   checkOut: async (req, res) => {
@@ -36,7 +37,7 @@ module.exports = {
     } 
     
     if(id !==4 ){
-      res.render("CheckOut.ejs", { steps : steps}); 
+      res.render("CheckOut.ejs", { steps : steps,googleMapApi:googleMapApi}); 
 
     }else{
       res.redirect("/checkOut/orderConfirmation");
