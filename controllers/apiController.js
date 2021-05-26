@@ -44,6 +44,9 @@ module.exports = {
         const results = await p.product.searchBrand(brand);
         res.render("searchResults.ejs",{results:results})
     },
+    getMap:async(req,res)=>{
+        res.send(process.env.GOOGLE_API_KEY || '');
+    }
 }
 
   

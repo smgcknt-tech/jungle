@@ -57,5 +57,8 @@ module.exports = {
   thanks:(req,res)=>{    
     res.render("thanks.ejs");
   },
+  getGoogleMap:(req,res)=>{    
+    res.render("GoogleMap.ejs");
+  },
 };
 

@@ -567,6 +567,29 @@ thead {
   }
 }
 
+/*googleMap*/
+
+#map {
+  width:100%;
+  height:30rem;
+
+}
+.map-input-box {
+  width: 40rem;
+  height: 4rem;
+  margin-left: 1rem;
+  display: flex;
+}
+.map-input-box input {
+  border-radius: 1rem;
+
+}
+.map-input-box button {
+  border-radius: 0 1rem 1rem 0;
+  border-left: 0;
+}
+
+
 /*alert*/
 
 .success {

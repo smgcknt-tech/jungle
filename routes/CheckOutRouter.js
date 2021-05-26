@@ -7,5 +7,6 @@ router.get('/orderConfirmation',c.orderConfirmation,);
 router.post('/create/order',c.createOrder,);
 router.get('/orderHistory',c.orderHistory,);
 router.get('/thanks',c.thanks,);
+router.get('/googleMap',c.getGoogleMap,);
 module.exports =  router
 
