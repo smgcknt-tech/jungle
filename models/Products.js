@@ -168,10 +168,7 @@ module.exports = {
   },
   dashBoard: {
     getOrderedData: async (userId) => {
-      const orderData = await Order.find().populate({
-        path: "ordered_products",
-        match: { productId: userId },
-      });
+      const orderData = await Order.find().populate("ordered_products.productId");
       return orderData;
     },
   },

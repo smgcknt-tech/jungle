@@ -50,8 +50,7 @@ module.exports = {
     },
     getDashBoardData:async(req,res)=>{
         const userId = req.session.userId;
-        const orderData = await p.dashBoard.getOrderedData("60acb8974f18a035f478e5c2")
-        console.log(orderData)
+        const orderData = await p.dashBoard.getOrderedData("60af9c6675bdd51648bfb8f8")
         res.send({
             orderData:orderData,
         });

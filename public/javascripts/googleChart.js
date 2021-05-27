@@ -27,6 +27,7 @@ fetch("/api/get/dashBoard")
     const brandArrGen = (arrOfObject) => {
       for (let i = 0; i < arrOfObject.length; i++) {
         const brand = arrOfObject[i].productId.brand;
+        console.log(arrOfObject[i])
         const qty = Number(arrOfObject[i].productQty);
         return new Array(brand, qty);
       }
@@ -47,6 +48,8 @@ fetch("/api/get/dashBoard")
       return result;
     }, []);
     const brandData = [["sales", "byBrand"], ...newBrandArr];
+    console.log(brandData)
+
     function piechartBybrand() {
       let data = google.visualization.arrayToDataTable(brandData);
       let options = { title: "ブランド別売上", width: 300, height: 300 };
@@ -55,6 +58,8 @@ fetch("/api/get/dashBoard")
       );
       chart.draw(data, options);
     }
+
+
     //カテゴリ別パイチャート
     let categoryArr = [];
     const categoryArrGen = (arrOfObject) => {
