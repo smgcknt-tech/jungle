@@ -221,7 +221,7 @@ $(() => {
     const bodyFormData = new FormData();
     bodyFormData.append("image", file);
     $.ajax({
-      url: "/upload/image",
+      url: "/upload/image/s3",
       type: "POST",
       contentType: false,
       processData: false,

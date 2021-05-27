@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      type="text/javascript"
+      src="https://www.gstatic.com/charts/loader.js"
+    ></script>
+    <script src="/javascripts/googleChart.js"></script>
+    <%-include('../Stylesheet');%>
+    <title>ダッシュボード</title>
+  </head>
+  <body>
+    <div class="grid-container">
+      <%-include('../Header');%>
+      <main>
+        <ul class="row summary">
+          <li>
+            <div class="summary-title color1">
+              <span>
+                <i class="fa fa-users">売上</i>
+              </span>
+            </div>
+            <div class="summary-body">1000</div>
+          </li>
+          <li>
+            <div class="summary-title color2">
+              <span>
+                <i class="fa fa-shopping-cart">注文数</i>
+              </span>
+            </div>
+            <div class="summary-body">1000</div>
+          </li>
+          <li>
+            <div class="summary-title color3">
+              <span>
+                <i class="fas fa-yen-sign">平均単価</i>
+              </span>
+            </div>
+            <div class="summary-body">1000</div>
+          </li>
+        </ul>
+        <div class="row summary">
+          <div class="summary chart center" id="piechartBycategory"></div>
+          <div class="summary chart center" id="piechartBybrand"></div>
+        </div>
+      </main>
+      <%-include('../Footer');%>
+    </div>
+    <%-include('../Jquery');%>
+  </body>
+</html>

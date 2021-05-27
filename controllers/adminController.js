@@ -13,6 +13,9 @@ module.exports = {
     },
     getRegisterProduct : (req, res) => {
         res.render("ProductRegister.ejs",);
-    }
+    },
+    getdashBoard: (req, res) => {
+        res.render("dashBord.ejs",);
+    },
 }
 
