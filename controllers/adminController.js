@@ -15,7 +15,7 @@ module.exports = {
         res.render("ProductRegister.ejs",);
     },
     getdashBoard:async(req, res) => {
-        res.render("dashBoard.ejs");
+        res.render("DashBoard.ejs");
     },
 }
 
