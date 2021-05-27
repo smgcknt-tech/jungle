@@ -82,7 +82,7 @@ fetch("/api/get/dashBoard")
     const categoryData = [["sales", "bycategory"], ...newCategoryArr];
     function piechartBycategory() {
       let data = google.visualization.arrayToDataTable(categoryData);
-      let options = { title: "ブランド別売上", width: 300, height: 300 };
+      let options = { title: "カテゴリ別売上", width: 300, height: 300 };
       let chart = new google.visualization.PieChart(
         document.getElementById("piechartBycategory")
       );

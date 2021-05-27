@@ -57,7 +57,7 @@ module.exports = {
       );
       return createdProduct;
     },
-    editProduct: (req, productId,userId) => {
+    editProduct: (req, productId, userId) => {
       return Product.findOneAndUpdate(
         { _id: productId },
         {
@@ -120,13 +120,13 @@ module.exports = {
         user: userId,
       });
       await createdOrder.save();
-      createdOrder.ordered_products.forEach(async(x)=>{
-          await Product.findOneAndUpdate(
-              { _id: x.productId},
-              {$inc: {countInStock:-x.productQty }}
-          );
-      }) 
-      
+      createdOrder.ordered_products.forEach(async (x) => {
+        await Product.findOneAndUpdate(
+          { _id: x.productId },
+          { $inc: { countInStock: -x.productQty } }
+        );
+      });
+
       await User.findOneAndUpdate(
         { _id: userId },
         { $push: { order: createdOrder._id } }
@@ -166,20 +166,13 @@ module.exports = {
       return Review.find({ reviewed_product: id });
     },
   },
-  dashBoard:{
-    getProductData: async(userId) => {
-      const productData = await Product.find({ user: userId })
-      return productData
+  dashBoard: {
+    getOrderedData: async (userId) => {
+      const orderData = await Order.find().populate({
+        path: "ordered_products",
+        match: { productId: userId },
+      });
+      return orderData;
     },
-    getOrderedData: async(userId) => {
-      const orderData = await Order.find({ user: userId })
-      .populate({
-        path: "ordered_products", 
-        populate: {
-           path: "productId",
-        }
-     })
-      return orderData
-    },
-  }
+  },
 };
