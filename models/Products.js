@@ -57,7 +57,7 @@ module.exports = {
       );
       return createdProduct;
     },
-    editProduct: (req, productId) => {
+    editProduct: (req, productId,userId) => {
       return Product.findOneAndUpdate(
         { _id: productId },
         {
@@ -68,6 +68,7 @@ module.exports = {
           countInStock: req.body.countInStock,
           image: req.body.image,
           description: req.body.description,
+          user: userId,
         }
       );
     },
@@ -165,4 +166,20 @@ module.exports = {
       return Review.find({ reviewed_product: id });
     },
   },
+  dashBoard:{
+    getProductData: async(userId) => {
+      const productData = await Product.find({ user: userId })
+      return productData
+    },
+    getOrderedData: async(userId) => {
+      const orderData = await Order.find({ user: userId })
+      .populate({
+        path: "ordered_products", 
+        populate: {
+           path: "productId",
+        }
+     })
+      return orderData
+    },
+  }
 };

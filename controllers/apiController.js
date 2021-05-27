@@ -20,8 +20,9 @@ module.exports = {
     },
     editProduct :async (req,res) => {
         const productId = req.params.id
+        const userId = req.session.userId
         console.log(Number(req.body.price).toLocaleString())
-        await p.product.editProduct(req,productId);
+        await p.product.editProduct(req,productId,userId);
         res.redirect("/admin/productList");
     },
     deleteProduct :async (req,res) => {
@@ -46,6 +47,16 @@ module.exports = {
     },
     getMap:async(req,res)=>{
         res.send(process.env.GOOGLE_API_KEY || '');
+    },
+    getDashBoardData:async(req,res)=>{
+        const userId = req.session.userId;
+        const productData = await p.dashBoard.getProductData("60acb8974f18a035f478e5c2")
+        const orderData = await p.dashBoard.getOrderedData("60acb8974f18a035f478e5c2")
+
+        res.send({
+            productData:productData,
+            orderData:orderData,
+        });
     }
 }
 

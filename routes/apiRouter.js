@@ -12,6 +12,7 @@ router.get("/search/product", a.searchProduct);
 router.get("/search/category/:id", a.searchCategory)
 router.get("/search/brand/:id", a.searchBrand)
 router.post("/delete/product", a.deleteProduct);
+router.get("/get/dashBoard", a.getDashBoardData);
 router.get("/google/map", a.getMap);
 
 
