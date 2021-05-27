@@ -37,7 +37,7 @@ module.exports = {
     searchBrand: (brand) => {
       return Product.find({ brand: brand });
     },
-    create: async (req, userId) => {
+    create: async (req,userId) => {
       const createdProduct = await new Product({
         name: req.body.name,
         price: req.body.price,
