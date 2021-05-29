@@ -623,14 +623,17 @@ thead {
 
 .chat-messages {
   font-size: 1rem;
-  height: 20rem;
+  max-height: 20rem;
   overflow-y: scroll;
+  max-width:30rem;
 }
 
 .message {
   padding: 0.5rem;
   background-color: gainsboro;
   margin: 1rem 0;
+  word-break: break-all;
+  word-wrap: break-all;
 }
 .open-chat{
   color:#29ab87

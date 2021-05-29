@@ -5,10 +5,7 @@ const cors = require("cors");
 const path = require("path");
 const dotenv = require("dotenv");
 const session = require("express-session");
-const moment = require("moment");
 
-//from controllers
-const MidllewareController = require("./controllers/MiddlewareController");
 //from routes
 const TopRouter = require("./routes/TopRouter");
 const ProductRouter = require("./routes/ProductRouter");
@@ -22,6 +19,10 @@ const UploadRouter = require("./routes/UploadRouter");
 const apiRouter = require("./routes/apiRouter");
 const adminRouter = require("./routes/adminRouter");
 const SupportRouter = require("./routes/SupportRouter");
+//from controllers
+const MidllewareController = require("./controllers/MiddlewareController");
+//from public
+const utils = require("./public/javascripts/utils");
 //general setting
 dotenv.config();
 const app = express();
@@ -68,97 +69,31 @@ mongoose
       console.log(`Server Running on Port: http://localhost:${PORT}`);
     });
 
+    const botName = "ターザン";
 
-    const users = [];
-    const botName = 'ChatCord Bot';
-
-    //chat
-    function formatMessage(username, text) {
-      return {
-        username,
-        text,
-        time: moment().format("h:mm a"),
-      };
-    }
-
-    // Join user to chat
-    function userJoin(id, username, room) {
-      const user = { id, username, room };
-
-      users.push(user);
-
-      return user;
-    }
-
-    // Get current user
-    function getCurrentUser(id) {
-      return users.find((user) => user.id === id);
-    }
-
-    // User leaves chat
-    function userLeave(id) {
-      const index = users.findIndex((user) => user.id === id);
-
-      if (index !== -1) {
-        return users.splice(index, 1)[0];
-      }
-    }
-
-    // Get room users
-    function getRoomUsers(room) {
-      return users.filter((user) => user.room === room);
-    }
-
-
-    // Run when client connects
-    io.on('connection', socket => {
-      socket.on('joinRoom', ({ username, room }) => {
-        const user = userJoin(socket.id, username, room);
-    
+    io.on("connection", (socket) => {
+      socket.on("joinRoom", ({ username, room }) => {
+        const user = utils.userJoin(socket.id, username, room);
         socket.join(user.room);
-    
-        // Welcome current user
-        socket.emit('message', formatMessage(botName, 'Welcome to ChatCord!'));
-    
-        // Broadcast when a user connects
-        socket.broadcast
-          .to(user.room)
-          .emit(
-            'message',
-            formatMessage(botName, `${user.username} has joined the chat`)
-          );
-    
-        // Send users and room info
-        io.to(user.room).emit('roomUsers', {
-          room: user.room,
-          users: getRoomUsers(user.room)
-        });
+        socket.emit(
+          "message",
+          utils.formatMessage(
+            botName,
+            `あなたのアシスタントの${botName}です。どういたしましたか？`
+          )
+        );
       });
-    
-      // Listen for chatMessage
-      socket.on('chatMessage', msg => {
-        const user = getCurrentUser(socket.id);
-    
-        io.to(user.room).emit('message', formatMessage(user.username, msg));
+      socket.on("chatMessage", (msg) => {
+        const user = utils.getCurrentUser(socket.id);
+        io.to(user.room).emit("message", utils.formatMessage(user.username, msg));
+        socket.emit(
+          "message",
+          utils.formatMessage(
+            botName,
+            `回答が見つかりませんでした。大変申し訳ございませんが、こちらの電話窓口までおかけ直しください。000-0000-0000`
+          )
+        )
       });
-    
-      // Runs when client disconnects
-      socket.on('disconnect', () => {
-        const user = userLeave(socket.id);
-    
-        if (user) {
-          io.to(user.room).emit(
-            'message',
-            formatMessage(botName, `${user.username} has left the chat`)
-          );
-    
-          // Send users and room info
-          io.to(user.room).emit('roomUsers', {
-            room: user.room,
-            users: getRoomUsers(user.room)
-          });
-        }
-      });
-    })
+    });
   })
   .catch((error) => console.log(`${error} did not connect`));
