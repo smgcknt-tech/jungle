@@ -305,4 +305,15 @@ $(() => {
 
   });
 
+  //support.ejs
+  $(".open-chat").on("click", (e) => {
+    $("#chatBody").removeClass("close-chatBox");
+    $(".open-chat").hide()
+  });
+  $(".close-chat").on("click", (e) => {
+    $("#chatBody").addClass("close-chatBox");
+    $(".open-chat").show()
+  });
+
+
 });

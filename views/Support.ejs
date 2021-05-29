@@ -1,0 +1,22 @@
+
+<%if(locals.isLoggedIn){%>
+  <div class="chatbox" >
+    <button type="button" class="open-chat"><i class="fas fa-headset"></i></button>
+    <div class="card card-body close-chatBox" id="chatBody" data-userName="<%=locals.userName%>"  data-userId="<%=locals.userId%>">
+      <div class="row">
+        <strong><%=locals.userName%>様</strong>
+        <button type="button" class="close-chat"><i class="fas fa-times"></i></button>
+      </div>
+        <div class="chat-messages"></div>
+      <div class="chat-form-container">
+        <form class="form row" id="chat-form">
+          <input id="msg" type="text" placeholder="コメント" required autocomplete="off"/>
+          <button class="btn"><i class="fas fa-paper-plane"></i>送信</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <script src="https://cdn.socket.io/socket.io-3.0.1.min.js"></script>
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="/javascripts/chat.js"></script>
+<%}%>

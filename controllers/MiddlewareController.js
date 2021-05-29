@@ -19,6 +19,7 @@ module.exports = {
       res.locals.cartItem = await p.cart.findAll(userId);
       res.locals.shipping = await u.checkOut.findShipping(userId);
       res.locals.isLoggedIn = true;
+      res.locals.userId = userId;
       res.locals.userName = req.session.userName;
     }
     next();

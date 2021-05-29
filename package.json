@@ -18,11 +18,13 @@
     "ejs": "^3.1.6",
     "express": "^4.17.1",
     "express-session": "^1.17.1",
+    "moment": "^2.29.1",
     "mongoose": "^5.12.3",
     "multer": "^1.4.2",
     "multer-s3": "^2.9.0",
     "nodemon": "^2.0.7",
-    "sdk": "^0.5.0"
+    "sdk": "^0.5.0",
+    "socket.io": "^4.1.2"
   },
   "engines": {
     "node": "15.12.0",
