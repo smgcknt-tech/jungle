@@ -1,4 +1,5 @@
 アプリケーション概要：amazonのようなECショッピングサイトです。
+URL: https://my-portfolio-jungle.herokuapp.com/
 
 アプリ機能
 ・サインアップ、サインイン機能　
