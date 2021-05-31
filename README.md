@@ -20,7 +20,7 @@ URL: https://my-portfolio-jungle.herokuapp.com/
   -サーバーサイド：node.js(express)
   -データベース：mongoDB(mongoDB atlasというクラウドDBを使用)
   -インフラ：heroku。サイト内の画像ファイルのストレージ先としてだけAWS S3というクラウドストレージを使用
-・機能追加に利用したlibrary
+・機能追加に利用したlibrary等
 　-セッション管理には「express-session」、パスワードのhash化には「bcryptjs」を使用
   -画像のuploadには「multer」を使用
   -決済機能はpaypalの「sandbox」というテスト決済機能を利用。※実際には決済されません。
